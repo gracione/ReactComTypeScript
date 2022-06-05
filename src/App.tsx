@@ -1,12 +1,10 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Rota from './routes';
+import './global.css';
+import Routes from './routes';
 
 function App() {
   return (
-    <Rota></Rota>
+    <Routes />
   );
 }
-
 export default App;
