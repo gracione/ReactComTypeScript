@@ -36,7 +36,7 @@ export default function Register() {
             const response = await api.post('/auth/login', { email, password });
             console.log(response.data.data.token);
             localStorage.setItem('token', response.data.data.token);
-            history('/menu');
+            history('/home');
           }
         });
     } catch (err) {

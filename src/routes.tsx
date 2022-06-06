@@ -4,14 +4,16 @@ import Logon from './paginas/Autenticacao/Login/index';
 import Home from './paginas/Home/index';
 import Menu from './paginas/Menu/index';
 import Registrar from './paginas/Autenticacao/Registrar/index';
+import Funcionarios from './paginas/Funcionarios';
 
 export default function Rota() {
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Logon />} />
-                <Route path="/menu" element={<Menu />} />
                 <Route path="/register" element={<Registrar />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/funcionarios" element={<Funcionarios />} />
             </Routes>
         </BrowserRouter>
     );
