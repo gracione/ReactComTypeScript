@@ -2,6 +2,7 @@ import Menu from "../Menu";
 import { Conteudo, Container } from "./styles";
 
 export default function Home() {
+  
   return (
     <Container>
       <Menu></Menu>

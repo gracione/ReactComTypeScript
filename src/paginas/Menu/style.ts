@@ -5,10 +5,8 @@ export const Container = styled.div`
     color: var(--text-title);
 
     img {
-        width: 47px;
-        height:10vh;
-        margin-right: 0;
-        padding: 15px 0;
+        width: 50px;
+        height:50px;
     }
 
     @media (max-width: 767px) {
@@ -18,7 +16,7 @@ export const Container = styled.div`
             display: block;
         }
     
-        .item-menu-desktop {
+        .item-menu-desktop {    
             display: none;
         }
     
@@ -31,7 +29,7 @@ export const Container = styled.div`
         .three {
             background-color: #ffffff;
             height: 5px;
-            width: 100%;
+            width: 40px;
             margin: 6px auto;
             transition-duration: 0.3s;
         }
@@ -54,9 +52,8 @@ export const Container = styled.div`
         }
         
         .menu-toggle {
-            width: 6vh;
-            height: 3vh;
-            margin: 20px;
+            width: 6px;
+            margin: 10px 50px;
         }
     
         .menu-section.on {
@@ -94,7 +91,7 @@ export const Container = styled.div`
     }
 
     @media (min-width: 767px) {
-        width: 8vh;
+        width: 50px;
         height: 100vh;
 
         display: flex;

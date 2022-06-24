@@ -30,12 +30,11 @@ export default function Register() {
     };
 
     try {
-      api.post('auth/register', data)
-        .then(async (res) => {
-          if (res.data.status) {
-            const response = await api.post('/auth/login', { email, password });
-            console.log(response.data.data.token);
-            localStorage.setItem('token', response.data.data.token);
+      api.post('/registrar', data)
+      .then(async (res) => {
+        if (res.data.access_token) {
+          const response = await api.post('/login', { email, password });
+            localStorage.setItem('token', response.data.access_token);
             history('/home');
           }
         });
