@@ -5,32 +5,16 @@ import { useNavigate } from "react-router-dom";
 
 import { Container } from "./style";
 import api from "../../services/api";
-import util from "../../services/util";
 
 export default function Menu() {
   const [token] = useState(localStorage.getItem("token"));
-  const [taskList, setTaskList] = useState([]);
   const [tipoPerfi, setTipoPerfil] = useState();
   const [classOn, setClassOn] = useState(false);
   const history = useNavigate();
 
   useEffect(() => {
-    api
-      .get("me", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then((response) => {
-        if (response.data.status && response.data.status === (401 || 498)) {
-          handleLogout();
-        } else {
-          setTaskList(response.data.data);
-        }
-      })
-      .catch((err) => {
-        alert(err);
-      });
+    //    const response = api.get('/profile');
+    //    console.log(response);
   }, [token]);
 
   if (token === "" || token === null) {
@@ -43,50 +27,31 @@ export default function Menu() {
   }
 
   api
-    .post("/verificar-tipo-perfil",token)
+    .post("/verificar-tipo-perfil", token)
     .then((response) => setTipoPerfil(response.data));
 
   return (
     <Container>
       <img src="logo-alternativa.svg" alt="logo Cyan" />
-
-      <div
-        className={classOn ? "menu-section on" : "menu-section"}
-        onClick={() => setClassOn(!classOn)}
-      >
-        <div className="menu-toggle">
-          <div className="one"></div>
-          <div className="two"></div>
-          <div className="three"></div>
-        </div>
-
-        <nav>
-          {tipoPerfi && (
-            <>
-              <a href="/funcionarios">
-                <div className="item-menu-movel">FUNCIONARIOS</div>
-                <FiUsers className="item-menu-desktop" />
-              </a>
-              <a href="/home">
-                <div className="item-menu-movel">FERIADOS</div>
-                <RiCalendarLine className="item-menu-desktop" />
-              </a>
-              <a href="/test">
-                <div className="item-menu-movel">FOLGA</div>
-                <RiCalendarTodoLine className="item-menu-desktop" />
-              </a>
-              <a href="#">
-                <div className="item-menu-movel">CONTATO</div>
-                <RiCalendarLine className="item-menu-desktop" />
-              </a>
-            </>
-          )}
-          <a onClick={handleLogout} href="/">
-            <div className="item-menu-movel">SAIR</div>
-            <FiLogOut className="item-menu-desktop" />
+      {tipoPerfi && (
+        <>
+          <a href="/funcionarios">
+            <div>FUNCIONARIOS</div>
           </a>
-        </nav>
-      </div>
+          <a href="/home">
+            <div>FERIADOS</div>
+          </a>
+          <a href="/test">
+            <div>FOLGA</div>
+          </a>
+          <a href="#">
+            <div>CONTATO</div>
+          </a>
+        </>
+      )}
+      <a onClick={handleLogout} href="/">
+        <div >SAIR</div>
+      </a>
     </Container>
   );
 }

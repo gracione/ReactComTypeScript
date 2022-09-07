@@ -14,6 +14,7 @@ export default function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [idEstabelecimento, setIdEstabelecimento] = useState(1);
 
   const history = useNavigate();
 
@@ -27,10 +28,11 @@ export default function Register() {
       email,
       password,
       "password_confirmation": confirmPassword,
+      id_estabelecimento: idEstabelecimento,
     };
 
     try {
-      api.post('/registrar', data)
+      api.post('/registrarCliente', data)
       .then(async (res) => {
         if (res.data.access_token) {
           const response = await api.post('/login', { email, password });
@@ -81,6 +83,12 @@ export default function Register() {
             type="email"
             onChange={e => setEmail(e.target.value)}
             required
+          />
+          <input
+            className='display-none'
+            value="1"
+            type="text"
+            onChange={e => setIdEstabelecimento(1)}
           />
 
           <input

@@ -1,5 +1,6 @@
 import Menu from "../Menu";
-import { Conteudo, Container } from "./styles";
+
+import { Conteudo, Container, AgendarHorario, CompartilheLink, HorariosMarcados } from "./styles";
 
 export default function Home() {
   
@@ -7,7 +8,9 @@ export default function Home() {
     <Container>
       <Menu></Menu>
       <Conteudo>
-        <h1>pagina</h1>
+        <AgendarHorario/>
+        <CompartilheLink/>
+        <HorariosMarcados/>
       </Conteudo>
     </Container>
   );

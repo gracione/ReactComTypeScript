@@ -5,6 +5,7 @@ import Menu from '../Menu';
 import './styles.css';
 
 export default function Home() {
+  
   const [token] = useState(localStorage.getItem('token'));
   const [taskList, setTaskList] = useState([]);
 

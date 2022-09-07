@@ -24,16 +24,6 @@ export const Container = styled.div`
             display: none;
         }
     
-        .one,
-        .two,
-        .three {
-            background-color: #ffffff;
-            height: 5px;
-            width: 40px;
-            margin: 6px auto;
-            transition-duration: 0.3s;
-        }
-
         nav a {
             display:flex;
             flex-direction: column;
@@ -48,79 +38,24 @@ export const Container = styled.div`
         }
 
         nav {
+            color: white ;
             margin:10vh;
         }
         
-        .menu-toggle {
-            width: 6px;
-            margin: 10px 50px;
-        }
-    
-        .menu-section.on {
-            position: absolute;
-            width: 100%;
-            height: 100vh;
-            background: var(--backgroud);
-        }
-    
-        .menu-section.on nav {
-            display: block;
-        }
-    
-    
-        .menu-section.on .menu-toggle {
-            position: absolute;
-            right: 25px;
-            top: 25px;
-        }
-    
-    
-        .menu-section.on .menu-toggle .one {
-            transform: rotate(45deg) translate(7px, 7px);
-        }
-    
-        .menu-section.on .menu-toggle .two {
-            opacity: 0;
-        }
-    
-        .menu-section.on .menu-toggle .three {
-            transform: rotate(-45deg) translate(8px, -9px);
-            background-color: #fff;
-        }
     
     }
 
     @media (min-width: 767px) {
-        width: 50px;
-        height: 100vh;
-
+        width: 100%;
+        height: 5vh;
         display: flex;
-        flex-direction: column;
         justify-content: space-between;
-        
-        nav {
-            display:flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items:center;
-    
-            height:70vh;
-            color: var(--text-title);
-        }
-    
-        .menu-section {
-            height: 85%;
-        }
-      
-        .item-menu-movel {
-            display: none;
-        }
-        
-        .item-menu-desktop {
-            width: 30px;
-            height: 25px;
-            display: block;
-            color: var(--text-title);
+        padding: 20px ;
+        align-items: center;
+        a{
+            color: white ;
+            text-decoration: none ;
+            font-size: 25px ;
         }
     }
 
