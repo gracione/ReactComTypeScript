@@ -6,7 +6,7 @@ const api = axios.create({
 
 api.interceptors.request.use(async config => {
   // Declaramos um token manualmente para teste.
-  const token = "37|6RPmfosQRN5nFkMBWMB1HeWjq5GzFIpfZK94ozQ1";
+  const token = "2|LR3xXV504AqiQpFOShtJzclb3bWJVUOWpSRNmRbq";
 
   if (token) {
     axios.defaults.headers.common['Authorization'] = "Bearer ${localStorage.getItem('access_token')";
