@@ -18,9 +18,27 @@ export const Conteudo = styled.div`
     }
 
     @media (min-width: 767px) {
-
+        display: flex;
+        flex-wrap: wrap;
+        padding: 25px ;
+        justify-content: space-around ;
     }
 
+    .agendar-horario{
+        height: 350px ;
+
+        display: flex ;
+        flex-direction: column ;
+        justify-content: space-between ;
+    }
+
+    label{
+        font-size: 20px ;
+        text-align: center;
+
+        display: flex ;
+        justify-content: center ;
+    }
 `;
 
 export const AgendarHorario = styled.div`
@@ -30,6 +48,10 @@ export const AgendarHorario = styled.div`
     }
 
     @media (min-width: 767px) {
+        width: 650px;
+        height: 200px ;
+        border: solid;
+        border-radius: 10px ;
 
     }
 
@@ -41,7 +63,32 @@ export const CompartilheLink = styled.div`
     }
 
     @media (min-width: 767px) {
+        width: 650px;
+        height: 100px ;
+        border: solid;
+        border-radius: 10px ;
+        padding: 10px;
 
+        form{
+            height: 50px ;
+            display: flex ;
+            justify-content: center ;
+            align-items: center ;
+        }
+        input{
+            margin: 0 ;
+            width: 400px ;
+            height: 30px;
+
+            border: solid 1px;
+            border-radius:5px ;
+        }
+        button {
+            width: 30px ;
+            border-radius:5px ;
+            height: 30px;
+
+        }
     }
 
 `;
@@ -52,6 +99,10 @@ export const HorariosMarcados = styled.div`
     }
 
     @media (min-width: 767px) {
+        width: 500px;
+        height: 600px ;
+        border: solid;
+        border-radius: 10px ;
 
     }
 
