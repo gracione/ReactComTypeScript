@@ -19,23 +19,18 @@ export default function Menu() {
   return (
     <Container>
       <img src="logo-alternativa.svg" alt="logo Cyan" />
-        <>
-          <a href="/funcionarios">
-            <div>FUNCIONARIOS</div>
-          </a>
-          <a href="/home">
-            <div>FERIADOS</div>
-          </a>
-          <a href="/test">
-            <div>FOLGA</div>
-          </a>
-          <a href="#">
-            <div>CONTATO</div>
-          </a>
-        </>
-      <a onClick={handleLogout} href="/">
-        <div >SAIR</div>
-      </a>
+      <div className="opcoes">
+        <a href="/home">Home</a>
+        <a href="/funcionarios">Funcionários</a>
+        <a href="/feriados">Feriados</a>
+        <a href="/folgas">Folgas</a>
+        <a href="/tratamentos">Tratamentos</a>
+        <a href="/profissoes">Profissões</a>
+        <a href="/configuracoes">Configurações</a>
+        <a onClick={handleLogout} href="/">
+          <div >SAIR</div>
+        </a>
+      </div>
     </Container>
   );
 }

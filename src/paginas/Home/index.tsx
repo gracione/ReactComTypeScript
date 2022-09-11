@@ -26,9 +26,11 @@ export default function Home() {
   funcionarios.forEach((element: any) => {
     funcionariosDisponivel.push(
       <CardFuncionario>
-        <h5>{element.nome_usuario}</h5>
-        <h6>{element.funcao}</h6>
-        <h2>{element.id_funcao}</h2>
+        <button value='gracione' name='tes'>
+          <h5>{element.nome_usuario}</h5>
+          <h6>{element.funcao}</h6>
+          <h2>{element.id_funcao}</h2>
+        </button>
       </CardFuncionario>
     )
   });
@@ -41,16 +43,17 @@ export default function Home() {
         <div className="agendar-horario" >
           <AgendarHorario>
             <label>Agendar Horário</label>
-            <form>
-              <input type="text" placeholder="Digite o nome do cliente" />
+            <form action="/informacoes" method="post">
+              <input type="text" value='oiii' name="cliente" placeholder="Digite o nome do cliente" />
               <div className="funcionarios">
                 {funcionariosDisponivel}
                 <CardAdicionarFuncionario >
-                    <h5>Cadastrar</h5>
-                    <h6>Funcionário</h6>
-                    <h2>+</h2>
+                  <h5>Cadastrar</h5>
+                  <h6>Funcionário</h6>
+                  <h2>+</h2>
                 </CardAdicionarFuncionario>
               </div>
+              <button>enviar</button>
             </form>
           </AgendarHorario>
           <CompartilheLink>

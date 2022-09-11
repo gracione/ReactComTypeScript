@@ -20,10 +20,18 @@ export const Container = styled.div`
         justify-content: space-between;
         padding: 10px ;
         align-items: center;
+        .opcoes{
+            width: 50%;
+            height: 50px;
+            display: flex;
+            justify-content: space-between;
+            padding: 10px ;
+            align-items: center;
+        }
         a{
             color: white ;
             text-decoration: none ;
-            font-size: 20px ;
+            font-size: 15px ;
             font-weight: 400 ;
         }
     }

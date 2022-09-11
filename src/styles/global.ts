@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import styled from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 	:root {
@@ -27,4 +28,29 @@ export const GlobalStyle = createGlobalStyle`
 		box-sizing: border-box;
 	}
 
+`;
+
+export const Container = styled.div`
+
+    @media (max-width: 767px) {
+    
+    }
+
+    @media (min-width: 767px) {
+    }
+
+`;
+
+export const Conteudo = styled.div`
+
+    @media (max-width: 767px) {
+
+    }
+
+    @media (min-width: 767px) {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 25px ;
+        justify-content: space-around ;
+    }
 `;

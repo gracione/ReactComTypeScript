@@ -4,6 +4,7 @@ import Logon from './paginas/Autenticacao/Login/index';
 import Home from './paginas/Home/index';
 import Registrar from './paginas/Autenticacao/Registrar/index';
 import Funcionarios from './paginas/Funcionarios';
+import Informacoes from './paginas/Informacoes/index';
 
 export default function Rota() {
     return (
@@ -13,6 +14,7 @@ export default function Rota() {
                 <Route path="/register" element={<Registrar />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/funcionarios" element={<Funcionarios />} />
+                <Route path="/informacoes" element={<Informacoes />} />
             </Routes>
         </BrowserRouter>
     );
