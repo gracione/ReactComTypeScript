@@ -10,7 +10,6 @@ export default function Home() {
   const [taskList, setTaskList] = useState([]);
 
   const history = useNavigate();
-  console.log(token);
   useEffect(() => {
     api.get('me', {
       headers: {

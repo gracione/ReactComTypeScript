@@ -11,7 +11,7 @@ export default function Funcionarios() {
 
   let token = "2|LR3xXV504AqiQpFOShtJzclb3bWJVUOWpSRNmRbq";
   const config = {
-    headers: { Authorization: `Bearer ${token}` }
+    headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` }
   };
 
   useEffect(() => {

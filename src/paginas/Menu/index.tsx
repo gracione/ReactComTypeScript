@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Container } from "./style";
 
 export default function Menu() {
-  const [token] = useState(localStorage.getItem("token"));
+  const token = localStorage.getItem("token");
   const history = useNavigate();
 
   if (token === "" || token === null) {
