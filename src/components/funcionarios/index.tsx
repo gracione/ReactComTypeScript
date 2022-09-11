@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 
-import { CardFuncionario } from "./styles";
+import { CardFuncionario, Container } from "./styles";
 
 export default function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
+  const [idFuncionario, setIdFuncionario] = useState('');
+
+  localStorage.setItem('idFuncionario', idFuncionario);
+
   let token = "2|LR3xXV504AqiQpFOShtJzclb3bWJVUOWpSRNmRbq";
   const config = {
     headers: { Authorization: `Bearer ${token}` }
@@ -23,18 +27,32 @@ export default function Funcionarios() {
   funcionarios.forEach((element: any) => {
     funcionariosDisponivel.push(
       <CardFuncionario>
-        <button value='gracione' name='tes'>
-          <h5>{element.nome_usuario}</h5>
-          <h6>{element.funcao}</h6>
-          <h2>{element.id_funcao}</h2>
-        </button>
+        <input
+          id={element.id_funcionario}
+          value={element.id_funcionario}
+          name='tes'
+          type="radio"
+          onChange={e => setIdFuncionario(e.target.value)}
+        />
+
+        <label htmlFor={element.id_funcionario}>
+          {element.nome_usuario}
+        </label>
+        <label htmlFor={element.id_funcionario}>
+          {element.funcao}
+        </label>
+        <label htmlFor={element.id_funcionario}>
+          {element.id_funcionario}
+        </label>
       </CardFuncionario>
     )
   });
 
   return (
-    <>
-      {funcionariosDisponivel}
-    </>
+    <Container>
+      <form action="/informacoes">
+        {funcionariosDisponivel}
+      </form>
+    </Container>
   );
 }

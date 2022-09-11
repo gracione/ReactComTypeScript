@@ -6,6 +6,8 @@ export default function Home() {
     <Container>
       <Menu></Menu>
       <Conteudo>
+        
+        {localStorage.getItem("idFuncionario")}
       </Conteudo>
     </Container>
   );
