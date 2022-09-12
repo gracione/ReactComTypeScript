@@ -9,7 +9,7 @@ export default function Funcionarios() {
 
   localStorage.setItem('idFuncionario', idFuncionario);
 
-  let token = localStorage.getItem('token');
+  const token = localStorage.getItem('token');
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
@@ -33,7 +33,7 @@ export default function Funcionarios() {
           name='tes'
           type="radio"
           onChange={e => setIdFuncionario(e.target.value)}
-        />
+          />
 
         <label htmlFor={element.id_funcionario}>
           {element.nome_usuario}
