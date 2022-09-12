@@ -9,9 +9,9 @@ export default function Funcionarios() {
 
   localStorage.setItem('idFuncionario', idFuncionario);
 
-  let token = "2|LR3xXV504AqiQpFOShtJzclb3bWJVUOWpSRNmRbq";
+  let token = localStorage.getItem('token');
   const config = {
-    headers: { Authorization: `Bearer ${localStorage.getItem('access_token')}` }
+    headers: { Authorization: `Bearer ${token}` }
   };
 
   useEffect(() => {
