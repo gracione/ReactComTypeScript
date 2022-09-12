@@ -37,6 +37,8 @@ export const Container = styled.div`
     }
 
     @media (min-width: 767px) {
+		display: flex ;
+		flex-direction: column ;
     }
 
 `;
@@ -48,9 +50,35 @@ export const Conteudo = styled.div`
     }
 
     @media (min-width: 767px) {
-        display: flex;
-        flex-wrap: wrap;
-        padding: 25px ;
-        justify-content: space-around ;
+		width: 600px ;
+		height: 400px ;
+		border: solid var(--borda) 2px;
+        border-radius: 10px ;
+        background-color: var(--backgroud-secundaria);
+		margin: 20px ;
+		padding: 20px ;
+
+		form{
+			height: 100% ;
+			display: flex ;
+			flex-direction: column ;
+			justify-content: space-between;
+		}
+		select{
+			height: 20px ;
+		}
+		option{
+			font-size: 20px !important ;
+			height: 20px ;
+		}
+		button{
+			width: 100%;
+			height: 40px ;
+			border: none ;
+			border-radius: 5px ;
+			color: var(--shape);
+			background-color: var(--blue-light) ;
+			top: 200px ;
+		}
     }
 `;

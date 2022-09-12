@@ -4,8 +4,8 @@ import api from "../../services/api";
 import Menu from "../Menu";
 
 export default function Home() {
-  const [idTramento, setTramento] = useState('');
-
+  const [idTratamento, setTratamento] = useState([]);
+  let tratamentos: any = [];
   const token = localStorage.getItem('token');
   const config = {
     headers: { Authorization: `Bearer ${token}` }
@@ -13,21 +13,33 @@ export default function Home() {
 
   useEffect(() => {
     api
-      .post("/tramento/listarPorFuncionario", {
+      .post("/tratamento/listarPorFuncionario", {
         id_estabelecimento: 1,
-        id_funcionario:localStorage.getItem("idFuncionario")
+        id_profissao: localStorage.getItem("idFuncionario")
       }, config)
-      .then((response) => setTramento(response.data));
+      .then((response) => setTratamento(response.data));
   }, []);
 
-  console.log(idTramento);
+  idTratamento.forEach((element: any) => {
+    tratamentos.push(
+      <option value={element.id}>{element.nome}</option>
+    )
+  });
   return (
     <Container>
       <Menu></Menu>
       <Conteudo>
-        <br></br>
-        Tramento
-        {localStorage.getItem("idFuncionario")}
+        <form action="">
+          <div>
+            <label htmlFor="">Tratamento</label>
+            <select name="tratamento" >
+              {tratamentos}
+            </select>
+          </div>
+          <div>
+            <button>Prosseguir</button>
+          </div>
+        </form>
       </Conteudo>
     </Container>
   );

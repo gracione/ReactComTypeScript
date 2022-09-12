@@ -157,7 +157,7 @@ export const CardAdicionarFuncionario = styled.button`
         align-items: center;
 
         background-color: var(--blue-light) ;
-        color: var(--shape) ;
+        color: var(--shape);
     }
 
 `;

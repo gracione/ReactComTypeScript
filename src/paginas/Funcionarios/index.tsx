@@ -1,5 +1,5 @@
 import Menu from "../Menu";
-import { Conteudo, Container } from "./styles";
+import { Container, Conteudo } from "../../styles/global";
 
 export default function Funcionarios() {
 
