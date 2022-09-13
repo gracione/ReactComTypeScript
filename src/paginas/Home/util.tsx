@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 
-export default function BuscarDadosApi($url: string):any[] {
+export default function BuscarDadosApi($url: string): any[] {
   const [listagem, setListagem] = useState([]);
 
   const token = localStorage.getItem('token');

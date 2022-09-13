@@ -92,8 +92,13 @@ export const Conteudo = styled.div`
 				width: 100% 1 !important;
 				flex-direction: column-reverse 1 !important;
 				button{
+					margin: 0px ;
+					padding: 0px ;
 					width: 20% ;
+					height: 100% ;
 					display: flex ;
+					justify-content: space-around ;
+					background: none;
 				}
 				input[type=text] {
 					width: 85% ;
@@ -104,7 +109,7 @@ export const Conteudo = styled.div`
 				}
 				label{
 					width: 46% !important;
-					border: solid ;
+					background-color: red ;
 					border-radius: 10px ;
 					height: 35px ;
 					font-size: 35px ;
