@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import BuscarDadosApi from "../../paginas/Home/util";
+import BuscarDadosApi from "../../util/util";
 
 import { CardFuncionario, Container } from "./styles";
 

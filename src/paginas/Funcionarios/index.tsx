@@ -1,12 +1,12 @@
 import Menu from "../Menu";
 import React, { useState, useEffect } from "react";
 import { Container, Conteudo } from "../../styles/global";
-import BuscarDadosApi from "../../paginas/Home/util";
-import ListarEditarExcluir from "../../paginas/Home/listar";
+import BuscarDadosApi from "../../util/util";
+import listarEditarExcluir from "../../util/listar";
 
 export default function Funcionarios() {
   const funcionarios = BuscarDadosApi('/funcionario/listar');
-  const listarFuncionarios = ListarEditarExcluir(funcionarios);
+  const listarFuncionarios = listarEditarExcluir(funcionarios);
 
   return (
     <Container>
