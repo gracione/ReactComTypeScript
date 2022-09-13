@@ -16,6 +16,7 @@ export default function Logon() {
     try {
       const response = await api.post('/login', { email, password });
       localStorage.setItem('token', response.data);
+      localStorage.setItem('id_estabelecimento', '1');
       history('/home');
     } catch (err) {
       alert('Falha no login, tente novamente.');

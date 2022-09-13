@@ -32,6 +32,9 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
 
+	.none{
+		display: none ;
+	}
     @media (max-width: 767px) {
     
     }
@@ -59,26 +62,57 @@ export const Conteudo = styled.div`
 		padding: 20px ;
 
 		form{
+			width: 100% ;
 			height: 100% ;
 			display: flex ;
-			flex-direction: column ;
+			flex-direction: column 2 !important;
 			justify-content: space-between;
+			input{
+				height: 35px ;
+			}
+			select{
+				height: 20px ;
+			}
+			option{
+				font-size: 20px !important ;
+				height: 20px ;
+			}
+			button{
+				width: 100%;
+				height: 40px ;
+				border: none ;
+				border-radius: 5px ;
+				color: var(--shape);
+				background-color: var(--blue-light) ;
+				top: 200px ;
+			}
 		}
-		select{
-			height: 20px ;
-		}
-		option{
-			font-size: 20px !important ;
-			height: 20px ;
-		}
-		button{
-			width: 100%;
-			height: 40px ;
-			border: none ;
-			border-radius: 5px ;
-			color: var(--shape);
-			background-color: var(--blue-light) ;
-			top: 200px ;
+		.editar-excluir{
+			form{
+				width: 100% 1 !important;
+				flex-direction: column-reverse 1 !important;
+				button{
+					display: flex ;
+				}
+				input[type=text] {
+					width: 85% ;
+				}
+				input[type=radio] {
+					width: 5px ;
+					display: none ;
+				}
+				label{
+					width: 7% !important;
+					border: solid ;
+					border-radius: 10px ;
+					height: 35px ;
+					font-size: 35px ;
+
+					display: flex ;
+					justify-content: center ;
+					align-items: center ;
+				}
+			}
 		}
     }
 `;

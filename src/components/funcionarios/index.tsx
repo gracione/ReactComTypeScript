@@ -1,30 +1,18 @@
 import React, { useState, useEffect } from "react";
-import api from "../../services/api";
+import BuscarDadosApi from "../../paginas/Home/util";
 
 import { CardFuncionario, Container } from "./styles";
 
 export default function Funcionarios() {
-  const [funcionarios, setFuncionarios] = useState([]);
   const [idFuncionario, setIdFuncionario] = useState('');
+
+  const funcionario = BuscarDadosApi('/funcionario/listar');
 
   localStorage.setItem('idFuncionario', idFuncionario);
 
-  const token = localStorage.getItem('token');
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-
-  useEffect(() => {
-    api
-      .post("/funcionario/listar", {
-        id_estabelecimento: 1
-      }, config)
-      .then((response) => setFuncionarios(response.data));
-  }, []);
-
   let funcionariosDisponivel: any = [];
 
-  funcionarios.forEach((element: any) => {
+  funcionario.forEach((element: any) => {
     funcionariosDisponivel.push(
       <CardFuncionario>
         <input
