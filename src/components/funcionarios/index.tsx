@@ -16,21 +16,21 @@ export default function Funcionarios() {
     funcionariosDisponivel.push(
       <CardFuncionario>
         <input
-          id={element.id_funcionario}
-          value={element.id_funcionario}
+          id={element.id}
+          value={element.id}
           name='tes'
           type="radio"
           onChange={e => setIdFuncionario(e.target.value)}
           />
 
-        <label htmlFor={element.id_funcionario}>
-          {element.nome_usuario}
+        <label htmlFor={element.id}>
+          {element.nome}
         </label>
-        <label htmlFor={element.id_funcionario}>
+        <label htmlFor={element.id}>
           {element.funcao}
         </label>
-        <label htmlFor={element.id_funcionario}>
-          {element.id_funcionario}
+        <label htmlFor={element.id}>
+          {element.id}
         </label>
       </CardFuncionario>
     )

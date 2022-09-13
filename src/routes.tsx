@@ -10,6 +10,7 @@ import Folgas from "./paginas/Folgas";
 import Feriados from "./paginas/Feriados";
 import Profissoes from "./paginas/Profissoes";
 import Configuracoes from "./paginas/Configuracoes";
+import AlterarFuncionario from "./paginas/Funcionarios/alterar";
 
 export default function Rota() {
     return (
@@ -20,6 +21,7 @@ export default function Rota() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/informacoes" element={<Informacoes />} />
                 <Route path="/funcionarios" element={<Funcionarios />} />
+                <Route path="/funcionarios/alterar" element={<AlterarFuncionario />} />
                 <Route path="/feriados" element={<Feriados />} />
                 <Route path="/folgas" element={<Folgas />} />
                 <Route path="/tratamentos" element={<Tratamentos />} />

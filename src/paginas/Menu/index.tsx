@@ -17,7 +17,7 @@ export default function Menu() {
 
   return (
     <Container>
-      <img src="logo-alternativa.svg" alt="logo Cyan" />
+      <img src="/logo-alternativa.svg" alt="logo Cyan" />
       <div className="opcoes">
         <a href="/home">Home</a>
         <a href="/funcionarios">Funcionários</a>

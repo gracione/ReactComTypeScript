@@ -92,6 +92,7 @@ export const Conteudo = styled.div`
 				width: 100% 1 !important;
 				flex-direction: column-reverse 1 !important;
 				button{
+					width: 20% ;
 					display: flex ;
 				}
 				input[type=text] {
@@ -102,7 +103,7 @@ export const Conteudo = styled.div`
 					display: none ;
 				}
 				label{
-					width: 7% !important;
+					width: 46% !important;
 					border: solid ;
 					border-radius: 10px ;
 					height: 35px ;
