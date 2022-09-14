@@ -35,6 +35,9 @@ export const Container = styled.div`
 	.none{
 		display: none ;
 	}
+	.display-flex{
+		display: flex;
+	}
     @media (max-width: 767px) {
     
     }
@@ -121,4 +124,23 @@ export const Conteudo = styled.div`
 			}
 		}
     }
+`;
+
+export const Adicionar = styled.a`
+
+		@media(max-width: 767px) {
+
+		}
+
+		@media(min-width: 767px) {
+			margin: 20px ;
+			padding: 10px 21px;
+			height: 65px ;
+			border-radius: 100px;
+			background-color: var(--blue-light) ;
+			text-decoration: none;
+			font-size: 40px ;
+			color: var(--shape);
+		}
+
 `;

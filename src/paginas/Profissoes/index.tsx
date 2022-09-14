@@ -1,14 +1,23 @@
 import Menu from "../Menu";
-import { Container, Conteudo } from "../../styles/global";
+import { Adicionar, Container, Conteudo } from "../../styles/global";
+import BuscarDadosApi from "../../util/util";
+import listarEditarExcluir from "../../util/listar";
 
 export default function Profissoes() {
+  const funcionarios = BuscarDadosApi('/feriados/listar');
+  const listarFuncionarios = listarEditarExcluir(funcionarios);
 
   return (
     <Container>
       <Menu></Menu>
-      <Conteudo>
-        <h1>Folgas</h1>
-      </Conteudo>
+      <div className="display-flex" >
+        <Conteudo>
+          <div className="editar-excluir" >
+            {listarFuncionarios}
+          </div>
+        </Conteudo>
+        <Adicionar href="/adicionar">+</Adicionar>
+      </div>
     </Container>
   );
 }
