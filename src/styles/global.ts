@@ -61,7 +61,6 @@ export const Conteudo = styled.div`
 		border: solid var(--borda) 2px;
         border-radius: 10px ;
         background-color: var(--backgroud-secundaria);
-		margin: 20px ;
 		padding: 20px ;
 
 		form{
@@ -125,7 +124,12 @@ export const Conteudo = styled.div`
 		}
     }
 `;
-
+export const Header = styled.div`
+	display: flex ;
+	justify-content: space-around ;
+	align-items: center;
+	padding-top:30px ;
+`
 export const Adicionar = styled.a`
 
 		@media(max-width: 767px) {

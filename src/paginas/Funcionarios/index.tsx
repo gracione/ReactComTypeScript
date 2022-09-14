@@ -1,6 +1,6 @@
 import Menu from "../Menu";
 import React, { useState, useEffect } from "react";
-import { Container, Conteudo } from "../../styles/global";
+import { Container, Conteudo, Header } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
 import listarEditarExcluir from "../../util/listar";
 
@@ -11,11 +11,13 @@ export default function Funcionarios() {
   return (
     <Container>
       <Menu></Menu>
-      <Conteudo>
-        <div className="editar-excluir" >
-          {listarFuncionarios}
-        </div>
-      </Conteudo>
+      <Header>
+        <Conteudo>
+          <div className="editar-excluir" >
+            {listarFuncionarios}
+          </div>
+        </Conteudo>
+      </Header>
     </Container>
   );
 }
