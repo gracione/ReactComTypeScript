@@ -4,8 +4,8 @@ import BuscarDadosApi from "../../util/util";
 import listarEditarExcluir from "../../util/listar";
 
 export default function Profissoes() {
-  const funcionarios = BuscarDadosApi('/feriados/listar');
-  const listarFuncionarios = listarEditarExcluir(funcionarios);
+  const profissoes = BuscarDadosApi('profissao','listar');
+  const listarProfissoes = listarEditarExcluir(profissoes);
 
   return (
     <Container>
@@ -13,7 +13,7 @@ export default function Profissoes() {
       <Header>
         <Conteudo>
           <div className="editar-excluir" >
-            {listarFuncionarios}
+            {listarProfissoes}
           </div>
         </Conteudo>
         <Adicionar href="profissoes/adicionar">+</Adicionar>

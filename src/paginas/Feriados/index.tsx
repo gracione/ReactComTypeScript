@@ -4,7 +4,7 @@ import BuscarDadosApi from "../../util/util";
 import listarEditarExcluir from "../../util/listar";
 
 export default function Feriados() {
-  const funcionarios = BuscarDadosApi('/feriados/listar');
+  const funcionarios = BuscarDadosApi('feriados', 'listar');
   const listarFuncionarios = listarEditarExcluir(funcionarios);
 
   return (

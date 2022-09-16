@@ -5,35 +5,42 @@ import React, { useState, useEffect } from "react";
 import api from "../../services/api";
 
 export default function Adicionar() {
-  const funcionarios = BuscarDadosApi('/feriados/listar');
+  const funcionarios = BuscarDadosApi('feriados','listar');
+  const [nome, setNome] = useState('');
 
   const [listagem, setListagem] = useState([]);
   let url = "http://salao.localhost/api/profissao/inserir";
   const token = localStorage.getItem('token');
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
 
-  useEffect(() => {
+
+  function inserir() {
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
     api
       .post(url, {
+        nome: nome,
         id_estabelecimento: 1
       }, config)
-      .then((response) => setListagem(response.data));
-  }, []);
-
-
+  }
 
   return (
     <Container>
       <Menu></Menu>
       <div className="display-flex" >
         <Conteudo>
-          <form action="http://salao.localhost/api/profissao/inserir">
-          <input type="text" name="nome"/>
-          <input type="text" name="id_estabelecimento" value="1" />
+          <form onSubmit={inserir}>
+            <input
+              name='nome'
+              placeholder="..."
+              value={nome}
+              onChange={e => setNome(e.target.value)}
+              required
+            />
+
+            <input type="text" name="id_estabelecimento" value="1" />
+          <button>Salvar</button>
           </form>
-        <button>Salvar</button>
         </Conteudo>
       </div>
     </Container>

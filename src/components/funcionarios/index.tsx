@@ -6,7 +6,7 @@ import { CardFuncionario, Container } from "./styles";
 export default function Funcionarios() {
   const [idFuncionario, setIdFuncionario] = useState('');
 
-  const funcionario = BuscarDadosApi('/funcionario/listar');
+  const funcionario = BuscarDadosApi('funcionario','listar');
 
   localStorage.setItem('idFuncionario', idFuncionario);
 
