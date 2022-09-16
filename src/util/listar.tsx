@@ -1,15 +1,16 @@
 
-export default function listarEditarExcluir(funcionarios: any[]): any[] {
+export default function listarEditarExcluir(funcionarios: any[], funcao: string): any[] {
   let listarFuncionarios: any = [];
   let img = <img width="20px" className="icon" src="/icons/lapis.png" alt="editar" />
 
+  const url = "/" + funcao + "/alterar";
   function escolher(valor: any, operacao: any) {
     localStorage.setItem('idFuncionario', valor);
     localStorage.setItem('operacao', operacao);
   }
   funcionarios.forEach((element: any) => {
     listarFuncionarios.push(
-      <form action="/funcionarios/alterar">
+      <form action={url}>
 
         <input
           value={element.nome}

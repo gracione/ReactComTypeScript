@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 export default function ExcluirDadosApi(funcao: string, opcao: any, id: any) {
   const history = useNavigate();
   const url = "/" + funcao + "/" + opcao;
+  console.log(url);
   const token = localStorage.getItem('token');
   const config = {
     headers: { Authorization: `Bearer ${token}` }
