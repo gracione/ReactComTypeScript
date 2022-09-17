@@ -1,19 +1,18 @@
 import Menu from "../Menu";
 import { Container, Conteudo } from "../../styles/global";
-import BuscarDadosApi from "../../util/util";
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import api from "../../services/api";
 
 export default function Adicionar() {
-  const funcionarios = BuscarDadosApi('feriados','listar');
   const [nome, setNome] = useState('');
 
-  const [listagem, setListagem] = useState([]);
-  let url = "http://salao.localhost/api/profissao/inserir";
   const token = localStorage.getItem('token');
+  const history = useNavigate();
 
 
   function inserir() {
+    let url = "http://salao.localhost/api/profissao/inserir";
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
@@ -22,6 +21,7 @@ export default function Adicionar() {
         nome: nome,
         id_estabelecimento: 1
       }, config)
+    history('/profissoes');
   }
 
   return (
@@ -39,7 +39,7 @@ export default function Adicionar() {
             />
 
             <input type="text" name="id_estabelecimento" value="1" />
-          <button>Salvar</button>
+            <button>Salvar</button>
           </form>
         </Conteudo>
       </div>
