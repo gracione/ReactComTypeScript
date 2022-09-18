@@ -13,3 +13,11 @@ export const PainelCalendario = styled.div`
             font-size: 20px ;
         }
 `;
+
+export const Header = styled.div`
+	display: flex ;
+    justify-content: space-around ;
+	padding-top:30px ;
+	margin-left:40px ;
+	
+`

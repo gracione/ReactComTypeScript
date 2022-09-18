@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Calendario from '../../components/calendario';
 import Horarios from '../../components/horarios';
-import { Center, Container, Conteudo, Header } from "../../styles/global";
+import { Center, Container, Conteudo } from "../../styles/global";
 import Menu from "../Menu";
-import { PainelCalendario } from './styles';
+import { PainelCalendario, Header } from './styles';
 
 function criarArrayCalendario(ano = 0, mes = 0) {
   let mesAtual = mes + 1;
@@ -89,9 +89,11 @@ function EtapaCalendario() {
             />
           </Center>
         </Conteudo>
-        <Horarios data={data} ></Horarios>
+        <Conteudo>
+          <Horarios data={data} ></Horarios>
+        </Conteudo>
       </Header>
-    </Container>
+    </Container >
   );
 }
 export default EtapaCalendario;
