@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Conteudo } from "../../styles/global";
+import { Container, Conteudo, Header } from "../../styles/global";
 import api from "../../services/api";
 import Menu from "../Menu";
 
@@ -28,19 +28,21 @@ export default function Home() {
   return (
     <Container>
       <Menu></Menu>
-      <Conteudo>
-        <form action="">
-          <div>
-            <label htmlFor="">Tratamento</label>
-            <select name="tratamento" >
-              {tratamentos}
-            </select>
-          </div>
-          <div>
-            <button>Prosseguir</button>
-          </div>
-        </form>
-      </Conteudo>
+      <Header>
+        <Conteudo>
+          <form action="">
+            <div>
+              <label htmlFor="">Tratamento</label>
+              <select name="tratamento" >
+                {tratamentos}
+              </select>
+            </div>
+            <div>
+              <button>Prosseguir</button>
+            </div>
+          </form>
+        </Conteudo>
+      </Header>
     </Container>
   );
 }

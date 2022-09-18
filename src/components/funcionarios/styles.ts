@@ -4,6 +4,7 @@ export const Container = styled.button`
     display: flex ;
     width: 100% ;
     height: 130px ;
+    border: none ;
     form{
         display: flex;
         width: 100% ;
