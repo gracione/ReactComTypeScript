@@ -30,7 +30,7 @@ export default function Home() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <form action="">
+          <form action="/escolher-horario">
             <div>
               <label htmlFor="">Tratamento</label>
               <select name="tratamento" >

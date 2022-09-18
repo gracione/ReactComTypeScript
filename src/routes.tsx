@@ -14,6 +14,7 @@ import AlterarFuncionario from "./paginas/Funcionarios/alterar";
 import AdicionarProfissao from "./paginas/Profissoes/adicionar";
 import AlterarProfissao from "./paginas/Profissoes/alterar";
 import Expediente from "./paginas/Expediente";
+import EtapaCalendario from "./paginas/EtapaCalendario";
 
 export default function Rota() {
     return (
@@ -23,6 +24,7 @@ export default function Rota() {
                 <Route path="/register" element={<Registrar />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/informacoes" element={<Informacoes />} />
+                <Route path="/escolher-horario" element={<EtapaCalendario />} />
                 <Route path="/funcionarios" element={<Funcionarios />} />
                 <Route path="/funcionarios/alterar" element={<AlterarFuncionario />} />
                 <Route path="/feriados" element={<Feriados />} />

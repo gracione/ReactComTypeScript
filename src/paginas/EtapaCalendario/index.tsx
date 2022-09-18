@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Calendario from '../../components/calendario';
-import '../../global';
-import { Container } from './styles';
 import Horarios from '../../components/horarios';
+import { Container, Conteudo, Header } from "../../styles/global";
+import Menu from "../Menu";
 
 function criarArrayCalendario(ano = 0, mes = 0) {
   let mesAtual = mes + 1;
@@ -73,18 +73,24 @@ function EtapaCalendario() {
 
   return (
     <Container>
-      <div className='calendario'>
-        <div className='painel-calendario' >
-          <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
-          <b>{nomeMes(mes) + " " + ano}</b>
-          <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
-        </div>
-        <Calendario
-          dias={criarArrayCalendario(ano, mes)}
-          setDia={setDia}
-        />
-      </div>
-      <Horarios data={data} ></Horarios>
+      <Menu></Menu>
+      <Header>
+        <Conteudo>
+
+          <div className='calendario'>
+            <div className='painel-calendario' >
+              <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
+              <b>{nomeMes(mes) + " " + ano}</b>
+              <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
+            </div>
+            <Calendario
+              dias={criarArrayCalendario(ano, mes)}
+              setDia={setDia}
+            />
+          </div>
+        </Conteudo>
+        <Horarios data={data} ></Horarios>
+      </Header>
     </Container>
   );
 }
