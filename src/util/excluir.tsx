@@ -1,5 +1,5 @@
 import api from "../services/api";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function ExcluirDadosApi(funcao: string, opcao: any, id: any) {
   const history = useNavigate();
