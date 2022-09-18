@@ -155,3 +155,8 @@ export const Adicionar = styled.a`
 		}
 
 `;
+
+export const Center = styled.div`
+	display: flex;
+	justify-content: center ;
+`;

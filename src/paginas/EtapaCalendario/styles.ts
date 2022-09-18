@@ -1,27 +1,15 @@
 import styled from "styled-components"
 
-export const Container = styled.div`
-    width: 600px ;
-    height:100vh;
-
-    a{
-        text-decoration:none;
-        color:black;
-    }
-    .mudar-mes{
-        width: 10%;
-        height: 40px;
-        font-size: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center ;
-    }
-    b{
-        font-size: 25px;
-    }
-    .painel-calendario{
+export const PainelCalendario = styled.div`
+        height: 50px ;
+        padding: 10px ;
         display: flex;
         justify-content: space-between ;
         align-items: center ;
-    }
-    `;
+        .mudar-mes{
+            font-size: 50px ;
+        }
+        b{
+            font-size: 20px ;
+        }
+`;

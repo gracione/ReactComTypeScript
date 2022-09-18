@@ -1,14 +1,14 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-    width:600px;
+    width:500px;
     background:white;
     .diasSemana{
         display: flex ;
         li{
             border: solid 1px;
             width: 15%;
-            height: 60px;
+            height: 20px;
             list-style-type: none;
 
             display: flex ;
@@ -31,7 +31,7 @@ export const Container = styled.div`
             
             li{
                 border: solid 1px;
-                height: 60px;
+                height: 45px;
                 list-style-type: none;
     
                 display: flex ;

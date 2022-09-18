@@ -14,7 +14,7 @@ export default function Horarios(props: any) {
   useEffect(() => {
     api
       .post("/horarios-disponivel", {
-        mes:props.data,
+        data:props.data,
         idFuncionario:1,
         idFiltro:1,
         idTratamento:1

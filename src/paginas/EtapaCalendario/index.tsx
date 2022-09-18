@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Calendario from '../../components/calendario';
 import Horarios from '../../components/horarios';
-import { Container, Conteudo, Header } from "../../styles/global";
+import { Center, Container, Conteudo, Header } from "../../styles/global";
 import Menu from "../Menu";
+import { PainelCalendario } from './styles';
 
 function criarArrayCalendario(ano = 0, mes = 0) {
   let mesAtual = mes + 1;
@@ -76,18 +77,17 @@ function EtapaCalendario() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-
-          <div className='calendario'>
-            <div className='painel-calendario' >
-              <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
-              <b>{nomeMes(mes) + " " + ano}</b>
-              <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
-            </div>
+          <PainelCalendario>
+            <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
+            <b>{nomeMes(mes) + " " + ano}</b>
+            <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
+          </PainelCalendario>
+          <Center>
             <Calendario
               dias={criarArrayCalendario(ano, mes)}
               setDia={setDia}
             />
-          </div>
+          </Center>
         </Conteudo>
         <Horarios data={data} ></Horarios>
       </Header>
