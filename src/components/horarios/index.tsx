@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 export default function Horarios(props: any) {
+  console.log(props.data);
   const [user, setUser] = useState([]);
-  const dia: any[] = props.data.split("/");
-  const token = "4|Wxe2xqTQMrtHXXOP7LvX68STl22RPxCyeRorjcZ1";
+  const token = localStorage.getItem('token');
 
   const config = {
     headers: { Authorization: `Bearer ${token}` }
@@ -13,10 +13,11 @@ export default function Horarios(props: any) {
 
   useEffect(() => {
     api
-      .post("/horarios-marcados", {
-        dia: dia[0],
-        mes: dia[1],
-        ano: dia[2]
+      .post("/horarios-disponivel", {
+        mes:props.data,
+        idFuncionario:1,
+        idFiltro:1,
+        idTratamento:1
       }, config)
       .then((response) => setUser(response.data))
       .catch((err) => {
@@ -30,7 +31,7 @@ export default function Horarios(props: any) {
     horariosDisponivel.push(
       <label className="horario-disponivel" >
         <input type="radio" id="html" name="data-horario" value={element.horario_inicio + "#" + props.data} />
-        {element.horario_inicio}
+        {element.inicio}
       </label>
     )
   });
