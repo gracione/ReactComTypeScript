@@ -53,20 +53,20 @@ export const AgendarHorario = styled.div`
         border: solid var(--borda) 2px;
         border-radius: 10px ;
         background-color: var(--backgroud-secundaria);
-
-        .funcionarios{
-            display: flex ;
-        }
+        align-items: center ;
+        display: flex;
+        flex-direction: column ;
+        justify-content: space-around;
         form{
             height: 170px ;
             padding: 10px;
         }
 
         input{
-            width: 100% ;
-            height: 30px;
+            width: 90% ;
             font-size: 20px ;
             border: solid 1px;
+            height: 30px;
             border-radius:5px ;
         }
 
@@ -123,41 +123,6 @@ export const HorariosMarcados = styled.div`
         border-radius: 10px ;
         background-color: var(--backgroud-secundaria);
 
-    }
-
-`;
-
-export const CardFuncionario = styled.button`
-        button{
-            border: none ;
-        }
-        width: 80px;
-        height: 100px ;
-        border: solid var(--borda) 2px;
-        border-radius: 10px ;
-        margin-left: 10px;
-
-        display: flex;
-        flex-direction: column ;
-        justify-content: center ;
-        align-items: center;
-`;
-
-export const CardAdicionarFuncionario = styled.button`
-    @media (min-width: 767px) {
-        width: 80px;
-        height: 100px ;
-        border: solid var(--blue-light) 2px;
-        border-radius: 10px ;
-        margin-left: 10px;
-
-        display: flex;
-        flex-direction: column ;
-        justify-content: center ;
-        align-items: center;
-
-        background-color: var(--blue-light) ;
-        color: var(--shape) ;
     }
 
 `;

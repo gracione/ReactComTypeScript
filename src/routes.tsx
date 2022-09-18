@@ -13,6 +13,7 @@ import Configuracoes from "./paginas/Configuracoes";
 import AlterarFuncionario from "./paginas/Funcionarios/alterar";
 import AdicionarProfissao from "./paginas/Profissoes/adicionar";
 import AlterarProfissao from "./paginas/Profissoes/alterar";
+import Expediente from "./paginas/Expediente";
 
 export default function Rota() {
     return (
@@ -26,6 +27,7 @@ export default function Rota() {
                 <Route path="/funcionarios/alterar" element={<AlterarFuncionario />} />
                 <Route path="/feriados" element={<Feriados />} />
                 <Route path="/folgas" element={<Folgas />} />
+                <Route path="/expediente" element={<Expediente />} />
                 <Route path="/tratamentos" element={<Tratamentos />} />
                 <Route path="/profissoes" element={<Profissoes />} />
                 <Route path="/configuracoes" element={<Configuracoes />} />

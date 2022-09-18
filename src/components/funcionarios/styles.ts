@@ -1,22 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-
-    @media (max-width: 767px) {
-    
+export const Container = styled.button`
+    display: flex ;
+    width: 100% ;
+    height: 130px ;
+    form{
+        display: flex;
+        width: 100% ;
     }
-
-    @media (min-width: 767px) {
-        width: 80% ;
-        height: 120px ;
-
-        form{
-            width: 100% ;
-            display: flex ;
-        }
-
-    }
-
 `;
 
 export const CardFuncionario = styled.button`

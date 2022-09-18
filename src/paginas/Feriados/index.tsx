@@ -1,20 +1,23 @@
 import Menu from "../Menu";
-import { Container, Conteudo } from "../../styles/global";
+import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
 import listarEditarExcluir from "../../util/listar";
 
 export default function Feriados() {
   const funcionarios = BuscarDadosApi('feriados', 'listar');
-  const listarFuncionarios = listarEditarExcluir(funcionarios,'feriados');
+  const listarFuncionarios = listarEditarExcluir(funcionarios, 'feriados');
 
   return (
     <Container>
       <Menu></Menu>
-      <Conteudo>
-        <div className="editar-excluir" >
-          {listarFuncionarios}
-        </div>
-      </Conteudo>
+      <Header>
+        <Conteudo>
+          <div className="editar-excluir" >
+            {listarFuncionarios}
+          </div>
+        </Conteudo>
+        <Adicionar href="profissoes/adicionar">+</Adicionar>
+      </Header>
     </Container>
   );
 }

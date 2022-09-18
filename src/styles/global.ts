@@ -62,7 +62,15 @@ export const Conteudo = styled.div`
         border-radius: 10px ;
         background-color: var(--backgroud-secundaria);
 		padding: 20px ;
-
+		.editar{
+			background: url("/icons/lapis.png");
+			background-size: 80% 80%;
+			background-repeat: no-repeat ;
+			background-position: center ;
+		}
+		.excluir{
+			background-color: var(--red-light);
+		}
 		form{
 			width: 100% ;
 			height: 100% ;
@@ -111,7 +119,6 @@ export const Conteudo = styled.div`
 				}
 				label{
 					width: 46% !important;
-					background-color: red ;
 					border-radius: 10px ;
 					height: 35px ;
 					font-size: 35px ;
@@ -126,9 +133,9 @@ export const Conteudo = styled.div`
 `;
 export const Header = styled.div`
 	display: flex ;
-	justify-content: space-around ;
-	align-items: center;
 	padding-top:30px ;
+	margin-left:40px ;
+	
 `
 export const Adicionar = styled.a`
 

@@ -1,17 +1,28 @@
 import Menu from "../Menu";
 import { Container, Conteudo } from "../../styles/global";
 import { useState } from "react";
-import AdicionarItem from "../../util/adicionar";
+import GerarUrl from "../../util/adicionar";
+import api from "../../services/api";
+import { useNavigate } from 'react-router-dom';
 
 export default function Adicionar() {
   const [nome, setNome] = useState('');
-
-  const date={
-    nome:nome
-  }
+  const history = useNavigate();
   
-  function inserir(){
-    return AdicionarItem('teste');
+  
+  function inserir() {
+    const dados = {
+      nome: nome
+    }
+    const token = localStorage.getItem('token');
+    const url =  GerarUrl("profissao","inserir");
+    
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
+
+    api.post(url, { dados: dados, id_estabelecimento: 1 }, config)
+    history('/profissoes');
   }
 
   return (

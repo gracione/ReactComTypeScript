@@ -23,6 +23,7 @@ export default function Menu() {
         <a href="/funcionarios">Funcionários</a>
         <a href="/feriados">Feriados</a>
         <a href="/folgas">Folgas</a>
+        <a href="/expediente">Expediente</a>
         <a href="/tratamentos">Tratamentos</a>
         <a href="/profissoes">Profissões</a>
         <a href="/configuracoes">Configurações</a>

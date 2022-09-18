@@ -32,8 +32,8 @@ export default function listarEditarExcluir(funcionarios: any[], funcao: string)
             id={element.id + "excluir"}
             onChange={e => escolher(e.target.value, 'excluir')}
           />
-          <label htmlFor={element.id + "editar"}>z</label>
-          <label htmlFor={element.id + "excluir"}>x</label>
+          <label htmlFor={element.id + "editar"} className='editar'></label>
+          <label htmlFor={element.id + "excluir"} className='excluir'>x</label>
         </button>
       </form>
     )

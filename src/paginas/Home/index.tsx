@@ -1,7 +1,7 @@
 import Funcionarios from "../../components/funcionarios";
 import Menu from "../Menu/index";
 
-import { Conteudo, Container, AgendarHorario, CompartilheLink, HorariosMarcados, CardFuncionario, CardAdicionarFuncionario } from "./styles";
+import { Conteudo, Container, AgendarHorario, CompartilheLink, HorariosMarcados } from "./styles";
 
 export default function Home() {
 
@@ -14,14 +14,7 @@ export default function Home() {
           <AgendarHorario>
             <label>Agendar Horário</label>
             <input type="text" value='oiii' name="cliente" placeholder="Digite o nome do cliente" />
-            <div className="funcionarios">
-              <Funcionarios></Funcionarios>
-              <CardAdicionarFuncionario >
-                <h5>Cadastrar</h5>
-                <h6>Funcionário</h6>
-                <h2>+</h2>
-              </CardAdicionarFuncionario>
-            </div>
+            <Funcionarios></Funcionarios>
           </AgendarHorario>
           <CompartilheLink>
             <label>Compartilhe o link com seus clientes</label>

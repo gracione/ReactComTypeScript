@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import BuscarDadosApi from "../../util/util";
 
-import { CardFuncionario, Container } from "./styles";
+import { CardFuncionario, CardAdicionarFuncionario, Container } from "./styles";
 
 export default function Funcionarios() {
   const [idFuncionario, setIdFuncionario] = useState('');
 
-  const funcionario = BuscarDadosApi('funcionario','listar');
+  const funcionario = BuscarDadosApi('funcionario', 'listar');
 
   localStorage.setItem('idFuncionario', idFuncionario);
 
@@ -21,7 +21,7 @@ export default function Funcionarios() {
           name='tes'
           type="radio"
           onChange={e => setIdFuncionario(e.target.value)}
-          />
+        />
 
         <label htmlFor={element.id}>
           {element.nome}
@@ -38,8 +38,15 @@ export default function Funcionarios() {
 
   return (
     <Container>
+
       <form action="/informacoes">
         {funcionariosDisponivel}
+        <CardAdicionarFuncionario >
+          <h5>Cadastrar</h5>
+          <h6>Funcionário</h6>
+          <h2>+</h2>
+        </CardAdicionarFuncionario>
+
       </form>
     </Container>
   );

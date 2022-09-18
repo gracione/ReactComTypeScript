@@ -1,14 +1,16 @@
 import Menu from "../Menu";
-import { Container, Conteudo } from "../../styles/global";
+import { Container, Conteudo, Header } from "../../styles/global";
 
 export default function Configuracoes() {
 
   return (
     <Container>
       <Menu></Menu>
-      <Conteudo>
-        <h1>Folgas</h1>
-      </Conteudo>
+      <Header>
+        <Conteudo>
+          <h1>Folgas</h1>
+        </Conteudo>
+      </Header>
     </Container>
   );
 }

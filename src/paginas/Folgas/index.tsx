@@ -1,5 +1,5 @@
 import Menu from "../Menu";
-import { Container, Conteudo, Header } from "../../styles/global";
+import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
 
 export default function Folgas() {
 
@@ -10,9 +10,8 @@ export default function Folgas() {
           <Conteudo>
             <h1>Folgas</h1>
           </Conteudo>
-          <Conteudo>
-            <h1>Horario de funcionamento</h1>
-          </Conteudo>
+          <Adicionar href="profissoes/adicionar">+</Adicionar>
+
         </Header>
     </Container>
   );
