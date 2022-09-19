@@ -72,20 +72,16 @@ export const Conteudo = styled.div`
 			background-color: var(--red-light);
 		}
 		form{
-			width: 100% ;
-			height: 100% ;
 			display: flex ;
-			flex-direction: column 2 !important;
+			flex-direction: column;
 			justify-content: space-between;
-			input{
-				height: 35px ;
-			}
+			height: 100% ;
 			select{
-				height: 20px ;
-			}
-			option{
-				font-size: 20px !important ;
-				height: 20px ;
+				padding: 0px;
+				width: 100%;
+				height: 40px;
+				font-size: 15px ;
+				margin-bottom: 10px ;
 			}
 			button{
 				width: 100%;
