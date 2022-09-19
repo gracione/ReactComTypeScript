@@ -18,7 +18,7 @@ export default function Home() {
           </AgendarHorario>
           <CompartilheLink>
             <label>Compartilhe o link com seus clientes</label>
-            <form action="">
+            <form className="display-flex" action="">
               <input type="text" />
               <button>x</button>
             </form>

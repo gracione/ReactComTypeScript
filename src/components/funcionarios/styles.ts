@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.button`
+export const Container = styled.div`
     display: flex ;
     width: 100% ;
     height: 130px ;
@@ -24,6 +24,10 @@ export const CardFuncionario = styled.button`
         height: 100px ;
         border: solid var(--borda) 2px;
         border-radius: 10px ;
+        background-color: white ;
+        color: #000;
+        font-weight: 540 ;
+
         margin-left: 10px;
 
         display: flex;
@@ -32,10 +36,10 @@ export const CardFuncionario = styled.button`
         align-items: center;
 `;
 
-export const CardAdicionarFuncionario = styled.button`
+export const CardAdicionarFuncionario = styled.a`
     @media (min-width: 767px) {
         width: 80px;
-        height: 100px ;
+        height: 100px;
         border: solid var(--blue-light) 2px;
         border-radius: 10px ;
         margin-left: 10px;

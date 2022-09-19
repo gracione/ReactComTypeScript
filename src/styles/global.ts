@@ -27,7 +27,27 @@ export const GlobalStyle = createGlobalStyle`
 		outline:none;
 		box-sizing: border-box;
 	}
+	select,input{
+		padding: 0px;
+		width: 100%;
+		height: 40px;
+		font-size: 15px ;
+		margin-bottom: 10px ;
+	}
+	button{
+				width: 100%;
+				height: 40px ;
+				border: none ;
+				border-radius: 5px ;
+				color: var(--shape);
+				background-color: var(--blue-light) ;
+				top: 200px ;
+			}
 
+	.display-flex{
+		display: flex ;
+		flex-direction: initial ;
+	}
 `;
 
 export const Container = styled.div`
@@ -76,22 +96,6 @@ export const Conteudo = styled.div`
 			flex-direction: column;
 			justify-content: space-between;
 			height: 100% ;
-			select{
-				padding: 0px;
-				width: 100%;
-				height: 40px;
-				font-size: 15px ;
-				margin-bottom: 10px ;
-			}
-			button{
-				width: 100%;
-				height: 40px ;
-				border: none ;
-				border-radius: 5px ;
-				color: var(--shape);
-				background-color: var(--blue-light) ;
-				top: 200px ;
-			}
 		}
 		.editar-excluir{
 			form{

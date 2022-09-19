@@ -34,10 +34,6 @@
   max-width: 450px;
 }
 
-.register-container .content form input {
-  margin-top: 8px;
-}
-
 .register-container .content form .input-group {
   display: flex;
 }

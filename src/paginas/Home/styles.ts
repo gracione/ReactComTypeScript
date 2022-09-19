@@ -62,14 +62,6 @@ export const AgendarHorario = styled.div`
             padding: 10px;
         }
 
-        input{
-            width: 90% ;
-            font-size: 20px ;
-            border: solid 1px;
-            height: 30px;
-            border-radius:5px ;
-        }
-
     }
 
 `;
@@ -87,26 +79,6 @@ export const CompartilheLink = styled.div`
         padding: 10px;
         background-color: var(--backgroud-secundaria);
 
-        form{
-            height: 50px ;
-            display: flex ;
-            justify-content: center ;
-            align-items: center ;
-        }
-        input{
-            margin: 0 ;
-            width: 100% ;
-            height: 30px;
-
-            border: solid 1px;
-            border-radius:5px ;
-        }
-        button {
-            width: 30px ;
-            border-radius:5px ;
-            height: 30px;
-
-        }
     }
 
 `;
