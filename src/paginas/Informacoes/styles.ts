@@ -64,7 +64,7 @@ export const AgendarHorario = styled.div`
 
         input{
             width: 100% ;
-            height: 30px;
+            height: 20px;
             font-size: 20px ;
             border: solid 1px;
             border-radius:5px ;
