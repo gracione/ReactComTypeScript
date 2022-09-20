@@ -32,22 +32,56 @@ export const GlobalStyle = createGlobalStyle`
 		width: 100%;
 		height: 40px;
 		font-size: 15px ;
+		padding-left:10px ;
 		margin-bottom: 10px ;
+		border-radius: 5px ;
+		border: solid var(--borda) 2px;
 	}
 	button{
-				width: 100%;
-				height: 40px ;
-				border: none ;
-				border-radius: 5px ;
-				color: var(--shape);
-				background-color: var(--blue-light) ;
-				top: 200px ;
-			}
+		width: 100%;
+		height: 40px ;
+		border: none ;
+		padding: 20px ;
+		border-radius: 5px ;
+		color: var(--shape);
+		background-color: var(--blue-light) ;
+	}
 
 	.display-flex{
 		display: flex ;
 		flex-direction: initial ;
 	}
+	.editar-excluir{
+		form {
+			display: flex ;
+			width: 100%;
+				button{
+					margin: 0px ;
+					padding: 0px ;
+					width: 15% ;
+					height: 100% ;
+					display: flex ;
+					justify-content: space-around ;
+					background: none;
+				}
+				input[type=text] {
+					width: 85% ;
+				}
+				input[type=radio] {
+					display: none ;
+				}
+				label{
+					width: 45%;
+					border-radius: 10px ;
+					height: 35px ;
+					font-size: 35px ;
+
+					display: flex ;
+					justify-content: center ;
+					align-items: center ;
+				}
+			}
+		}
 `;
 
 export const Container = styled.div`
@@ -90,44 +124,6 @@ export const Conteudo = styled.div`
 		}
 		.excluir{
 			background-color: var(--red-light);
-		}
-		form{
-			display: flex ;
-			flex-direction: column;
-			justify-content: space-between;
-			height: 100% ;
-		}
-		.editar-excluir{
-			form{
-				width: 100% 1 !important;
-				flex-direction: column-reverse 1 !important;
-				button{
-					margin: 0px ;
-					padding: 0px ;
-					width: 20% ;
-					height: 100% ;
-					display: flex ;
-					justify-content: space-around ;
-					background: none;
-				}
-				input[type=text] {
-					width: 85% ;
-				}
-				input[type=radio] {
-					width: 5px ;
-					display: none ;
-				}
-				label{
-					width: 46% !important;
-					border-radius: 10px ;
-					height: 35px ;
-					font-size: 35px ;
-
-					display: flex ;
-					justify-content: center ;
-					align-items: center ;
-				}
-			}
 		}
     }
 `;

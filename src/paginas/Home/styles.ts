@@ -43,24 +43,25 @@ export const Conteudo = styled.div`
 
 export const AgendarHorario = styled.div`
 
+    width: 650px;
+    height: 200px ;
+    border: solid var(--borda) 2px;
+    border-radius: 10px ;
+    background-color: var(--backgroud-secundaria);
+    align-items: center ;
+    display: flex;
+    flex-direction: column ;
+    justify-content: space-around;
+    padding: 0px 5% 0px 5% ;
+    form{
+        height: 170px ;
+        padding: 10px;
+    }
     @media (max-width: 767px) {
 
     }
 
     @media (min-width: 767px) {
-        width: 650px;
-        height: 200px ;
-        border: solid var(--borda) 2px;
-        border-radius: 10px ;
-        background-color: var(--backgroud-secundaria);
-        align-items: center ;
-        display: flex;
-        flex-direction: column ;
-        justify-content: space-around;
-        form{
-            height: 170px ;
-            padding: 10px;
-        }
 
     }
 
