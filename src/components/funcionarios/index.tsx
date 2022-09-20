@@ -41,7 +41,7 @@ export default function Funcionarios() {
 
       <form action="/informacoes">
         {funcionariosDisponivel}
-        <CardAdicionarFuncionario >
+        <CardAdicionarFuncionario href="/funcionarios/inserir" >
           <h5>Cadastrar</h5>
           <h6>Funcionário</h6>
           <h2>+</h2>

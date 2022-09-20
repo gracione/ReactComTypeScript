@@ -37,6 +37,7 @@ export default function Register() {
         if (res.data.access_token) {
           const response = await api.post('/login', { email, password });
             localStorage.setItem('token', response.data.access_token);
+            localStorage.setItem('id_estabelecimento', '1');
             history('/home');
           }
         });
