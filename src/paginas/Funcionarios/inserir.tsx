@@ -5,6 +5,7 @@ import InputMask from "react-input-mask";
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import GerarUrl from "../../util/adicionar";
+import BuscarDadosApi from "../../util/util";
 
 export default function InserirFuncionario() {
   const [nome, setNome] = useState('');
@@ -14,6 +15,7 @@ export default function InserirFuncionario() {
   const [password, setPassword] = useState('');
   const [id_funcao_tipo, setIdProfissao] = useState('1');
   const idEstabelecimento = localStorage.getItem('id_estabelecimento');
+  const profissoes = BuscarDadosApi('profissao','listar');
 
   const data = {
     nome,
@@ -29,8 +31,8 @@ export default function InserirFuncionario() {
 
   function inserir() {
     const token = localStorage.getItem('token');
-    const url =  GerarUrl("funcionario","inserir");
-    
+    const url = GerarUrl("funcionario", "inserir");
+
     const config = {
       headers: { Authorization: `Bearer ${token}` }
     };
@@ -38,13 +40,33 @@ export default function InserirFuncionario() {
     api.post(url, data, config)
     history('/home');
   }
+  let selectProfissoes: any = [];
+  const [quantidadeProfissoes, setmes] = useState(1);
+  let optionProfissoes:any = [] 
+  profissoes.forEach(element => {
+    optionProfissoes.push(
+      <option value={element.id}>{element.nome}</option>
+    );
+  });
+  for (let index = 0; index < quantidadeProfissoes; index++) {
+    selectProfissoes.push(
+      <div>
+        <select
+          onChange={e => setIdProfissao(e.target.value)}
+          required
+        >
+          <option value={0}>Escolha a Profissão</option>
+          {optionProfissoes}
+        </select>
+      </div>
+    );
 
 
+  }
   return (
     <Container>
       <Menu></Menu>
       <Header>
-        {idEstabelecimento}
         <Conteudo>
           <form onSubmit={inserir}>
             <h2 >Adicionar Funcionario</h2>
@@ -90,23 +112,10 @@ export default function InserirFuncionario() {
                 required
               />
             </div>
-            <div>
-              <select
-                onChange={e => setIdProfissao(e.target.value)}
-                required
-              >
-                <option value={0}>Escolha a Profissão</option>
-                <option value={1}>Cabeleleiro</option>
-                <option value={2}>Manicure</option>
-              </select>
-            </div>
-
+            {selectProfissoes}
+            <div className='adicionar' onClick={() => setmes(quantidadeProfissoes + 1)}> {"+"} </div>
             <button type="submit">Salvar</button>
           </form>
-          <table>
-            <tr>1</tr>
-          </table>
-          cadastrar funcionario
         </Conteudo>
       </Header>
     </Container>
