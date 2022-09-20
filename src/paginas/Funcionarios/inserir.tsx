@@ -4,36 +4,41 @@ import React, { useState } from 'react';
 import InputMask from "react-input-mask";
 import { Link, useNavigate } from 'react-router-dom';
 import api from '../../services/api';
+import GerarUrl from "../../util/adicionar";
 
 export default function InserirFuncionario() {
-  const [name, setName] = useState('');
+  const [nome, setNome] = useState('');
   const [numero, setNumero] = useState('');
   const [id_sexo, setId_Sexo] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [id_funcao_tipo, setIdProfissao] = useState('1');
   const idEstabelecimento = localStorage.getItem('id_estabelecimento');
 
   const data = {
-    name,
+    nome,
     numero,
     id_sexo,
     email,
     password,
     id_estabelecimento: idEstabelecimento,
+    id_funcao_tipo
   };
 
   const history = useNavigate();
 
-  async function handleLogin(e:any) {
-    e.preventDefault();
+  function inserir() {
+    const token = localStorage.getItem('token');
+    const url =  GerarUrl("funcionario","inserir");
+    
+    const config = {
+      headers: { Authorization: `Bearer ${token}` }
+    };
 
-    try {
-      const response = await api.post('/funcionario/inserir', data);
-      history('/home');
-    } catch (err) {
-      alert('Falha no login, tente novamente.');
-    }
+    api.post(url, data, config)
+    history('/home');
   }
+
 
   return (
     <Container>
@@ -41,13 +46,13 @@ export default function InserirFuncionario() {
       <Header>
         {idEstabelecimento}
         <Conteudo>
-          <form onSubmit={handleLogin}>
+          <form onSubmit={inserir}>
             <h2 >Adicionar Funcionario</h2>
             <div>
               <input
                 placeholder="Seu Nome"
-                value={name}
-                onChange={e => setName(e.target.value)}
+                value={nome}
+                onChange={e => setNome(e.target.value)}
                 required
               />
               <InputMask
@@ -85,7 +90,18 @@ export default function InserirFuncionario() {
                 required
               />
             </div>
-            <button>Salvar</button>
+            <div>
+              <select
+                onChange={e => setIdProfissao(e.target.value)}
+                required
+              >
+                <option value={0}>Escolha a Profissão</option>
+                <option value={1}>Cabeleleiro</option>
+                <option value={2}>Manicure</option>
+              </select>
+            </div>
+
+            <button type="submit">Salvar</button>
           </form>
           <table>
             <tr>1</tr>
