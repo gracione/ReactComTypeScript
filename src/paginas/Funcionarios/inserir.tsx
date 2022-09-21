@@ -14,9 +14,11 @@ export default function InserirFuncionario() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [id_funcao_tipo, setIdProfissao] = useState('1');
+  const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
+  const profissoesCadastradasAux: any = profissoesCadastradas;
   const idEstabelecimento = localStorage.getItem('id_estabelecimento');
-  const profissoes = BuscarDadosApi('profissao','listar');
-
+  const profissoes = BuscarDadosApi('profissao', 'listar');
+  const history = useNavigate();
   const data = {
     nome,
     numero,
@@ -24,10 +26,9 @@ export default function InserirFuncionario() {
     email,
     password,
     id_estabelecimento: idEstabelecimento,
-    id_funcao_tipo
+    profissoesCadastradas
   };
 
-  const history = useNavigate();
 
   function inserir() {
     const token = localStorage.getItem('token');
@@ -40,19 +41,26 @@ export default function InserirFuncionario() {
     api.post(url, data, config)
     history('/home');
   }
+
+  function adicionarProfissao(valor: any, indice: any) {
+    profissoesCadastradasAux[indice] = valor;
+    setProfissoesCadastradas(profissoesCadastradasAux);
+  }
+
   let selectProfissoes: any = [];
   const [quantidadeProfissoes, setmes] = useState(1);
-  let optionProfissoes:any = [] 
+  let optionProfissoes: any = []
   profissoes.forEach(element => {
     optionProfissoes.push(
       <option value={element.id}>{element.nome}</option>
     );
   });
+
   for (let index = 0; index < quantidadeProfissoes; index++) {
     selectProfissoes.push(
       <div>
         <select
-          onChange={e => setIdProfissao(e.target.value)}
+          onChange={e => adicionarProfissao(e.target.value, index)}
           required
         >
           <option value={0}>Escolha a Profissão</option>
@@ -60,7 +68,7 @@ export default function InserirFuncionario() {
         </select>
       </div>
     );
-
+    //////////////////////////////////////////////////////////////q
 
   }
   return (
