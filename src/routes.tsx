@@ -16,6 +16,8 @@ import AlterarProfissao from "./paginas/Profissoes/alterar";
 import Expediente from "./paginas/Expediente";
 import EtapaCalendario from "./paginas/EtapaCalendario";
 import InserirFuncionario from "./paginas/Funcionarios/inserir";
+import InserirTratamento from "./paginas/Tratamentos/inserir";
+import AlterarTratamento from "./paginas/Tratamentos/alterar";
 
 export default function Rota() {
     return (
@@ -33,6 +35,8 @@ export default function Rota() {
                 <Route path="/folgas" element={<Folgas />} />
                 <Route path="/expediente" element={<Expediente />} />
                 <Route path="/tratamentos" element={<Tratamentos />} />
+                <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
+                <Route path="/tratamentos/alterar" element={<AlterarTratamento />} />
                 <Route path="/profissoes" element={<Profissoes />} />
                 <Route path="/configuracoes" element={<Configuracoes />} />
                 <Route path="/profissoes/adicionar" element={<AdicionarProfissao />} />

@@ -16,7 +16,7 @@ export default function Tratamentos() {
             {listarFuncionarios}
           </div>
         </Conteudo>
-        <Adicionar href="profissoes/adicionar">+</Adicionar>
+        <Adicionar href="tratamentos/adicionar">+</Adicionar>
       </Header>
     </Container>
   )
