@@ -13,12 +13,10 @@ export default function InserirFuncionario() {
   const [id_sexo, setId_Sexo] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [id_funcao_tipo, setIdProfissao] = useState('1');
   const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
   const profissoesCadastradasAux: any = profissoesCadastradas;
   const idEstabelecimento = localStorage.getItem('id_estabelecimento');
   const profissoes = BuscarDadosApi('profissao', 'listar');
-  const history = useNavigate();
   const data = {
     nome,
     numero,
@@ -28,7 +26,8 @@ export default function InserirFuncionario() {
     id_estabelecimento: idEstabelecimento,
     profissoesCadastradas
   };
-
+  const history = useNavigate();
+  
 
   function inserir() {
     const token = localStorage.getItem('token');
@@ -68,8 +67,6 @@ export default function InserirFuncionario() {
         </select>
       </div>
     );
-    //////////////////////////////////////////////////////////////q
-
   }
   return (
     <Container>
