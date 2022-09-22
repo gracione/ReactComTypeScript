@@ -1,11 +1,12 @@
 import Menu from "../Menu";
 import { Container, Conteudo, Header } from "../../styles/global";
-import React, { useState } from 'react';
+import { useState } from 'react';
 import InputMask from "react-input-mask";
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
 import GerarUrl from "../../util/adicionar";
 import BuscarDadosApi from "../../util/util";
+import { AdicionarPrifissao } from "./styles";
 
 export default function InserirFuncionario() {
   const [nome, setNome] = useState('');
@@ -27,6 +28,7 @@ export default function InserirFuncionario() {
     profissoesCadastradas
   };
   const history = useNavigate();
+  const [quantidadeProfissoes, setmes] = useState(1);
   
 
   function inserir() {
@@ -47,7 +49,6 @@ export default function InserirFuncionario() {
   }
 
   let selectProfissoes: any = [];
-  const [quantidadeProfissoes, setmes] = useState(1);
   let optionProfissoes: any = []
   profissoes.forEach(element => {
     optionProfissoes.push(
@@ -118,7 +119,9 @@ export default function InserirFuncionario() {
               />
             </div>
             {selectProfissoes}
-            <div className='adicionar' onClick={() => setmes(quantidadeProfissoes + 1)}> {"+"} </div>
+            <AdicionarPrifissao onClick={() => setmes(quantidadeProfissoes + 1)}>
+              Adicionar mais uma profissão
+            </AdicionarPrifissao>
             <button type="submit">Salvar</button>
           </form>
         </Conteudo>

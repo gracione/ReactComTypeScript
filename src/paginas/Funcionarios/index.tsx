@@ -16,7 +16,7 @@ export default function Funcionarios() {
             {listarFuncionarios}
           </div>
         </Conteudo>
-        <Adicionar href="profissoes/adicionar">+</Adicionar>
+        <Adicionar href="funcionarios/inserir">+</Adicionar>
       </Header>
     </Container>
   );
