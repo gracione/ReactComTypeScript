@@ -33,10 +33,10 @@ export const GlobalStyle = createGlobalStyle`
 	select,input{
 		padding: 0px;
 		width: 100%;
-		height: 40px;
+		height: 30px;
 		font-size: 15px ;
 		padding-left:10px ;
-		margin-bottom: 10px ;
+		margin-bottom: 5px ;
 		border-radius: 5px ;
 		border: solid var(--borda) 2px;
 	}
@@ -163,4 +163,17 @@ export const Adicionar = styled.a`
 export const Center = styled.div`
 	display: flex;
 	justify-content: center ;
+`;
+export const AdicionarItem = styled.div`
+	width: 40px ;
+	height: 40px ;
+	align-items: center ;
+	display: flex ;
+	justify-content: center;
+	font-size: 30px;
+	border: solid ;
+	border-radius: 10px ;
+	position: absolute ;
+	background-color:var(--blue-light) ;
+	color: var(--shape) ;
 `;

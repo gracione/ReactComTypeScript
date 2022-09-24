@@ -1,5 +1,5 @@
 import Menu from "../Menu";
-import { Container, Conteudo, Header } from "../../styles/global";
+import { AdicionarItem, Container, Conteudo, Header } from "../../styles/global";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
@@ -12,9 +12,14 @@ export default function InserirTratamento() {
   const [minutos, setMinutos] = useState('');
   const [idProfissao, setIdProfissao] = useState("");
   const profissoes = BuscarDadosApi('profissao', 'listar');
+  const [matrix, setMatrix] = useState(
+    Array.from({ length: 1 },
+      () => Array.from({ length: 1 }, () => ['nome','porcentagem']))
+  );
   const data = {
     nome: tratamento,
     tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
+    tipo_de_filtro: matrix,
     id_profissao: idProfissao
   };
   const history = useNavigate();
@@ -39,17 +44,29 @@ export default function InserirTratamento() {
     );
   });
 
-  const n = 1;
-  const [matrix, setMatrix] = useState(Array.from({ length: n }, () => Array.from({ length: n }, () => null)));
-
-  const handleChange = (row: any, column: any, event: any) => {
-    let copy: any = [...matrix];
-    copy[row][column] = +event.target.value;
-    copy[row].push([]);
+  const nomeDoTipoFiltro = (row: any, event: any) => {
+    let copy: any = matrix;
+    copy[row]['nome'] = event.target.value;
     setMatrix(copy);
 
     console.log(matrix);
   };
+
+  const nomeDoFiltro = (row: any, column: any, event: any) => {
+    let copy: any = matrix;
+    copy[row][column]['nome'] = event.target.value;
+    setMatrix(copy);
+
+    console.log(matrix);
+  };
+  const porcentagemDoFiltro = (row: any, column: any, event: any) => {
+    let copy: any = matrix;
+    copy[row][column]['porcentagem'] = event.target.value;
+    setMatrix(copy);
+
+    console.log(matrix);
+  };
+
   const adicionarLinha = (row: any) => {
     let copy: any = [...matrix];
     copy[row].push([]);
@@ -101,32 +118,39 @@ export default function InserirTratamento() {
               </select>
             </div>
 
-
-            <div className="border">
+            <div className="display-flex">
+              <p className="border" >Filtro</p>
+              <p className="border">Porcentagem</p>
+            </div>
+            <div>
               {matrix.map((row: any, rowIndex: any) => (
-                <div key={rowIndex}>
+                <div key={rowIndex} className="border">
+                      <input
+                        type="text"
+                        onChange={e => nomeDoTipoFiltro(rowIndex, e)}
+                      />
                   {row.map((column: any, columnIndex: any) => (
                     <div className="display-flex" key={columnIndex}>
                       <input
-                        type="number"
-                        onChange={e => handleChange(rowIndex, columnIndex, e)}
+                        name="filtro"
+                        type="text"
+                        onChange={e => nomeDoFiltro(rowIndex, columnIndex, e)}
                       />
                       <input
+                        name="porcentagem"
                         type="number"
-                        onChange={e => handleChange(rowIndex, columnIndex, e)}
+                        onChange={e => porcentagemDoFiltro(rowIndex, columnIndex, e)}
                       />
                     </div>
                   ))}
                   <div>
 
-                  <div onClick={() => adicionarLinha(rowIndex)}>add</div>
-                  <div onClick={() => adicionarColuna()}>coluna</div>
+                    <div onClick={() => adicionarLinha(rowIndex)}>add</div>
                   </div>
                 </div>
               ))}
             </div>
-
-
+            <AdicionarItem onClick={() => adicionarColuna()}>+</AdicionarItem>
 
             <button type="submit">Salvar</button>
           </form>
