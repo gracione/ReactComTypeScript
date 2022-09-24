@@ -9,12 +9,12 @@ export default function Adicionar() {
   const [nome, setNome] = useState('');
   const history = useNavigate();
   
-  
   function inserir() {
     const dados = {
       nome: nome
     }
     const token = localStorage.getItem('token');
+    console.log(token);
     const url =  GerarUrl("profissao","inserir");
     
     const config = {

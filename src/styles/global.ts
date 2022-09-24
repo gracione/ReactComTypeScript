@@ -27,6 +27,9 @@ export const GlobalStyle = createGlobalStyle`
 		outline:none;
 		box-sizing: border-box;
 	}
+	.border{
+		border: solid ;
+	}
 	select,input{
 		padding: 0px;
 		width: 100%;

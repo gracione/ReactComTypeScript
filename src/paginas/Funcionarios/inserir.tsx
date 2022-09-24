@@ -28,7 +28,7 @@ export default function InserirFuncionario() {
     profissoesCadastradas
   };
   const history = useNavigate();
-  const [quantidadeProfissoes, setmes] = useState(1);
+  const [quantidadeProfissoes, setQuantidadeProfissoes] = useState(1);
   
 
   function inserir() {
@@ -119,7 +119,7 @@ export default function InserirFuncionario() {
               />
             </div>
             {selectProfissoes}
-            <AdicionarPrifissao onClick={() => setmes(quantidadeProfissoes + 1)}>
+            <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
               Adicionar mais uma profissão
             </AdicionarPrifissao>
             <button type="submit">Salvar</button>
