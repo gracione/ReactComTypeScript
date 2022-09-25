@@ -12,19 +12,66 @@ export default function InserirTratamento() {
   const [minutos, setMinutos] = useState('');
   const [idProfissao, setIdProfissao] = useState("");
   const profissoes = BuscarDadosApi('profissao', 'listar');
+
   const [matrix, setMatrix] = useState(
     Array.from({ length: 1 },
-      () => Array.from({ length: 1 }, () => ['nome','porcentagem']))
+      () => Array.from({ length: 1 }, () => [
+        Array.from([{length:2}])
+      ]))
   );
-  const data = {
-    nome: tratamento,
-    tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
-    tipo_de_filtro: matrix,
-    id_profissao: idProfissao
-  };
-  const history = useNavigate();
 
+  let optionProfissoes: any = [];
+  profissoes.forEach(element => {
+    optionProfissoes.push(
+      <option value={element.id}>{element.nome}</option>
+    );
+  });
+
+  const nomeDoTipoFiltro = (row: any, event: any) => {
+    let copy: any = matrix;
+    copy[row]['nomeTipoFiltro'] = event.target.value;
+    setMatrix(copy);
+
+    console.log(matrix);
+  };
+
+  const nomeDoFiltro = (row: any, column: any, event: any) => {
+    let copy: any = matrix;
+    copy[row][column][1]= event.target.value;
+    setMatrix(copy);
+
+    console.log(matrix);
+  };
+  const porcentagemDoFiltro = (row: any, column: any, event: any) => {
+    let copy: any = matrix;
+    copy[row][column][2] = event.target.value;
+    setMatrix(copy);
+
+    console.log(matrix);
+  };
+
+  const adicionarLinha = (row: any) => {
+    let copy: any = matrix;
+    copy[row].push([]);
+    setMatrix(copy);
+  }
+  const adicionarColuna = () => {
+    let copy: any = matrix;
+    copy.push([]);
+    setMatrix(copy);
+  }
+  ///////////////////////////////////////////////////////////////////
+  const history = useNavigate();
+  
   function inserir() {
+    let copy: any = matrix;
+    console.log(copy);
+    const data = {
+      nome_tratamento: tratamento,
+      tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
+      tipo_de_filtro: copy,
+      id_profissao: idProfissao
+    };
     const token = localStorage.getItem('token');
     const url = GerarUrl("tratamentos", "inserir");
 
@@ -36,47 +83,7 @@ export default function InserirTratamento() {
     history('/home');
   }
 
-
-  let optionProfissoes: any = [];
-  profissoes.forEach(element => {
-    optionProfissoes.push(
-      <option value={element.id}>{element.nome}</option>
-    );
-  });
-
-  const nomeDoTipoFiltro = (row: any, event: any) => {
-    let copy: any = matrix;
-    copy[row]['nome'] = event.target.value;
-    setMatrix(copy);
-
-    console.log(matrix);
-  };
-
-  const nomeDoFiltro = (row: any, column: any, event: any) => {
-    let copy: any = matrix;
-    copy[row][column]['nome'] = event.target.value;
-    setMatrix(copy);
-
-    console.log(matrix);
-  };
-  const porcentagemDoFiltro = (row: any, column: any, event: any) => {
-    let copy: any = matrix;
-    copy[row][column]['porcentagem'] = event.target.value;
-    setMatrix(copy);
-
-    console.log(matrix);
-  };
-
-  const adicionarLinha = (row: any) => {
-    let copy: any = [...matrix];
-    copy[row].push([]);
-    setMatrix(copy);
-  }
-  const adicionarColuna = () => {
-    let copy: any = [...matrix];
-    copy.push([]);
-    setMatrix(copy);
-  }
+  ///////////////////////////////////////////////////////////////////
   return (
     <Container>
       <Menu></Menu>
@@ -125,10 +132,10 @@ export default function InserirTratamento() {
             <div>
               {matrix.map((row: any, rowIndex: any) => (
                 <div key={rowIndex} className="border">
-                      <input
-                        type="text"
-                        onChange={e => nomeDoTipoFiltro(rowIndex, e)}
-                      />
+                  <input
+                    type="text"
+                    onChange={e => nomeDoTipoFiltro(rowIndex, e)}
+                  />
                   {row.map((column: any, columnIndex: any) => (
                     <div className="display-flex" key={columnIndex}>
                       <input
