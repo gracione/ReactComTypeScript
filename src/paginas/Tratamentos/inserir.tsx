@@ -14,10 +14,11 @@ export default function InserirTratamento() {
   const profissoes = BuscarDadosApi('profissao', 'listar');
 
   const [matrix, setMatrix] = useState(
-    Array.from({ length: 1 },
+    Array.from({ length: 1 },      
       () => Array.from({ length: 1 }, () => [
-        Array.from([{length:2}])
-      ]))
+      ])
+    ),
+
   );
 
   let optionProfissoes: any = [];
@@ -27,51 +28,49 @@ export default function InserirTratamento() {
     );
   });
 
-  const nomeDoTipoFiltro = (row: any, event: any) => {
-    let copy: any = matrix;
-    copy[row]['nomeTipoFiltro'] = event.target.value;
+  const nomeDoTipoFiltro = (row: any,column: number, event: any) => {
+    let copy: any = [...matrix];
+    copy[row][column][0] = event.target.value;
     setMatrix(copy);
 
     console.log(matrix);
   };
 
-  const nomeDoFiltro = (row: any, column: any, event: any) => {
-    let copy: any = matrix;
-    copy[row][column][1]= event.target.value;
-    setMatrix(copy);
-
-    console.log(matrix);
-  };
-  const porcentagemDoFiltro = (row: any, column: any, event: any) => {
-    let copy: any = matrix;
+  const nomeDoFiltro = (row: any, column: number, event: any) => {
+    let copy: any = [...matrix];
     copy[row][column][2] = event.target.value;
+    setMatrix(copy);
+
+    console.log(matrix);
+  };
+  const porcentagemDoFiltro = (row: any, column: number, event: any) => {
+    let copy: any = [...matrix];
+    copy[row][column][1] = event.target.value;
     setMatrix(copy);
 
     console.log(matrix);
   };
 
   const adicionarLinha = (row: any) => {
-    let copy: any = matrix;
+    let copy: any = [...matrix];
     copy[row].push([]);
     setMatrix(copy);
   }
   const adicionarColuna = () => {
-    let copy: any = matrix;
+    let copy: any = [...matrix];
     copy.push([]);
     setMatrix(copy);
   }
   ///////////////////////////////////////////////////////////////////
+  const data = {
+    nome_tratamento: tratamento,
+    tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
+    tipo_de_filtro: matrix,
+    id_profissao: idProfissao
+  };
   const history = useNavigate();
-  
+
   function inserir() {
-    let copy: any = matrix;
-    console.log(copy);
-    const data = {
-      nome_tratamento: tratamento,
-      tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
-      tipo_de_filtro: copy,
-      id_profissao: idProfissao
-    };
     const token = localStorage.getItem('token');
     const url = GerarUrl("tratamentos", "inserir");
 
@@ -130,29 +129,29 @@ export default function InserirTratamento() {
               <p className="border">Porcentagem</p>
             </div>
             <div>
-              {matrix.map((row: any, rowIndex: any) => (
-                <div key={rowIndex} className="border">
+              {matrix.map((row: any, tipoFiltro: any) => (
+                <div key={tipoFiltro} className="border">
                   <input
                     type="text"
-                    onChange={e => nomeDoTipoFiltro(rowIndex, e)}
+                    onChange={e => nomeDoTipoFiltro(tipoFiltro,0, e)}
                   />
-                  {row.map((column: any, columnIndex: any) => (
-                    <div className="display-flex" key={columnIndex}>
+                  {row.map((column: any, filtro: number) => (
+                    <div className="display-flex" key={filtro}>
                       <input
                         name="filtro"
                         type="text"
-                        onChange={e => nomeDoFiltro(rowIndex, columnIndex, e)}
+                        onChange={e => nomeDoFiltro(tipoFiltro, filtro, e)}
                       />
                       <input
                         name="porcentagem"
                         type="number"
-                        onChange={e => porcentagemDoFiltro(rowIndex, columnIndex, e)}
+                        onChange={e => porcentagemDoFiltro(tipoFiltro, filtro, e)}
                       />
                     </div>
                   ))}
                   <div>
 
-                    <div onClick={() => adicionarLinha(rowIndex)}>add</div>
+                    <div onClick={() => adicionarLinha(tipoFiltro)}>add</div>
                   </div>
                 </div>
               ))}
