@@ -14,17 +14,16 @@ export default function InserirTratamento() {
   const profissoes = BuscarDadosApi('profissao', 'listar');
 
   const [matrix, setMatrix] = useState(
-    Array.from({ length: 1 },      
-      () => Array.from({ length: 1 }, () => [
-      ])
-    ),
-
+    Array.from({ length: 1 },
+      () => Array.from({ length: 1 }))
   );
 
+  /////////////////
   const [tipoFiltro, setTipoFiltro] = useState(
-    Array.from({ length: 2 })
-    );
+    Array.from({ length: 1 }, () => [0]),
+  );
 
+  ////////////////
   let optionProfissoes: any = [];
   profissoes.forEach(element => {
     optionProfissoes.push(
@@ -32,12 +31,12 @@ export default function InserirTratamento() {
     );
   });
 
-  const nomeDoTipoFiltro = (row: any,column: number, event: any) => {
-    let copy: any = [...matrix];
-    copy[row][column][0] = event.target.value;
-    setMatrix(copy);
+  const nomeDoTipoFiltro = (row: any, column: number, event: any) => {
+    let nomeFiltro = [...tipoFiltro];
 
-    console.log(matrix);
+    nomeFiltro[row][1]=event.target.value;
+    setTipoFiltro(nomeFiltro);
+    console.log(nomeFiltro);
   };
 
   const nomeDoFiltro = (row: any, column: number, event: any) => {
@@ -60,10 +59,15 @@ export default function InserirTratamento() {
     copy[row].push([]);
     setMatrix(copy);
   }
-  const adicionarColuna = () => {
+  const adicionarColuna = (tamanho: any) => {
     let copy: any = [...matrix];
     copy.push([]);
     setMatrix(copy);
+    let nomeFiltro = [...tipoFiltro];
+
+    nomeFiltro.push([tamanho]);
+    setTipoFiltro(nomeFiltro);
+    console.log(nomeFiltro);
   }
   ///////////////////////////////////////////////////////////////////
   const data = {
@@ -137,7 +141,7 @@ export default function InserirTratamento() {
                 <div key={tipoFiltro} className="border">
                   <input
                     type="text"
-                    onChange={e => nomeDoTipoFiltro(tipoFiltro,0, e)}
+                    onChange={e => nomeDoTipoFiltro(tipoFiltro, 0, e)}
                   />
                   {row.map((column: any, filtro: number) => (
                     <div className="display-flex" key={filtro}>
@@ -160,7 +164,7 @@ export default function InserirTratamento() {
                 </div>
               ))}
             </div>
-            <AdicionarItem onClick={() => adicionarColuna()}>+</AdicionarItem>
+            <AdicionarItem onClick={() => adicionarColuna(matrix.length)}>+</AdicionarItem>
 
             <button type="submit">Salvar</button>
           </form>
