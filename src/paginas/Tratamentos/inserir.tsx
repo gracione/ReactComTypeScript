@@ -21,6 +21,10 @@ export default function InserirTratamento() {
 
   );
 
+  const [tipoFiltro, setTipoFiltro] = useState(
+    Array.from({ length: 2 })
+    );
+
   let optionProfissoes: any = [];
   profissoes.forEach(element => {
     optionProfissoes.push(
