@@ -15,7 +15,7 @@ export default function InserirTratamento() {
 
   const [matrix, setMatrix] = useState(
     Array.from({ length: 1 },
-      () => Array.from({ length: 1 }))
+      () => Array.from({ length: 1 }, () => []))
   );
 
   /////////////////
@@ -34,14 +34,15 @@ export default function InserirTratamento() {
   const nomeDoTipoFiltro = (row: any, column: number, event: any) => {
     let nomeFiltro = [...tipoFiltro];
 
-    nomeFiltro[row][1]=event.target.value;
+    nomeFiltro[row][0]=event.target.value;
     setTipoFiltro(nomeFiltro);
     console.log(nomeFiltro);
   };
 
   const nomeDoFiltro = (row: any, column: number, event: any) => {
+    console.log(row+" t<br>");
     let copy: any = [...matrix];
-    copy[row][column][2] = event.target.value;
+    copy[row][column][1] = event.target.value;
     setMatrix(copy);
 
     console.log(matrix);
