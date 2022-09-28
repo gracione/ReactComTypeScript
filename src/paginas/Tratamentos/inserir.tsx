@@ -36,16 +36,12 @@ export default function InserirTratamento() {
 
     nomeFiltro[row][0]=event.target.value;
     setTipoFiltro(nomeFiltro);
-    console.log(nomeFiltro);
   };
 
   const nomeDoFiltro = (row: any, column: number, event: any) => {
-    console.log(row+" t<br>");
     let copy: any = [...matrix];
-    copy[row][column][1] = event.target.value;
+    copy[row][column][0] = event.target.value;
     setMatrix(copy);
-
-    console.log(matrix);
   };
   const porcentagemDoFiltro = (row: any, column: number, event: any) => {
     let copy: any = [...matrix];
@@ -75,6 +71,7 @@ export default function InserirTratamento() {
     nome_tratamento: tratamento,
     tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
     tipo_de_filtro: matrix,
+    nomesTipoFiltro: tipoFiltro,
     id_profissao: idProfissao
   };
   const history = useNavigate();
