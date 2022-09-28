@@ -34,7 +34,7 @@ export default function InserirTratamento() {
   const nomeDoTipoFiltro = (row: any, column: number, event: any) => {
     let nomeFiltro = [...tipoFiltro];
 
-    nomeFiltro[row][0]=event.target.value;
+    nomeFiltro[row] =event.target.value;
     setTipoFiltro(nomeFiltro);
   };
 
