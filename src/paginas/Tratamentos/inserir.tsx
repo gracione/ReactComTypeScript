@@ -17,13 +17,10 @@ export default function InserirTratamento() {
     Array.from({ length: 1 },
       () => Array.from({ length: 1 }, () => []))
   );
-
-  /////////////////
   const [tipoFiltro, setTipoFiltro] = useState(
     Array.from({ length: 1 }, () => [0]),
   );
 
-  ////////////////
   let optionProfissoes: any = [];
   profissoes.forEach(element => {
     optionProfissoes.push(
@@ -34,7 +31,7 @@ export default function InserirTratamento() {
   const nomeDoTipoFiltro = (row: any, column: number, event: any) => {
     let nomeFiltro = [...tipoFiltro];
 
-    nomeFiltro[row] =event.target.value;
+    nomeFiltro[row] = event.target.value;
     setTipoFiltro(nomeFiltro);
   };
 
@@ -88,7 +85,6 @@ export default function InserirTratamento() {
     history('/home');
   }
 
-  ///////////////////////////////////////////////////////////////////
   return (
     <Container>
       <Menu></Menu>
