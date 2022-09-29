@@ -8,27 +8,29 @@ import GerarUrl from "../../util/adicionar";
 export default function Home() {
   const [idTratamento, setTratamento] = useState([]);
   const [filtro, setFiltro] = useState([]);
+  const filtroD:any = filtro;
   let tratamentos: any = [];
   const token = localStorage.getItem('token');
   const config = {
     headers: { Authorization: `Bearer ${token}` }
   };
 
-  function listarFiltros(){
-    const data = {
-      id_tratamento:30,
-      id_estabelecimento:1
-    };
-  
-    const token = localStorage.getItem('token');
-    const url = GerarUrl("filtro", "listar");
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
+  const data = {
+    id_tratamento:30,
+    id_estabelecimento:1
+  };
 
-    let filtross:any = api.post(url, data, config)
-    setFiltro(filtross);
-    console.log(filtro);
+  async function listarFiltros(){
+
+    const url = GerarUrl("filtro", "listar");
+
+    const filtross:any = await api.post(url, data, config);
+    (filtross.data).forEach((element: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | null | undefined) => {
+      filtroD.push(
+        <option>{element}</option>
+        )
+      });
+      setFiltro(filtroD);
   }
 
   useEffect(() => {
@@ -59,6 +61,7 @@ export default function Home() {
                 {tratamentos}
               </select>
             </div>
+            {filtro}
             <div>
               <button>Prosseguir</button>
             </div>
