@@ -30,7 +30,7 @@ export default function Home() {
       >{element.nome}</option>
     )
   });
-  const [filtro, setFiltro] = useState(0);
+  const [filtro, setFiltro] = useState('');
 
   return (
     <Container>
@@ -41,9 +41,9 @@ export default function Home() {
             <div>
               <label htmlFor="">Tratamento</label>
               <select
-                name="tratamento"
-
-                onChange={e => setFiltro(e.target.value)}  >
+                onChange={e => setFiltro(e.target.value)}
+                required
+              >
                 {tratamentos}
               </select>
             </div>
