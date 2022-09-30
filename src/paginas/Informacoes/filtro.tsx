@@ -15,7 +15,6 @@ export default function Filtros(props: any) {
     api.post("/filtro/listar", {
       id_tratamento: props.data,
       id_estabelecimento: 1
-      //,data:props.data
     }, config)
       .then((response) => setFiltro(response.data))
       .catch((err) => {

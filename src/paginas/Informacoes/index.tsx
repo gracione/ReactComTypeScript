@@ -31,6 +31,7 @@ export default function Home() {
     )
   });
   const [filtro, setFiltro] = useState('');
+  localStorage.setItem('idTratamento',filtro)
 
   return (
     <Container>
