@@ -44,8 +44,6 @@ export default function InserirTratamento() {
     let copy: any = [...matrix];
     copy[row][column][1] = event.target.value;
     setMatrix(copy);
-
-    console.log(matrix);
   };
 
   const adicionarLinha = (row: any) => {
@@ -63,7 +61,6 @@ export default function InserirTratamento() {
     setTipoFiltro(nomeFiltro);
     console.log(nomeFiltro);
   }
-  ///////////////////////////////////////////////////////////////////
   const data = {
     nome_tratamento: tratamento,
     tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),

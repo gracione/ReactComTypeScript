@@ -25,11 +25,13 @@ export default function Home() {
 
   idTratamento.forEach((element: any) => {
     tratamentos.push(
-      <option value={element.id}>{element.nome}</option>
+      <option
+        value={element.id}
+      >{element.nome}</option>
     )
   });
   const [filtro, setFiltro] = useState(0);
-  
+
   return (
     <Container>
       <Menu></Menu>
@@ -38,7 +40,10 @@ export default function Home() {
           <form action="/escolher-horario">
             <div>
               <label htmlFor="">Tratamento</label>
-              <select name="tratamento" onChange={() => setFiltro(filtro+1)}  >
+              <select
+                name="tratamento"
+
+                onChange={e => setFiltro(e.target.value)}  >
                 {tratamentos}
               </select>
             </div>

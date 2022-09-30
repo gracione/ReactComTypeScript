@@ -23,7 +23,7 @@ export default function Filtros(props: any) {
       });
   }, [props.data]);
 
-  console.log(filtro)
+  console.log(props)
   let filtroD: any = [];
 
   filtro.forEach((element: any) => {
@@ -35,8 +35,8 @@ export default function Filtros(props: any) {
         <select name="" id="">
 
           {(element.filtro).map((row: any) => (
-            <option>
-              s
+            <option value={row.id} >
+              {row.nome}
             </option>
           ))}
         </select>
