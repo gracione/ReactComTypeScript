@@ -13,7 +13,7 @@ export default function Filtros(props: any) {
 
   useEffect(() => {
     api.post("/filtro/listar", {
-      id_tratamento: 30,
+      id_tratamento: props.data,
       id_estabelecimento: 1
       //,data:props.data
     }, config)
@@ -23,7 +23,7 @@ export default function Filtros(props: any) {
       });
   }, [props.data]);
 
-  console.log(props)
+  console.log(props.data)
   let filtroD: any = [];
 
   filtro.forEach((element: any) => {
