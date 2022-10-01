@@ -1,15 +1,13 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL:"http://salao.localhost/api",
+  baseURL: "http://salao.localhost/api",
 })
 
-api.interceptors.request.use(async config => {
-  if (localStorage.getItem('access_token')) {
-    axios.defaults.headers.common['Authorization'] = "Bearer ${localStorage.getItem('access_token')";
-  }
+const token = localStorage.getItem('token');
 
-  return config;
-});
+if (token) {
+  api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+}
 
 export default api;
