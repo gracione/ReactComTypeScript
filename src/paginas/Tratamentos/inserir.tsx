@@ -71,14 +71,9 @@ export default function InserirTratamento() {
   const history = useNavigate();
 
   function inserir() {
-    const token = localStorage.getItem('token');
     const url = GerarUrl("tratamentos", "inserir");
-
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
-
-    api.post(url, data, config)
+    
+    api.post(url, data)
     history('/home');
   }
 

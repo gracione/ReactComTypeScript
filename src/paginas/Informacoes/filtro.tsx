@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Container, Conteudo, Header } from "../../styles/global";
-import BuscarDadosApi from "../../util/util";
 import api from "../../services/api";
 
 export default function Filtros(props: any) {
   const [filtro, setFiltro] = useState([]);
-  const token = localStorage.getItem('token');
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
-
 
   useEffect(() => {
     api.post("/filtro/listar", {
       id_tratamento: props.data,
       id_estabelecimento: 1
-    }, config)
+    })
       .then((response) => setFiltro(response.data))
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);

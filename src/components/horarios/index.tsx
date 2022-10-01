@@ -1,16 +1,11 @@
 import { Container } from "./styles";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 export default function Horarios(props: any) {
   console.log(props.data);
   const [user, setUser] = useState([]);
-  const token = localStorage.getItem('token');
   const idTratamento = localStorage.getItem('idTratamento');
-
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
 
   useEffect(() => {
     api
@@ -19,7 +14,7 @@ export default function Horarios(props: any) {
         idFuncionario:1,
         idFiltro:1,
         idTratamento:idTratamento
-      }, config)
+      })
       .then((response) => setUser(response.data))
       .catch((err) => {
         console.error("ops! ocorreu um erro" + err);

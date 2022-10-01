@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import BuscarDadosApi from "../../util/util";
 
 import { CardFuncionario, CardAdicionarFuncionario, Container } from "./styles";

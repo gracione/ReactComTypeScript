@@ -7,17 +7,13 @@ import Filtros from "./filtro";
 export default function Home() {
   const [idTratamento, setTratamento] = useState([]);
   let tratamentos: any = [];
-  const token = localStorage.getItem('token');
-  const config = {
-    headers: { Authorization: `Bearer ${token}` }
-  };
 
   useEffect(() => {
     api
       .post("/tratamento/listarPorFuncionario", {
         id_estabelecimento: localStorage.getItem("id_estabelecimento"),
         id_profissao: localStorage.getItem("idFuncionario")
-      }, config)
+      })
       .then((response) => setTratamento(response.data));
   }, []);
 

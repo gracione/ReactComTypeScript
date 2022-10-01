@@ -16,12 +16,8 @@ export default function Adicionar() {
     const token = localStorage.getItem('token');
     console.log(token);
     const url =  GerarUrl("profissao","inserir");
-    
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
 
-    api.post(url, { dados: dados, id_estabelecimento: 1 }, config)
+    api.post(url, { dados: dados, id_estabelecimento: 1 })
     history('/profissoes');
   }
 

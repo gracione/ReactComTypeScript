@@ -32,14 +32,9 @@ export default function InserirFuncionario() {
   
 
   function inserir() {
-    const token = localStorage.getItem('token');
     const url = GerarUrl("funcionario", "inserir");
 
-    const config = {
-      headers: { Authorization: `Bearer ${token}` }
-    };
-
-    api.post(url, data, config)
+    api.post(url, data)
     history('/home');
   }
 
