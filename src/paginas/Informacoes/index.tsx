@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Conteudo, Header } from "../../styles/global";
-import BuscarDadosApi from "../../util/util";
 import api from "../../services/api";
 import Menu from "../Menu";
-import GerarUrl from "../../util/adicionar";
 import Filtros from "./filtro";
 
 export default function Home() {
