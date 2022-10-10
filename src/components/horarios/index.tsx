@@ -12,7 +12,7 @@ export default function Horarios(props: any) {
       .post("/horarios-disponivel", {
         data:props.data,
         idFuncionario:1,
-        idFiltro:1,
+        idFiltro:7,
         idTratamento:idTratamento
       })
       .then((response) => setUser(response.data))
