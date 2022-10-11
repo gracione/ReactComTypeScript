@@ -4,15 +4,14 @@ import api from "../../services/api";
 export default function Filtros(props: any) {
   const [filtro, setFiltro] = useState([]);
   const [matrix, setMatrix] = useState(
-    () => Array.from({ length: 10 },
+    () => Array.from({ length: filtro.length },
       () => [0])
   );
-
-
   const filtros = (row: any, event: any) => {
     let copy: any = [...matrix];
     copy[row] = event.target.value;
     console.log(copy);
+    localStorage.setItem('idsFiltro',copy);
     setMatrix(copy);
   };
 
@@ -29,7 +28,7 @@ export default function Filtros(props: any) {
 
   useEffect(() => {
     const copy =
-      () => Array.from({ length: 10 },
+      () => Array.from({ length: filtro.length },
         () => [0])
     setMatrix(copy);
   }, [props.data]);
