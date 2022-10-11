@@ -40,6 +40,7 @@ export default function InserirTratamento() {
     copy[row][column][0] = event.target.value;
     setMatrix(copy);
   };
+
   const porcentagemDoFiltro = (row: any, column: number, event: any) => {
     let copy: any = [...matrix];
     copy[row][column][1] = event.target.value;

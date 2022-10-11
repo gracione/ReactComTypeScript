@@ -21,11 +21,13 @@ export default function Home() {
     tratamentos.push(
       <option
         value={element.id}
-      >{element.nome}</option>
+        >
+        {element.nome}
+      </option>
     )
   });
   const [filtro, setFiltro] = useState('');
-  localStorage.setItem('idTratamento',filtro)
+  localStorage.setItem('idTratamento', filtro)
 
   return (
     <Container>

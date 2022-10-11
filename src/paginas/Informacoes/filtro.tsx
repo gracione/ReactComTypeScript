@@ -3,6 +3,17 @@ import api from "../../services/api";
 
 export default function Filtros(props: any) {
   const [filtro, setFiltro] = useState([]);
+  const [matrix, setMatrix] = useState(
+    Array.from({ length: 1 }, () => [0])
+  );
+
+
+  const filtros = (row: any, event: any) => {
+    console.log("teste");
+    let copy: any = [...matrix];
+    copy[row] = event.target.value;
+    setMatrix(copy);
+  };
 
   useEffect(() => {
     api.post("/filtro/listar", {
@@ -15,7 +26,7 @@ export default function Filtros(props: any) {
       });
   }, [props.data]);
 
-  console.log(props.data)
+  console.log(props.data+"::::teste:::");
   let filtroD: any = [];
 
   filtro.forEach((element: any) => {
@@ -24,10 +35,14 @@ export default function Filtros(props: any) {
         <label htmlFor="">
           {element.nome}
         </label>
-        <select name="" id="">
+        <select
+          onChange={e => filtros(1, e)}
+        >
 
           {(element.filtro).map((row: any) => (
-            <option value={row.id} >
+            <option
+            value={row.id}
+            >
               {row.nome}
             </option>
           ))}
