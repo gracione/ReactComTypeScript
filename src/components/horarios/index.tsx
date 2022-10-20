@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react';
 import api from '../../services/api';
 
 export default function Horarios(props: any) {
-  console.log(props.data);
   const [user, setUser] = useState([]);
   const idTratamento = localStorage.getItem('idTratamento');
   const idsFiltro = localStorage.getItem('idsFiltro');
@@ -38,13 +37,26 @@ export default function Horarios(props: any) {
   });
 
   let listaHorarios: any = [];
-
+  function agendarHorario(data: any, horario: any) {
+    api
+      .post("/horario/inserir", {
+        data: data,
+        horario: horario,
+        idCliente: 1,
+        idTratamento: idTratamento,
+        idFuncionario: 1
+      })
+  }
   return (
     <Container >
-      {horarioEscolhido}
+      <div>
+        {props.data + " " + horarioEscolhido}
+      </div>
       {listaHorarios}
       {horariosDisponivel}
-      <button>Agendar</button>
+      <button
+        onClick={() => agendarHorario(props.data, horarioEscolhido)}
+      >Agendar</button>
     </Container>
   );
 }

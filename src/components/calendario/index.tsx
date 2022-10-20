@@ -1,18 +1,13 @@
 import { Container } from "./styles";
 
-
-function marcarDia(element: any, setDia: any) {
-  setDia(element);
-}
-
-
 function organizarSemana(diaSemana: any, props: any) {
   let semana: any = [];
 
   diaSemana.forEach((element: string) => {
     semana.push(<li
       className="dia"
-      onClick={() => marcarDia(element, props.setDia)}>
+      onClick={() => props.setDia(element)}
+      >
         {element}</li>);
   });
 
