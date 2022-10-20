@@ -1,3 +1,4 @@
+import HorariosMarcado from "../../components/cardHorariosMarcados";
 import Funcionarios from "../../components/funcionarios";
 import Menu from "../Menu/index";
 
@@ -26,7 +27,9 @@ export default function Home() {
         </div>
         <HorariosMarcados>
           <label>Horários Marcados</label>
-          <div></div>
+          <div>
+            <HorariosMarcado></HorariosMarcado>
+          </div>
         </HorariosMarcados>
       </Conteudo>
     </Container >
