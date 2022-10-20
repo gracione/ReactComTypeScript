@@ -11,10 +11,10 @@ export default function Horarios(props: any) {
   useEffect(() => {
     api
       .post("/horarios-disponivel", {
-        data:props.data,
-        idFuncionario:1,
-        idFiltro:idsFiltro,
-        idTratamento:idTratamento
+        data: props.data,
+        idFuncionario: 1,
+        idFiltro: idsFiltro,
+        idTratamento: idTratamento
       })
       .then((response) => setUser(response.data))
       .catch((err) => {
@@ -22,12 +22,16 @@ export default function Horarios(props: any) {
       });
   }, [props.data]);
 
+  const [horarioEscolhido, setHorarioEscolhido] = useState(0);
   let horariosDisponivel: any = [];
 
   user.forEach((element: any) => {
     horariosDisponivel.push(
       <label className="horario-disponivel" >
-        <input type="radio" id="html" name="data-horario" value={element.horario_inicio + "#" + props.data} />
+        <input
+          type="radio"
+          onClick={() => setHorarioEscolhido(element.inicio)}
+        />
         {element.inicio}
       </label>
     )
@@ -37,8 +41,10 @@ export default function Horarios(props: any) {
 
   return (
     <Container >
+      {horarioEscolhido}
       {listaHorarios}
       {horariosDisponivel}
+      <button>Agendar</button>
     </Container>
   );
 }
