@@ -1,4 +1,4 @@
-import HorariosMarcado from "../../components/cardHorariosMarcados";
+import HorariosMarcado from "../../components/horariosMarcados";
 import Funcionarios from "../../components/funcionarios";
 import Menu from "../Menu/index";
 
