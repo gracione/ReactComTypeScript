@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const Cartao = styled.div`
     width:350px;
     height:120px;
+    margin: 20px ;
     background:white;
     border-left:solid 10px var(--blue-light);
     border-radius:5px;
@@ -11,7 +12,7 @@ export const Cartao = styled.div`
     display:flex;
     justify-content: space-between;
     font-size: 13px ;
-    font-weight: 400;
+    font-weight: 380;
 
     .dados-horario{
         width:40%;
@@ -59,6 +60,7 @@ export const Cartao = styled.div`
                 padding: 4px;
                 float: right;
                 margin-right: 4px;
+                position: absolute ;
         }
 
         }    

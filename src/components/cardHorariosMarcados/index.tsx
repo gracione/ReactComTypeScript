@@ -1,4 +1,4 @@
-import { Container } from "../../styles/global"
+import { Center, Container, Conteudo } from "../../styles/global"
 import { useState, useEffect } from 'react';
 import api from '../../services/api';
 import Card from './card';
@@ -28,16 +28,16 @@ export default function HorariosMarcado() {
       "funcionario": "pedro",
       "tratamento": "hidra",
       "telefone": "999998",
-      "horario" : "08:30",
-      "data" : "3 de janeiro 2021"
+      "horario": "08:30",
+      "data": "3 de janeiro 2021"
     },
     {
       "cliente": "jose",
       "funcionario": "araujo",
       "tratamento": "hidra",
       "telefone": "555998",
-      "horario" : "09:30",
-      "data" : "3 de janeiro 2021"
+      "horario": "09:30",
+      "data": "3 de janeiro 2021"
     },
   ];
 
@@ -55,7 +55,11 @@ export default function HorariosMarcado() {
 
   return (
     <Container>
-      {card}
+      <Center>
+        <div>
+          {card}
+        </div>
+      </Center>
     </Container>
   );
 
