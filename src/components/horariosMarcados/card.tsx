@@ -3,6 +3,7 @@ import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { Cartao } from './styles';
 
 interface tipoDeDados {
+    idHorario: string;
     cliente: string;
     funcionario: string;
     tratamento: string;
@@ -11,8 +12,11 @@ interface tipoDeDados {
     data: string;
 }
 
-function Card({ cliente, funcionario, tratamento, telefone, horario, data }: tipoDeDados) {
+function Card({ idHorario, cliente, funcionario, tratamento, telefone, horario, data }: tipoDeDados) {
     let linkTelefone = "https://api.whatsapp.com/send/?phone=+55" + telefone + "&text=oi";
+    function desmarcarHorario(){
+        
+    }
     return (
         <>
             <Cartao>
@@ -28,10 +32,12 @@ function Card({ cliente, funcionario, tratamento, telefone, horario, data }: tip
                     <ul>
                         <li className="cliente" >
                             cliente: {cliente}
-                            <span><img src="../../icons/lapis.png"></img></span>
+                            <span>
+                                <img src="../../icons/lapis.png"></img>
+                            </span>
                         </li>
-                        <li>funcionario: {funcionario}</li>
-                        <li>tratamento: {tratamento}</li>
+                        <li>Funcionario: {funcionario}</li>
+                        <li>Tratamento: {tratamento}</li>
                         <li>
                             <a href={linkTelefone}>
                                 telefone: {telefone}
@@ -42,7 +48,7 @@ function Card({ cliente, funcionario, tratamento, telefone, horario, data }: tip
                     </ul>
                     <div className='confirmar-desmarcar' >
                         <div className='confirmar'>CONFIRMAR</div>
-                        <div className='desmarcar'>DESMARCAR</div>
+                        <div className='desmarcar' onClick={() => desmarcarHorario()} >DESMARCAR</div>
                     </div>
                 </div>
             </Cartao>

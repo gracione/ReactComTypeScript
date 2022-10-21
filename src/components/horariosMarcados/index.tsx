@@ -44,6 +44,7 @@ export default function HorariosMarcado() {
   let card = [];
   for (let index = 0; index < horariosMarcados.length; index++) {
     card[index] = <Card
+      idHorario={horariosMarcados[index]['idHorario']}
       cliente={horariosMarcados[index]['cliente']}
       funcionario={horariosMarcados[index]['funcionario']}
       tratamento={horariosMarcados[index]['tratamento']}
