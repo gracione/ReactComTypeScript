@@ -8,45 +8,31 @@ export default function listarEditarExcluir(funcionarios: any[], funcao: string)
   const url = "/" + funcao + "/alterar";
   function escolher(valor: any, operacao: any) {
     localStorage.setItem('idFuncionario', valor);
-    localStorage.setItem('operacao', operacao);
   }
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const history = useNavigate();
   function excluir(id: any) {
-    console.log("teste");
     api.post("/" + funcao + "/excluir", {
       id: id
     })
-    //history('/home');
+    history('/home');
+  }
+  function alterar(id: any) {
+    localStorage.setItem('idDadosAlterar',id);
+    history("/" + funcao + "/alterar");
   }
 
   funcionarios.forEach((element: any) => {
     listarFuncionarios.push(
-      <form action={url}>
-
+      <div>
         <input
           value={element.nome}
           name='nome'
           type="text"
         />
-        <button>
-          <input
-            type="radio"
-            value={element.id}
-            name="op"
-            id={element.id + "editar"}
-            onChange={e => escolher(e.target.value, 'editar')}
-          />
-          <input
-            type="radio"
-            value={element.id}
-            name="op"
-
-          />
-          <label htmlFor={element.id + "editar"} className='editar'></label>
-          <label htmlFor={element.id + "excluir"} onClick={() => excluir(element.id)} className='excluir'>x</label>
-        </button>
-      </form>
+        <label htmlFor={element.id + "editar"} onClick={() => alterar(element.id)} className='editar'>..........</label>
+        <label htmlFor={element.id + "excluir"} onClick={() => excluir(element.id)} className='excluir'>x</label>
+      </div>
     )
   });
   return listarFuncionarios;

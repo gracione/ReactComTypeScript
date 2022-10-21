@@ -1,18 +1,32 @@
-import { Container, Conteudo } from "../../styles/global";
-import ExcluirDadosApi from "../../util/excluir";
+import { Container } from "../../styles/global";
+import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
+import api from "../../../src/services/api";
 
-export default function AlterarProfissao() {
+export default function Alterar() {
   const history = useNavigate();
-  const idFuncionario = localStorage.getItem('idFuncionario');
-  const operacao = localStorage.getItem('operacao');
+  const idDadosAlterar = localStorage.getItem('idDadosAlterar');
+  const [listagem, setListagem] = useState([]);
+  useEffect(() => {
+    api
+      .post("/profissao/dados-alterar", {
+        id: idDadosAlterar
+      })
+      .then((response) => setListagem(response.data));
+  }, []);
 
-  ExcluirDadosApi('profissao',operacao,idFuncionario);
+  let dadosAlterar:any = [];
 
-  history('/profissoes');
-
+  listagem.forEach(element => {
+    dadosAlterar.push(
+        <input
+         value={element['nome']}
+        />
+    )
+  });
   return (
     <Container>
+      {dadosAlterar}
     </Container>
   );
 }
