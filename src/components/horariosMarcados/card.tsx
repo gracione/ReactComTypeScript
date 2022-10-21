@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { Cartao } from './styles';
+import api from '../../services/api';
+import { useNavigate } from 'react-router-dom';
 
 interface tipoDeDados {
     idHorario: string;
@@ -14,8 +16,12 @@ interface tipoDeDados {
 
 function Card({ idHorario, cliente, funcionario, tratamento, telefone, horario, data }: tipoDeDados) {
     let linkTelefone = "https://api.whatsapp.com/send/?phone=+55" + telefone + "&text=oi";
-    function desmarcarHorario(){
-        
+    const history = useNavigate();
+    function desmarcarHorario(idHorario: any) {
+        api.post("/horario/desmarcar", {
+            id: idHorario
+        })
+        history('/home');
     }
     return (
         <>
@@ -48,7 +54,7 @@ function Card({ idHorario, cliente, funcionario, tratamento, telefone, horario, 
                     </ul>
                     <div className='confirmar-desmarcar' >
                         <div className='confirmar'>CONFIRMAR</div>
-                        <div className='desmarcar' onClick={() => desmarcarHorario()} >DESMARCAR</div>
+                        <div className='desmarcar' onClick={() => desmarcarHorario(idHorario)} >DESMARCAR</div>
                     </div>
                 </div>
             </Cartao>

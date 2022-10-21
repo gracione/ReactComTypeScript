@@ -1,3 +1,5 @@
+import api from '../../src/services/api';
+import { useNavigate } from 'react-router-dom';
 
 export default function listarEditarExcluir(funcionarios: any[], funcao: string): any[] {
   let listarFuncionarios: any = [];
@@ -8,6 +10,16 @@ export default function listarEditarExcluir(funcionarios: any[], funcao: string)
     localStorage.setItem('idFuncionario', valor);
     localStorage.setItem('operacao', operacao);
   }
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const history = useNavigate();
+  function excluir(id: any) {
+    console.log("teste");
+    api.post("/" + funcao + "/excluir", {
+      id: id
+    })
+    //history('/home');
+  }
+
   funcionarios.forEach((element: any) => {
     listarFuncionarios.push(
       <form action={url}>
@@ -29,11 +41,10 @@ export default function listarEditarExcluir(funcionarios: any[], funcao: string)
             type="radio"
             value={element.id}
             name="op"
-            id={element.id + "excluir"}
-            onChange={e => escolher(e.target.value, 'excluir')}
+
           />
           <label htmlFor={element.id + "editar"} className='editar'></label>
-          <label htmlFor={element.id + "excluir"} className='excluir'>x</label>
+          <label htmlFor={element.id + "excluir"} onClick={() => excluir(element.id)} className='excluir'>x</label>
         </button>
       </form>
     )
