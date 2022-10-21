@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import api from "../../../src/services/api";
 
 export default function Alterar() {
+  const [nome, setNome] = useState('');
   const history = useNavigate();
   const idDadosAlterar = localStorage.getItem('idDadosAlterar');
   const [listagem, setListagem] = useState([]);
@@ -15,18 +16,30 @@ export default function Alterar() {
       .then((response) => setListagem(response.data));
   }, []);
 
-  let dadosAlterar:any = [];
+  let dadosAlterar: any = [];
 
   listagem.forEach(element => {
     dadosAlterar.push(
-        <input
-         value={element['nome']}
-        />
+      <input
+        type='text'
+//        value={element['nome']}
+        onChange={e => setNome(e.target.value)}
+
+      />
     )
   });
+
+  function alterar() {
+    api.post('/profissao/alterar', { nome: nome, id: idDadosAlterar })
+    //history('/profissoes');
+  }
+
   return (
     <Container>
-      {dadosAlterar}
+      <form onSubmit={alterar}>
+        {dadosAlterar}
+        <button>Alterar</button>
+      </form>
     </Container>
   );
 }
