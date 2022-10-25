@@ -12,9 +12,7 @@ export default function Tratamentos() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <div className="editar-excluir" >
             {listarFuncionarios}
-          </div>
         </Conteudo>
         <Adicionar href="tratamentos/adicionar">+</Adicionar>
       </Header>

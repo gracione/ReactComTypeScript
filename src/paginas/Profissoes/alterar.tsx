@@ -1,4 +1,5 @@
-import { Container } from "../../styles/global";
+import Menu from "../Menu";
+import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 import api from "../../../src/services/api";
@@ -36,10 +37,16 @@ export default function Alterar() {
 
   return (
     <Container>
+    <Menu></Menu>
+    <Header>
+      <Conteudo>
       <form onSubmit={alterar}>
         {dadosAlterar}
         <button>Alterar</button>
       </form>
-    </Container>
+      </Conteudo>
+      <Adicionar href="profissoes/adicionar">+</Adicionar>
+    </Header>
+  </Container>
   );
 }

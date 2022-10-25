@@ -57,23 +57,29 @@ export const GlobalStyle = createGlobalStyle`
 	.editar-excluir{
 		width: 100% ;
 		display: flex ;
+		margin-bottom: 1% ;
+		border-bottom: solid 1px ;
 		.editar{
 			background: url("/icons/lapis.png");
 			background-size: 80% 80%;
 			background-repeat: no-repeat ;
 			background-position: center ;
-			border: solid ;
+			background-color: var(--blue-light); ;
 			width: 5%;
 			height: 20px ;
+
+			display: flex ;
+			justify-content: center ;
 		}
 		.excluir{
 			background-color: var(--red-light);
-			border: solid ;
 			width: 5% ;
 			height: 20px ;
+
+			display: flex ;
+			justify-content: center ;
 		}
 		label{
-			border: solid ;
 			width: 90%;
 		}
 	}

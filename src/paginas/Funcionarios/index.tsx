@@ -12,9 +12,7 @@ export default function Funcionarios() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <div className="editar-excluir" >
-            {listarFuncionarios}
-          </div>
+          {listarFuncionarios}
         </Conteudo>
         <Adicionar href="funcionarios/inserir">+</Adicionar>
       </Header>
