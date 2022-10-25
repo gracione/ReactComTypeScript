@@ -8,6 +8,8 @@ export default function Alterar() {
   const history = useNavigate();
   const idDadosAlterar = localStorage.getItem('idDadosAlterar');
   const [listagem, setListagem] = useState([]);
+  const dadosAlterar: any = [];
+
   useEffect(() => {
     api
       .post("/profissao/dados-alterar", {
@@ -16,22 +18,20 @@ export default function Alterar() {
       .then((response) => setListagem(response.data));
   }, []);
 
-  let dadosAlterar: any = [];
 
   listagem.forEach(element => {
     dadosAlterar.push(
       <input
         type='text'
-//        value={element['nome']}
+        placeholder={element['nome']}
         onChange={e => setNome(e.target.value)}
-
       />
     )
   });
 
   function alterar() {
     api.post('/profissao/alterar', { nome: nome, id: idDadosAlterar })
-    //history('/profissoes');
+    history('/profissoes');
   }
 
   return (

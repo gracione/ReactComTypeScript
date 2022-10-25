@@ -55,36 +55,28 @@ export const GlobalStyle = createGlobalStyle`
 		flex-direction: initial ;
 	}
 	.editar-excluir{
-		form {
-			display: flex ;
-			width: 100%;
-				button{
-					margin: 0px ;
-					padding: 0px ;
-					width: 15% ;
-					height: 100% ;
-					display: flex ;
-					justify-content: space-around ;
-					background: none;
-				}
-				input[type=text] {
-					width: 85% ;
-				}
-				input[type=radio] {
-					display: none ;
-				}
-				label{
-					width: 45%;
-					border-radius: 10px ;
-					height: 35px ;
-					font-size: 35px ;
-
-					display: flex ;
-					justify-content: center ;
-					align-items: center ;
-				}
-			}
+		width: 100% ;
+		display: flex ;
+		.editar{
+			background: url("/icons/lapis.png");
+			background-size: 80% 80%;
+			background-repeat: no-repeat ;
+			background-position: center ;
+			border: solid ;
+			width: 5%;
+			height: 20px ;
 		}
+		.excluir{
+			background-color: var(--red-light);
+			border: solid ;
+			width: 5% ;
+			height: 20px ;
+		}
+		label{
+			border: solid ;
+			width: 90%;
+		}
+	}
 	a{
 		text-decoration: none ;
 	}
@@ -124,15 +116,6 @@ export const Conteudo = styled.div`
         border-radius: 10px ;
         background-color: var(--backgroud-secundaria);
 		padding: 20px ;
-		.editar{
-			background: url("/icons/lapis.png");
-			background-size: 80% 80%;
-			background-repeat: no-repeat ;
-			background-position: center ;
-		}
-		.excluir{
-			background-color: var(--red-light);
-		}
     }
 `;
 export const Header = styled.div`
