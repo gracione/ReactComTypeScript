@@ -28,17 +28,22 @@ export default function Rota() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/informacoes" element={<Informacoes />} />
                 <Route path="/escolher-horario" element={<EtapaCalendario />} />
+
                 <Route path="/funcionarios" element={<Funcionarios />} />
-                <Route path="/funcionarios/alterar" element={<AlterarFuncionario />} />
+                <Route path="/funcionario/alterar" element={<AlterarFuncionario />} />
                 <Route path="/funcionarios/inserir" element={<InserirFuncionario />} />
+
                 <Route path="/feriados" element={<Feriados />} />
                 <Route path="/folgas" element={<Folgas />} />
                 <Route path="/expediente" element={<Expediente />} />
+
                 <Route path="/tratamentos" element={<Tratamentos />} />
                 <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
                 <Route path="/tratamentos/alterar" element={<AlterarTratamento />} />
-                <Route path="/profissoes" element={<Profissoes />} />
+
                 <Route path="/configuracoes" element={<Configuracoes />} />
+
+                <Route path="/profissoes" element={<Profissoes />} />
                 <Route path="/profissoes/adicionar" element={<AdicionarProfissao />} />
                 <Route path="/profissoes/alterar" element={<AlterarProfissao />} />
             </Routes>
