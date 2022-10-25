@@ -5,7 +5,7 @@ import listarEditarExcluir from "../../util/listar";
 
 export default function Funcionarios() {
   const funcionarios = BuscarDadosApi('funcionario', 'listar');
-  const listarFuncionarios = listarEditarExcluir(funcionarios, 'funcionario');
+  const listarFuncionarios = listarEditarExcluir(funcionarios, 'funcionarios');
 
   return (
     <Container>

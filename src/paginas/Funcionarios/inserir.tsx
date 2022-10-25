@@ -1,9 +1,10 @@
-import Menu from "../Menu";
 import { Container, Conteudo, Header } from "../../styles/global";
 import { useState } from 'react';
 import InputMask from "react-input-mask";
 import { useNavigate } from 'react-router-dom';
+
 import api from '../../services/api';
+import Menu from "../Menu";
 import GerarUrl from "../../util/adicionar";
 import BuscarDadosApi from "../../util/util";
 import { AdicionarPrifissao } from "./styles";
@@ -35,7 +36,7 @@ export default function InserirFuncionario() {
     const url = GerarUrl("funcionario", "inserir");
 
     api.post(url, data)
-    history('/home');
+    history('/funcionarios');
   }
 
   function adicionarProfissao(valor: any, indice: any) {
@@ -43,23 +44,23 @@ export default function InserirFuncionario() {
     setProfissoesCadastradas(profissoesCadastradasAux);
   }
 
-  let selectProfissoes: any = [];
-  let optionProfissoes: any = []
+  const selecaoProfissao: any = [];
+  const opcoesProfissao: any = [];
   profissoes.forEach(element => {
-    optionProfissoes.push(
+    opcoesProfissao.push(
       <option value={element.id}>{element.nome}</option>
     );
   });
 
   for (let index = 0; index < quantidadeProfissoes; index++) {
-    selectProfissoes.push(
+    selecaoProfissao.push(
       <div>
         <select
           onChange={e => adicionarProfissao(e.target.value, index)}
           required
         >
           <option value={0}>Escolha a Profissão</option>
-          {optionProfissoes}
+          {opcoesProfissao}
         </select>
       </div>
     );
@@ -113,7 +114,7 @@ export default function InserirFuncionario() {
                 required
               />
             </div>
-            {selectProfissoes}
+            {selecaoProfissao}
             <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
               Adicionar mais uma profissão
             </AdicionarPrifissao>

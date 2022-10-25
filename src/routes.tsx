@@ -24,7 +24,7 @@ export default function Rota() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Logon />} />
-                <Route path="/register" element={<Registrar />} />
+                <Route path="/registrar" element={<Registrar />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/informacoes" element={<Informacoes />} />
                 <Route path="/escolher-horario" element={<EtapaCalendario />} />

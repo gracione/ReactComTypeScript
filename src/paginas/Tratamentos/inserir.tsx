@@ -73,7 +73,7 @@ export default function InserirTratamento() {
 
   function inserir() {
     const url = GerarUrl("tratamentos", "inserir");
-    
+
     api.post(url, data)
     history('/home');
   }
@@ -119,25 +119,23 @@ export default function InserirTratamento() {
               </select>
             </div>
 
-            <div className="display-flex">
-              <p className="border" >Filtro</p>
-              <p className="border">Porcentagem</p>
-            </div>
             <div>
               {matrix.map((row: any, tipoFiltro: any) => (
                 <div key={tipoFiltro} className="border">
                   <input
-                    type="text"
+                    placeholder="Nome do filtro"
                     onChange={e => nomeDoTipoFiltro(tipoFiltro, 0, e)}
                   />
                   {row.map((column: any, filtro: number) => (
                     <div className="display-flex" key={filtro}>
                       <input
+                        placeholder="Filtro"
                         name="filtro"
                         type="text"
                         onChange={e => nomeDoFiltro(tipoFiltro, filtro, e)}
                       />
                       <input
+                        placeholder="Porcentagem"
                         name="porcentagem"
                         type="number"
                         onChange={e => porcentagemDoFiltro(tipoFiltro, filtro, e)}

@@ -10,13 +10,12 @@ export default function Logon() {
   const [password, setPassword] = useState('');
   const history = useNavigate();
 
-  async function handleLogin(e) {
+  async function efetuarLogin(e) {
     e.preventDefault();
 
     try {
       const response = await api.post('/login', { email, password });
       localStorage.setItem('token', response.data);
-      localStorage.setItem('id_estabelecimento', '1');
       history('/home');
     } catch (err) {
       alert('Falha no login, tente novamente.');
@@ -26,10 +25,8 @@ export default function Logon() {
   return (
     <div className="login-container">
       <section className="form">
-        <center>
-          <img src='logo.svg' />
-        </center>
-        <form onSubmit={handleLogin}>
+        <img src='logo.svg' />
+        <form onSubmit={efetuarLogin}>
           <input
             name='email'
             placeholder="Seu e-mail"
@@ -48,7 +45,7 @@ export default function Logon() {
 
           <button className="button" type="submit">Entrar</button>
 
-          <Link className="back-link" to="/register">
+          <Link className="back-link" to="/registrar">
             <FiLogIn size={16} color="#3498db" />
             Não tenho cadastro
           </Link>
