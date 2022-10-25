@@ -8,44 +8,80 @@ import './styles.css';
 
 
 export default function Register() {
-  const [name, setName] = useState('');
+  const [nome, setNome] = useState('');
   const [numero, setNumero] = useState('');
   const [id_sexo, setId_Sexo] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [idEstabelecimento, setIdEstabelecimento] = useState(1);
 
+  const [erroNome, setErroNome] = useState(null)
+  const [erroNumero, setErroNumero] = useState(null)
+  const [erroId_sexo, setErroId_sexo] = useState(null)
+  const [erroEmail, setErroEmail] = useState(null)
+  const [erroPassword, setErroPassword] = useState(null)
   const history = useNavigate();
 
-  async function handleRegister(e) {
+  async function efetuarRegister(e) {
     e.preventDefault();
-
     const data = {
-      name,
+      nome,
       numero,
       id_sexo,
       email,
       password,
-      "password_confirmation": confirmPassword,
-      id_estabelecimento: idEstabelecimento,
+      "password_confirmation": confirmPassword
     };
 
     try {
       api.post('/registrarCliente', data)
-      .then(async (res) => {
-        if (res.data.access_token) {
-          const response = await api.post('/login', { email, password });
+        .then(async (res) => {
+          if (res.data.access_token) {
+            const response = await api.post('/registrarCliente', { email, password });
             localStorage.setItem('token', response.data.access_token);
-            localStorage.setItem('id_estabelecimento', '1');
             history('/home');
+          } else {
+            if (res.data.nome) {
+              setErroNome(
+                <div className='alerta-erro' >
+                  {res.data.nome[0]}
+                </div>
+              );
+            }
+            if (res.data.numero) {
+              setErroNumero(
+                <div className='alerta-erro' >
+                  {res.data.numero[0]}
+                </div>
+              );
+            }
+            if (res.data.id_sexo) {
+              setErroId_sexo(
+                <div className='alerta-erro' >
+                  {res.data.id_sexo[0]}
+                </div>
+              );
+            }
+            if (res.data.email) {
+              setErroEmail(
+                <div className='alerta-erro' >
+                  {res.data.email[0]}
+                </div>
+              );
+            }
+            if (res.data.password) {
+              setErroPassword(
+                <div className='alerta-erro' >
+                  {res.data.password[0]}
+                </div>
+              );
+            }
           }
         });
     } catch (err) {
       alert('Erro no cadastro, tente novamente.');
     }
   }
-
   return (
     <div className="register-container">
       <div className="content">
@@ -54,13 +90,14 @@ export default function Register() {
           <p>Faça seu cadastro, entre na plataforma e agende seu horario.</p>
 
         </section>
-        <form onSubmit={handleRegister}>
+        <form onSubmit={efetuarRegister}>
           <input
             placeholder="Seu Nome"
-            value={name}
-            onChange={e => setName(e.target.value)}
+            value={nome}
+            onChange={e => setNome(e.target.value)}
             required
           />
+          {erroNome}
 
           <InputMask
             mask="(99) 9 9999-9999"
@@ -69,6 +106,7 @@ export default function Register() {
             onChange={e => setNumero(e.target.value)}
             required
           />
+          {erroNumero}
 
           <select
             onChange={e => setId_Sexo(e.target.value)}
@@ -78,6 +116,7 @@ export default function Register() {
             <option value={1}>Masculino</option>
             <option value={2}>Feminino</option>
           </select>
+          {erroId_sexo}
           <input
             placeholder="Seu E-mail"
             value={email}
@@ -85,13 +124,7 @@ export default function Register() {
             onChange={e => setEmail(e.target.value)}
             required
           />
-          <input
-            className='display-none'
-            value="1"
-            type="text"
-            onChange={e => setIdEstabelecimento(1)}
-          />
-
+          {erroEmail}
           <input
             placeholder="Digite sua Senha"
             value={password}
@@ -99,6 +132,7 @@ export default function Register() {
             onChange={e => setPassword(e.target.value)}
             required
           />
+          {erroPassword}
 
           <input
             placeholder="Confirme sua Senha"
@@ -113,7 +147,6 @@ export default function Register() {
             <FiArrowLeft size={16} color="#3498db" />
             Já possuo cadastro
           </Link>
-
         </form>
       </div>
     </div>
