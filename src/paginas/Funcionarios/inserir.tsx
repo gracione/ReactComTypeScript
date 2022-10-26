@@ -17,7 +17,6 @@ export default function InserirFuncionario() {
   const [password, setPassword] = useState('');
   const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
   const profissoesCadastradasAux: any = profissoesCadastradas;
-  const idEstabelecimento = localStorage.getItem('id_estabelecimento');
   const profissoes = BuscarDadosApi('profissao', 'listar');
   const data = {
     nome,
@@ -25,7 +24,6 @@ export default function InserirFuncionario() {
     id_sexo,
     email,
     password,
-    id_estabelecimento: idEstabelecimento,
     profissoesCadastradas
   };
   const history = useNavigate();

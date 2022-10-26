@@ -17,7 +17,7 @@ export default function Adicionar() {
     console.log(token);
     const url =  GerarUrl("profissao","inserir");
 
-    api.post(url, { dados: dados, id_estabelecimento: 1 })
+    api.post(url, { dados: dados })
     history('/profissoes');
   }
 
@@ -34,8 +34,6 @@ export default function Adicionar() {
               onChange={e => setNome(e.target.value)}
               required
             />
-
-            <input type="text" name="id_estabelecimento" value="1" />
             <button>Salvar</button>
           </form>
         </Conteudo>

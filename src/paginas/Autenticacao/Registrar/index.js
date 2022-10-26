@@ -36,7 +36,7 @@ export default function Register() {
     try {
       api.post('/registrarCliente', data)
         .then(async (res) => {
-          if (res.data.access_token) {
+          if (res.data.token) {
             const response = await api.post('/registrarCliente', { email, password });
             localStorage.setItem('token', response.data.access_token);
             history('/home');

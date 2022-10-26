@@ -16,8 +16,7 @@ export default function Filtros(props: any) {
 
   useEffect(() => {
     api.post("/filtro/listar", {
-      id_tratamento: props.data,
-      id_estabelecimento: 1
+      id_tratamento: props.data
     })
       .then((response) => setFiltro(response.data))
       .catch((err) => {

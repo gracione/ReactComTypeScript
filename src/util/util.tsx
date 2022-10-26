@@ -8,8 +8,7 @@ export default function BuscarDadosApi(funcao: string, opcao: string): any[] {
   useEffect(() => {
     api
       .post(url, {
-        id: 1,
-        id_estabelecimento: 1
+        id: 1
       })
       .then((response) => setListagem(response.data));
   }, []);
