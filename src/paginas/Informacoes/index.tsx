@@ -40,6 +40,7 @@ export default function Home() {
                 onChange={e => setFiltro(e.target.value)}
                 required
               >
+                <option value="">------ Selecione ------</option>
                 {tratamentos}
               </select>
             </div>

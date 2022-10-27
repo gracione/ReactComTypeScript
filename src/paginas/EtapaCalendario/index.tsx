@@ -62,7 +62,7 @@ function EtapaCalendario() {
   const [ano, setAno] = useState(anoAtual);
   const [mes, setmes] = useState(mesAtual);
   const [dia, setDia] = useState(1);
-  let data = ano + "-" + mes + "-" + dia;
+  let data = ano + "-" + (mes+1) + "-" + dia;
   if (mes > 11) {
     setmes(0);
     setAno(ano + 1);

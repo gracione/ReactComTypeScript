@@ -21,7 +21,7 @@ function Card({ idHorario, cliente, funcionario, tratamento, telefone, horario, 
         api.post("/horario/desmarcar", {
             id: idHorario
         })
-        history('/home');
+        history('/home?desmarcado');
     }
     return (
         <>

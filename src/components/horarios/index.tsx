@@ -1,11 +1,14 @@
-import { Container } from "./styles";
+import { Container,HorariosDisponivel } from "./styles";
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
+import { Center } from "../../styles/global";
 
 export default function Horarios(props: any) {
   const [user, setUser] = useState([]);
   const idTratamento = localStorage.getItem('idTratamento');
   const idsFiltro = localStorage.getItem('idsFiltro');
+  const history = useNavigate();
 
   useEffect(() => {
     api
@@ -36,7 +39,6 @@ export default function Horarios(props: any) {
     )
   });
 
-  let listaHorarios: any = [];
   function agendarHorario(data: any, horario: any) {
     api
       .post("/horario/inserir", {
@@ -46,14 +48,16 @@ export default function Horarios(props: any) {
         idTratamento: idTratamento,
         idFuncionario: 1
       })
+    history('/home');
   }
   return (
     <Container >
-      <div>
+      <Center>
         {props.data + " " + horarioEscolhido}
-      </div>
-      {listaHorarios}
-      {horariosDisponivel}
+      </Center>
+      <HorariosDisponivel>
+        {horariosDisponivel}
+      </HorariosDisponivel>
       <button
         onClick={() => agendarHorario(props.data, horarioEscolhido)}
       >Agendar</button>
