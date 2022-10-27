@@ -17,10 +17,9 @@ export const GlobalStyle = createGlobalStyle`
 
 		--text-title: #363F5F;
 		--text-body: #969CB3;
-
 		--shape: #FFF;
-	}
 
+	}
 	* {
 		margin:0;
 		padding:0;
@@ -96,17 +95,11 @@ export const Container = styled.div`
 	.display-flex{
 		display: flex;
 	}
-
-
-    @media (max-width: 767px) {
-    
-    }
-
-    @media (min-width: 767px) {
-		display: flex ;
-		flex-direction: column ;
-    }
-
+	
+	height: 100% ;
+	display: flex ;
+	flex-direction: column ;
+	justify-content: space-between ;
 `;
 
 export const Conteudo = styled.div`
@@ -166,3 +159,14 @@ export const AdicionarItem = styled.div`
 	background-color:var(--blue-light) ;
 	color: var(--shape) ;
 `;
+export const Button = styled.div`
+	width: 90% ;
+	height: 25px ;
+	background-color: var(--blue) ;
+	border-radius: 5px ;
+	color: white ;
+
+	display: flex ;
+	justify-content: center ;
+	align-items: center ;
+`
