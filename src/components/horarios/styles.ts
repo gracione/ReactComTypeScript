@@ -6,6 +6,22 @@ export const HorarioDisponivel = styled.div`
     height: 30px;
     border-radius: 4px;
     margin-top: 5px;
+    background-color: red;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:active {
+        opacity: 0.6;
+    }
+    `;
+
+export const HorarioSelecionado = styled.div`
+    margin: 1px;
+    width: 20%;
+    height: 30px;
+    border-radius: 4px;
+    margin-top: 5px;
     background-color: var(--blue-light);
 
     display: flex;
@@ -21,4 +37,9 @@ export const HorariosDisponivel = styled.div`
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+`;
+
+export const DataSelecionada = styled.div`
+    border-radius: 4px;
+    padding: 10px ;
 `;

@@ -4,11 +4,30 @@ function organizarSemana(diaSemana: any, props: any) {
   let semana: any = [];
 
   diaSemana.forEach((element: string) => {
-    semana.push(<li
-      className="dia"
-      onClick={() => props.setDia(element)}
-      >
-        {element}</li>);
+    let className = "dia";
+    if (props.dia == element) {
+      className = "dia selecionado";
+    }
+
+    if (element != 'x') {
+      semana.push(
+        <div
+          className={className}
+          onClick={
+            () => props.setDia(element)
+          }
+        >
+          {element}
+        </div>
+      );
+    } else {
+      semana.push(
+        <div className="dia" >
+          {element}
+        </div>
+      );
+    }
+
   });
 
   return semana;
@@ -25,7 +44,7 @@ export default function Calendario(props: any) {
   sabado = organizarSemana(props.dias[6], props);
 
   return (
-      <Container>
+    <Container>
       <ul className="diasSemana" >
         <li>Dom</li>
         <li>Seg</li>

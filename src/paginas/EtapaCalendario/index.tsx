@@ -86,6 +86,7 @@ function EtapaCalendario() {
             <Calendario
               dias={criarArrayCalendario(ano, mes)}
               setDia={setDia}
+              dia={dia}
             />
           </Center>
         </Conteudo>

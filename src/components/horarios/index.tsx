@@ -1,4 +1,4 @@
-import { HorarioDisponivel, HorariosDisponivel } from "./styles";
+import { HorarioSelecionado, DataSelecionada, HorarioDisponivel, HorariosDisponivel } from "./styles";
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../services/api';
@@ -24,17 +24,29 @@ export default function Horarios(props: any) {
       });
   }, [props.data]);
 
-  const [horarioEscolhido, setHorarioEscolhido] = useState(0);
+  const [horarioEscolhido, setHorarioEscolhido] = useState('');
   let horariosDisponivel: any = [];
 
   user.forEach((element: any) => {
-    horariosDisponivel.push(
-      <HorarioDisponivel
-        onClick={() => setHorarioEscolhido(element.inicio)}
-      >
-        {element.inicio}
-      </HorarioDisponivel>
-    )
+    if (horarioEscolhido == element.inicio) {
+      horariosDisponivel.push(
+        <HorarioDisponivel
+          onClick={() => setHorarioEscolhido(element.inicio)}
+        >
+          {element.inicio}
+        </HorarioDisponivel>
+      )
+
+    } else {
+      horariosDisponivel.push(
+        <HorarioSelecionado
+          onClick={() => setHorarioEscolhido(element.inicio)}
+        >
+          {element.inicio}
+        </HorarioSelecionado>
+      )
+
+    }
   });
 
   function agendarHorario(data: any, horario: any) {
@@ -52,7 +64,9 @@ export default function Horarios(props: any) {
     <Container >
       <div>
         <Center>
-          {props.data + " " + horarioEscolhido}
+          <DataSelecionada>
+            Data Selecionada {props.data + " " + horarioEscolhido}
+          </DataSelecionada>
         </Center>
         <HorariosDisponivel>
           {horariosDisponivel}
@@ -65,6 +79,7 @@ export default function Horarios(props: any) {
         >
           Agendar
         </Button>
+
       </Center>
     </Container>
   );
