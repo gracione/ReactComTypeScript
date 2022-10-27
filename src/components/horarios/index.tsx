@@ -5,29 +5,26 @@ import api from '../../services/api';
 import { Container, Button, Center, Conteudo } from "../../styles/global";
 
 export default function Horarios(props: any) {
-  const [user, setUser] = useState([]);
+  const [horario, setHorarios] = useState([]);
+  const [horarioEscolhido, setHorarioEscolhido] = useState('');
   const idTratamento = localStorage.getItem('idTratamento');
   const idsFiltro = localStorage.getItem('idsFiltro');
   const history = useNavigate();
 
+
   useEffect(() => {
-    api
-      .post("/horarios-disponivel", {
-        data: props.data,
-        idFuncionario: 1,
-        idFiltro: idsFiltro,
-        idTratamento: idTratamento
-      })
-      .then((response) => setUser(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
+    api.post("/horarios-disponivel", {
+      data: props.data,
+      idFuncionario: 1,
+      idFiltro: idsFiltro,
+      idTratamento: idTratamento
+    }).then((response) => setHorarios(response.data));
+    setHorarioEscolhido('');
   }, [props.data]);
 
-  const [horarioEscolhido, setHorarioEscolhido] = useState('');
   let horariosDisponivel: any = [];
 
-  user.forEach((element: any) => {
+  horario.forEach((element: any) => {
     if (horarioEscolhido == element.inicio) {
       horariosDisponivel.push(
         <HorarioDisponivel
