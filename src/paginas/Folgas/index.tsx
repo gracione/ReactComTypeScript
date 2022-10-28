@@ -10,7 +10,7 @@ export default function Folgas() {
           <Conteudo>
             <h1>Folgas</h1>
           </Conteudo>
-          <Adicionar href="profissoes/adicionar">+</Adicionar>
+          <Adicionar href="folga/adicionar">+</Adicionar>
 
         </Header>
     </Container>

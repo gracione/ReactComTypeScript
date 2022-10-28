@@ -25,7 +25,8 @@ export default function Expediente() {
     <Container>
       <Menu></Menu>
       <Header>
-        <Conteudo>          LISTAR
+        <Conteudo>
+          LISTAR
 
           <table border={1} width="100%">
             <tr>

@@ -16,7 +16,7 @@ export default function Feriados() {
             {listarFuncionarios}
           </div>
         </Conteudo>
-        <Adicionar href="profissoes/adicionar">+</Adicionar>
+        <Adicionar href="feriado/adicionar">+</Adicionar>
       </Header>
     </Container>
   );
