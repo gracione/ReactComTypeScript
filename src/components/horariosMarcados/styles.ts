@@ -39,7 +39,7 @@ export const Cartao = styled.div`
     .dados-usuario{
         width:60%;
         .cliente{
-        font-size: 24px !important ;
+        font-size: 15px !important ;
         color: var(--blue);
     }
     ul{

@@ -14,7 +14,7 @@ export default function Home() {
         <div className="agendar-horario" >
           <AgendarHorario>
             <label>Agendar Horário</label>
-            <input type="text" value='oiii' name="cliente" placeholder="Digite o nome do cliente" />
+            <input type="text" name="cliente" placeholder="Digite o nome do cliente" />
             <Funcionarios></Funcionarios>
           </AgendarHorario>
           <CompartilheLink>

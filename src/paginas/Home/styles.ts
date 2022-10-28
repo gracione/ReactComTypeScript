@@ -91,11 +91,10 @@ export const HorariosMarcados = styled.div`
 
     @media (min-width: 767px) {
         width: 500px;
-        height: 600px ;
+        min-height: 500px ;
         border: solid var(--borda) 2px;
         border-radius: 10px ;
         background-color: var(--backgroud-secundaria);
-
     }
 
 `;
