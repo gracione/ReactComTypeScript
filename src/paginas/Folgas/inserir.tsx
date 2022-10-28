@@ -7,17 +7,11 @@ import GerarUrl from "../../util/adicionar";
 import { useNavigate } from 'react-router-dom';
 
 export default function InserirFolga() {
-  const [inicioExpediente, setInicioExpediente] = useState('');
-  const [inicioAlmoco, setInicioAlmoco] = useState('');
-  const [fimAlmoco, setFimAlmoco] = useState('');
-  const [fimExpediente, setFimExpediente] = useState('');
+  const [diaSemana, setDiaSemana] = useState('');
   const [idFuncionario, setIdFuncionario] = useState('');
   const funcionario = BuscarDadosApi('funcionario', 'listar');
-  const data = {
-    inicioExpediente,
-    inicioAlmoco,
-    fimAlmoco,
-    fimExpediente,
+  const dados = {
+    diaSemana,
     idFuncionario
   };
   const history = useNavigate();
@@ -29,10 +23,10 @@ export default function InserirFolga() {
     );
   });
   function inserir() {
-    const url = GerarUrl("expediente", "inserir");
+    const url = GerarUrl("folga", "inserir");
 
-    api.post(url, data)
-    history('/expediente');
+    api.post(url, dados)
+    history('/folgas');
   }
 
   return (
@@ -40,16 +34,28 @@ export default function InserirFolga() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <h1>Horario de funcionamento</h1>
+          <h1>Adicionar folga ao funcionario</h1>
           <form onSubmit={inserir}>
             <select
               onChange={e => setIdFuncionario(e.target.value)}
               required
             >
-              <option >Escolha a Profissão</option>
+              <option >Escolha o Funcionario</option>
               {optionFuncionarios}
             </select>
-            <input type="date" placeholder="Inicio Expediente" onChange={e => setInicioExpediente(e.target.value)} />
+            <select
+              onChange={e => setDiaSemana(e.target.value)}
+              required
+            >
+              <option >Dia da Semana</option>
+              <option value={1}>Domingo</option>
+              <option value={2}>Segunda Feira</option>
+              <option value={3}>Terça Feira</option>
+              <option value={4}>Quarta Feira</option>
+              <option value={5}>Quinta Feira</option>
+              <option value={6}>Sexta Feira</option>
+              <option value={7}>Sabado</option>
+            </select>
             <button type="submit">Salvar</button>
           </form>
         </Conteudo>
