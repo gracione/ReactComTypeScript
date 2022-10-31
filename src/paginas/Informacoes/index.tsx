@@ -11,7 +11,7 @@ export default function Home() {
   useEffect(() => {
     api
       .post("/tratamento/listarPorFuncionario", {
-        id_profissao: localStorage.getItem("idFuncionario")
+        id_profissao: 1
       })
       .then((response) => setTratamento(response.data));
   }, []);

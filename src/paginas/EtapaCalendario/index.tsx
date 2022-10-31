@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import Calendario from '../../components/calendario';
 import Horarios from '../../components/horarios';
 import { Center, Container, Conteudo } from "../../styles/global";
@@ -9,7 +9,8 @@ function criarArrayCalendario(ano = 0, mes = 0) {
   let mesAtual = mes + 1;
   let anoAtual = ano;
   let diasDoMes = new Date(anoAtual, mesAtual, 0).getDate();
-  let dadosCalendario: any = []
+  let dadosCalendario: any = [];
+
 
   dadosCalendario[0] = [];
   dadosCalendario[1] = [];
@@ -62,7 +63,7 @@ function EtapaCalendario() {
   const [ano, setAno] = useState(anoAtual);
   const [mes, setmes] = useState(mesAtual);
   const [dia, setDia] = useState(1);
-  let data = ano + "-" + (mes+1) + "-" + dia;
+  let data = ano + "-" + (mes + 1) + "-" + dia;
   if (mes > 11) {
     setmes(0);
     setAno(ano + 1);

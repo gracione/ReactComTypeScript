@@ -1,6 +1,7 @@
 import { Container } from "./styles";
+import BuscarDadosApi from "../../util/util";
 
-function organizarSemana(diaSemana: any, props: any) {
+function organizarSemana(diaSemana: any, props: any,folga: any) {
   let semana: any = [];
 
   diaSemana.forEach((element: string) => {
@@ -10,17 +11,26 @@ function organizarSemana(diaSemana: any, props: any) {
     }
 
     if (element != 'x') {
-      semana.push(
-        <div
-          className={className}
-          onClick={
-            () => props.setDia(element)
-          }
-        >
-          {element}
-        </div>
-      );
-    } else {
+      if(folga) {
+        semana.push(
+          <div className="dia" >
+            folga
+          </div>
+        );
+      } else {
+        semana.push(
+          <div
+            className={className}
+            onClick={
+              () => props.setDia(element)
+            }
+          >
+            {element}
+          </div>
+        );
+      }
+    }
+    else {
       semana.push(
         <div className="dia" >
           {element}
@@ -34,14 +44,30 @@ function organizarSemana(diaSemana: any, props: any) {
 }
 
 export default function Calendario(props: any) {
-  let domingo, segunda, terca, quarta, quinta, sexta, sabado: any;
-  domingo = organizarSemana(props.dias[0], props);
-  segunda = organizarSemana(props.dias[1], props);
-  terca = organizarSemana(props.dias[2], props);
-  quarta = organizarSemana(props.dias[3], props);
-  quinta = organizarSemana(props.dias[4], props);
-  sexta = organizarSemana(props.dias[5], props);
-  sabado = organizarSemana(props.dias[6], props);
+
+  let dados: any = {
+    idFuncionario: 1
+  }
+  const folgaFuncionario = BuscarDadosApi('folga', 'listarById', dados);
+
+
+  let calendario: any = [];
+  let folga = false;
+  for (let index = 0; index <= 6; index++) {
+    folga = false;
+    // eslint-disable-next-line no-loop-func
+    folgaFuncionario.forEach((element):any => {
+      // eslint-disable-next-line eqeqeq
+      if(index == element.dia_semana) {
+        folga = true
+      }
+    });
+    calendario.push(
+      <ul>
+        {organizarSemana(props.dias[index], props, folga)}
+      </ul>
+    )
+  }
 
   return (
     <Container>
@@ -55,27 +81,7 @@ export default function Calendario(props: any) {
         <li>Sab</li>
       </ul>
       <div className="mes" >
-        <ul>
-          {domingo}
-        </ul>
-        <ul>
-          {segunda}
-        </ul>
-        <ul>
-          {terca}
-        </ul>
-        <ul>
-          {quarta}
-        </ul>
-        <ul>
-          {quinta}
-        </ul>
-        <ul>
-          {sexta}
-        </ul>
-        <ul>
-          {sabado}
-        </ul>
+        {calendario}
       </div>
     </Container>
   );
