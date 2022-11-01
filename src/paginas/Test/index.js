@@ -7,7 +7,6 @@ import './styles.css';
 export default function Home() {
   
   const [token] = useState(localStorage.getItem('token'));
-  const [taskList, setTaskList] = useState([]);
 
   const history = useNavigate();
   useEffect(() => {

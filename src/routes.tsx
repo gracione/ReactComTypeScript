@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Logon from './paginas/Autenticacao/Login/index';
 import Home from './paginas/Home/index';

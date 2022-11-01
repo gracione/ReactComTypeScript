@@ -6,6 +6,7 @@ import Filtros from "./filtro";
 
 export default function Home() {
   const [idTratamento, setTratamento] = useState([]);
+  const [tempoGasto, setTempoGasto] = useState('');
   let tratamentos: any = [];
 
   useEffect(() => {
@@ -27,6 +28,14 @@ export default function Home() {
   });
   const [filtro, setFiltro] = useState('');
   localStorage.setItem('idTratamento', filtro)
+  useEffect(() => {
+    api
+      .post("/horario/tempo-gasto", {
+        filtros: localStorage.getItem('idsFiltro'),
+        tratamento: filtro
+      })
+      .then((response) => setTempoGasto(response.data));
+  }, [filtro,localStorage.getItem('idsFiltro')]);
 
   return (
     <Container>
@@ -34,6 +43,7 @@ export default function Home() {
       <Header>
         <Conteudo>
           <form action="/escolher-horario">
+            <div>Tempo gasto aproximado {tempoGasto}</div>
             <div>
               <label htmlFor="">Tratamento</label>
               <select

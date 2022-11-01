@@ -6,13 +6,12 @@ export default function BuscarDadosApi(funcao: string, opcao: string, dados = nu
   const url = "/" + funcao + "/" + opcao;
 
   useEffect(() => {
-    api
-      .post(url, {
+    api.post(url, {
         id: 1,
         dados: dados
       })
       .then((response) => setListagem(response.data));
-  }, []);
+  }, [localStorage.getItem('token')]);
 
   return listagem;
 }

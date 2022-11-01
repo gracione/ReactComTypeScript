@@ -5,12 +5,9 @@ import { CardFuncionario, CardAdicionarFuncionario, Container } from "./styles";
 
 export default function Funcionarios() {
   const [idFuncionario, setIdFuncionario] = useState('');
-
-  const funcionario = BuscarDadosApi('funcionario', 'listar');
-
-  localStorage.setItem('idFuncionario', idFuncionario);
-
+  const funcionario = BuscarDadosApi('funcionario', 'listar');  
   let funcionariosDisponivel: any = [];
+  localStorage.setItem('idFuncionario', idFuncionario);
 
   funcionario.forEach((element: any) => {
     funcionariosDisponivel.push(

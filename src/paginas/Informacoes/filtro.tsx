@@ -39,7 +39,7 @@ export default function Filtros(props: any) {
         <select
           onChange={e => adicionarFiltros(element.id, e)}
         >
-
+          <option value="">------ Selecione ------</option>
           {(element.filtro).map((row: any) => (
             <option
               value={row.id}
