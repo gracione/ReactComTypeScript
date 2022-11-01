@@ -40,7 +40,7 @@ export default function InserirExpediente() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <h1>Horario de funcionamento</h1>
+          <h1>Adicionar Expediente</h1>
           <form onSubmit={inserir}>
             <select
               onChange={e => setIdFuncionario(e.target.value)}

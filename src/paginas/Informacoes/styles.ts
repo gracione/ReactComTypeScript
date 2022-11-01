@@ -24,14 +24,6 @@ export const Conteudo = styled.div`
         justify-content: space-around ;
     }
 
-    form{
-			display: flex ;
-			flex-direction: column;
-			justify-content: space-between;
-			height: 100% ;
-		}
-
-
     .agendar-horario{
         height: 350px ;
 
