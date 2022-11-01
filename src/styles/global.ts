@@ -85,6 +85,13 @@ export const GlobalStyle = createGlobalStyle`
 	a{
 		text-decoration: none ;
 	}
+	form{
+		height: 100% ;
+		display: flex ;
+		flex-direction: column ;
+		justify-content: space-between ;	
+	}
+
 `;
 
 export const Container = styled.div`

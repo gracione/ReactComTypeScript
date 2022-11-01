@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Conteudo, Header } from "../../styles/global";
+import { Button, Center, Container, Conteudo, Header } from "../../styles/global";
 import api from "../../services/api";
 import Menu from "../Menu";
 import Filtros from "./filtro";
@@ -10,8 +10,8 @@ export default function Informacoes() {
   const [tempoGasto, setTempoGasto] = useState(0);
   const [idTratamento, setIdTratamento] = useState('');
   const tratamentos: any = [];
-  const [idFiltro,setIdFiltro]=useState('0');
-  const { idFuncionario,idProfissao } = useParams();
+  const [idFiltro, setIdFiltro] = useState('0');
+  const { idFuncionario, idProfissao } = useParams();
   let tratamentoPorProfissao = BuscarDadosApi('tratamentos', 'listar-profissao', { idProfissao });
   tratamentoPorProfissao.forEach((element: any) => {
     tratamentos.push(
@@ -29,16 +29,16 @@ export default function Informacoes() {
         tratamento: idTratamento
       })
       .then((response) => setTempoGasto(response.data));
-  }, [idTratamento,idFiltro]);
+  }, [idTratamento, idFiltro]);
 
   return (
     <Container>
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <form action={"/escolher-horario/"+idFuncionario+"/"+idProfissao+"/"+idTratamento+"/"+idFiltro+"/"}>
-            <div>Tempo gasto aproximado {tempoGasto}</div>
+          <form action={"/escolher-horario/" + idFuncionario + "/" + idProfissao + "/" + idTratamento + "/" + idFiltro + "/"}>
             <div>
+              <div>Tempo gasto aproximado {tempoGasto}</div>
               <label htmlFor="">Tratamento</label>
               <select
                 onChange={e => setIdTratamento(e.target.value)}
@@ -52,9 +52,7 @@ export default function Informacoes() {
               data={idTratamento}
               setIdFiltro={setIdFiltro}
             />
-            <div>
-              <button>Prosseguir</button>
-            </div>
+            <button>Prosseguir</button>
           </form>
         </Conteudo>
       </Header>

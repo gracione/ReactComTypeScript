@@ -68,14 +68,11 @@ export default function Horarios(props: any) {
         </HorariosDisponivel>
 
       </div>
-      <Center>
-        <Button
-          onClick={() => agendarHorario(props.data, horarioEscolhido)}
-        >
-          Agendar
-        </Button>
-
-      </Center>
+      <button
+        onClick={() => agendarHorario(props.data, horarioEscolhido)}
+      >
+        Agendar
+      </button>
     </Container>
   );
 }
