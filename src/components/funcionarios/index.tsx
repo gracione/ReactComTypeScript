@@ -4,28 +4,22 @@ import BuscarDadosApi from "../../util/util";
 import { CardFuncionario, CardAdicionarFuncionario, Container } from "./styles";
 
 export default function Funcionarios() {
-  const [idFuncionario, setIdFuncionario] = useState('');
-  localStorage.setItem('idFuncionario', idFuncionario);
-
   let funcionario = BuscarDadosApi('funcionario', 'listar');
   let funcionariosDisponivel: any = [];
 
   funcionario.forEach((element: any) => {
     console.log(element);
     funcionariosDisponivel.push(
-      <CardFuncionario>
-        <a href={"informacoes/" + element.id+"/"+element.id_profissao}>
-
-          <label htmlFor={element.id}>
+      <CardFuncionario href={"informacoes/" + element.id+"/"+element.id_profissao}>
+          <h5>
             {element.nome}
-          </label>
-          <label htmlFor={element.id}>
+          </h5>
+          <h6>
             {element.funcao}
-          </label>
-          <label htmlFor={element.id}>
+          </h6>
+          <h2>
             {element.id}
-          </label>
-        </a>
+          </h2>
       </CardFuncionario>
     )
   });

@@ -11,7 +11,7 @@ export const Container = styled.div`
     }
 `;
 
-export const CardFuncionario = styled.button`
+export const CardFuncionario = styled.a`
         input{
             display: none ;
         }
