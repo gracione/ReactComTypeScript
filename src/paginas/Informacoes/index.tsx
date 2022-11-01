@@ -21,6 +21,7 @@ export default function Informacoes() {
     )
   });
   localStorage.setItem('idTratamento', idTratamento);
+  localStorage.setItem('idFiltro', idFiltro);
   useEffect(() => {
     api
       .post("/horario/tempo-gasto", {

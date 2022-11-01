@@ -28,6 +28,7 @@ export default function Rota() {
 
                     <Route path="/" element={<Logon />} />
                     <Route path="/registrar" element={<Registrar />} />
+                    <Route path="/home" element={<Home />} />
                     <Route path="/informacoes" element={<Informacoes />} />
                     <Route path="/escolher-horario" element={<EtapaCalendario />} />
 

@@ -1,7 +1,7 @@
 import Menu from "../Menu";
-import { useState } from 'react';
 import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
+import ExcluirDadosApi from "../../util/excluir";
 
 export default function Expediente() {
   let expediente = BuscarDadosApi('expediente', 'listar');
@@ -16,7 +16,7 @@ export default function Expediente() {
         <td>{element.inicio1}</td>
         <td>{element.fim2}</td>
         <td>EDITAR</td>
-        <td>EXCLUIR</td>
+        <td onClick={() => ExcluirDadosApi('expediente','excluir',element.id)} >EXCLUIR</td>
       </tr>
     );
   });
