@@ -1,32 +1,28 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 import api from '../../src/services/api';
-import { useNavigate } from 'react-router-dom';
 
-export default function listarEditarExcluir(funcionarios: any[], funcao: string): any[] {
+export default function listarEditarExcluir(listagem: any[], funcao: string): any[] {
   let listar: any = [];
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const history = useNavigate();
+
   function excluir(id: any) {
     api.post("/" + funcao + "/excluir", {
       id: id
     })
-    history('/' + funcao);
   }
 
-  function alterar(id: any) {
-    localStorage.setItem('idDadosAlterar', id);
-    history("/" + funcao + "/alterar");
-  }
-
-  funcionarios.forEach((element: any) => {
+  let link:any = [];
+  listagem.forEach((element: any) => {
+    link['editar'] = "/"+funcao+"/alterar/"+element.id;
+    link['listagem'] = "/"+funcao;
     listar.push(
       <div className='editar-excluir' >
         <label>
 
           {element.nome}
         </label>
-        <div onClick={() => alterar(element.id)} className='editar'></div>
-        <div onClick={() => excluir(element.id)} className='excluir'>x</div>
+        <a href={link['editar']} className='editar'></a>
+        <a href={link['listagem']} onClick={() => excluir(element.id)} className='excluir'>x</a>
       </div>
     )
   });

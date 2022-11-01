@@ -12,9 +12,7 @@ export default function Feriados() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <div className="editar-excluir" >
             {listarFuncionarios}
-          </div>
         </Conteudo>
         <Adicionar href="feriado/adicionar">+</Adicionar>
       </Header>

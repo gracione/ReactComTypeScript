@@ -20,12 +20,12 @@ import AlterarTratamento from "./paginas/Tratamentos/alterar";
 import InserirExpediente from "./paginas/Expediente/inserir";
 import InserirFeriado from "./paginas/Feriados/inserir";
 import InserirFolga from "./paginas/Folgas/inserir";
+import AlterarFeriado from './paginas/Feriados/alterar';
 
 export default function Rota() {
     return (
         <BrowserRouter>
                 <Routes>
-
                     <Route path="/" element={<Logon />} />
                     <Route path="/registrar" element={<Registrar />} />
                     <Route path="/home" element={<Home />} />
@@ -39,6 +39,7 @@ export default function Rota() {
 
                     <Route path="/feriados" element={<Feriados />} />
                     <Route path="/feriado/adicionar" element={< InserirFeriado />} />
+                    <Route path="/feriados/alterar/:idFeriado" element={< AlterarFeriado />} />
 
                     <Route path="/folgas" element={<Folgas />} />
                     <Route path="/folga/adicionar" element={< InserirFolga />} />
