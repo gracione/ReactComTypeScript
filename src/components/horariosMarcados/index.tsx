@@ -6,13 +6,13 @@ import Card from './card';
 export default function HorariosMarcado() {
   const [horariosMarcados, setHorariosMarcados] = useState([]);
   const idTratamento = localStorage.getItem('idTratamento');
-  const idsFiltro = localStorage.getItem('idsFiltro');
+  const idFiltro = localStorage.getItem('idFiltro');
 
   useEffect(() => {
     api
       .post("/horarios-marcados", {
         idFuncionario: localStorage.getItem("idFuncionario"),
-        idFiltro: idsFiltro,
+        idFiltro: idFiltro,
         idTratamento: idTratamento
       })
       .then((response) => setHorariosMarcados(response.data))

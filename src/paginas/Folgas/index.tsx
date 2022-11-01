@@ -4,7 +4,7 @@ import BuscarDadosApi from "../../util/util";
 import listarEditarExcluir from "../../util/listar";
 
 export default function Folgas() {
-  const folgas = BuscarDadosApi('folga', 'listar');
+  let folgas = BuscarDadosApi('folga', 'listar');
   const listarFolgas = listarEditarExcluir(folgas, 'folga');
 
   return (

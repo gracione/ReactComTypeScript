@@ -68,8 +68,8 @@ export default function Calendario(props: any) {
     mes: props.mes,
     ano: props.ano
   }
-  const folgaFuncionario = BuscarDadosApi('folga', 'listarById', dados);
-  const feriados = BuscarDadosApi('feriados', 'listarFeriadoPorMes', data);
+  let folgaFuncionario = BuscarDadosApi('folga', 'listarById', dados);
+  let feriados = BuscarDadosApi('feriados', 'listarFeriadoPorMes', data);
   console.log(feriados);
 
   let calendario: any = [];

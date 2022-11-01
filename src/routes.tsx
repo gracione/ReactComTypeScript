@@ -24,36 +24,36 @@ import InserirFolga from "./paginas/Folgas/inserir";
 export default function Rota() {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<Logon />} />
-                <Route path="/registrar" element={<Registrar />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/informacoes" element={<Informacoes />} />
-                <Route path="/escolher-horario" element={<EtapaCalendario />} />
+                <Routes>
 
-                <Route path="/funcionarios" element={<Funcionarios />} />
-                <Route path="/funcionario/alterar" element={<AlterarFuncionario />} />
-                <Route path="/funcionarios/inserir" element={<InserirFuncionario />} />
+                    <Route path="/" element={<Logon />} />
+                    <Route path="/registrar" element={<Registrar />} />
+                    <Route path="/informacoes" element={<Informacoes />} />
+                    <Route path="/escolher-horario" element={<EtapaCalendario />} />
 
-                <Route path="/feriados" element={<Feriados />} />
-                <Route path="/feriado/adicionar" element={< InserirFeriado/>} />
- 
-                <Route path="/folgas" element={<Folgas />} />
-                <Route path="/folga/adicionar" element={< InserirFolga/>} />
+                    <Route path="/funcionarios" element={<Funcionarios />} />
+                    <Route path="/funcionario/alterar" element={<AlterarFuncionario />} />
+                    <Route path="/funcionarios/inserir" element={<InserirFuncionario />} />
 
-                <Route path="/expediente" element={<Expediente />} />
-                <Route path="/expediente/adicionar" element={< InserirExpediente/>} />
+                    <Route path="/feriados" element={<Feriados />} />
+                    <Route path="/feriado/adicionar" element={< InserirFeriado />} />
 
-                <Route path="/tratamentos" element={<Tratamentos />} />
-                <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
-                <Route path="/tratamentos/alterar" element={<AlterarTratamento />} />
+                    <Route path="/folgas" element={<Folgas />} />
+                    <Route path="/folga/adicionar" element={< InserirFolga />} />
 
-                <Route path="/configuracoes" element={<Configuracoes />} />
+                    <Route path="/expediente" element={<Expediente />} />
+                    <Route path="/expediente/adicionar" element={< InserirExpediente />} />
 
-                <Route path="/profissoes" element={<Profissoes />} />
-                <Route path="/profissoes/adicionar" element={<AdicionarProfissao />} />
-                <Route path="/profissoes/alterar" element={<AlterarProfissao />} />
-            </Routes>
-        </BrowserRouter>
+                    <Route path="/tratamentos" element={<Tratamentos />} />
+                    <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
+                    <Route path="/tratamentos/alterar" element={<AlterarTratamento />} />
+
+                    <Route path="/configuracoes" element={<Configuracoes />} />
+
+                    <Route path="/profissoes" element={<Profissoes />} />
+                    <Route path="/profissoes/adicionar" element={<AdicionarProfissao />} />
+                    <Route path="/profissoes/alterar" element={<AlterarProfissao />} />
+                </Routes>
+        </BrowserRouter >
     );
 }

@@ -4,7 +4,7 @@ import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
 
 export default function Expediente() {
-  const expediente = BuscarDadosApi('expediente', 'listar');
+  let expediente = BuscarDadosApi('expediente', 'listar');
   console.log(expediente);
   const horarioTrabalho: any = [];
   expediente.forEach(element => {

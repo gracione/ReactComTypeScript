@@ -16,7 +16,7 @@ export default function InserirFuncionario() {
   const [password, setPassword] = useState('');
   const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
   const profissoesCadastradasAux: any = profissoesCadastradas;
-  const profissoes = BuscarDadosApi('profissao', 'listar');
+  let profissoes = BuscarDadosApi('profissao', 'listar');
   const history = useNavigate();
   let selectProfissoes: any = [];
   let optionProfissoes: any = []

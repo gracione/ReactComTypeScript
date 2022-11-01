@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export default function InserirFolga() {
   const [diaSemana, setDiaSemana] = useState('');
   const [idFuncionario, setIdFuncionario] = useState('');
-  const funcionario = BuscarDadosApi('funcionario', 'listar');
+  let funcionario = BuscarDadosApi('funcionario', 'listar');
   const dados = {
     diaSemana,
     idFuncionario

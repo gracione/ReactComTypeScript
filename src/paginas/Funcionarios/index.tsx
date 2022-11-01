@@ -4,7 +4,7 @@ import BuscarDadosApi from "../../util/util";
 import listarEditarExcluir from "../../util/listar";
 
 export default function Funcionarios() {
-  const funcionarios = BuscarDadosApi('funcionario', 'listar');
+  let funcionarios = BuscarDadosApi('funcionario', 'listar');
   const listarFuncionarios = listarEditarExcluir(funcionarios, 'funcionarios');
 
   return (

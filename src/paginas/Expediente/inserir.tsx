@@ -12,7 +12,7 @@ export default function InserirExpediente() {
   const [fimAlmoco, setFimAlmoco] = useState('');
   const [fimExpediente, setFimExpediente] = useState('');
   const [idFuncionario, setIdFuncionario] = useState('');
-  const funcionario = BuscarDadosApi('funcionario', 'listar');
+  let funcionario = BuscarDadosApi('funcionario', 'listar');
   const data = {
     inicioExpediente,
     inicioAlmoco,

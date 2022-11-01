@@ -8,7 +8,7 @@ export default function Horarios(props: any) {
   const [horario, setHorarios] = useState([]);
   const [horarioEscolhido, setHorarioEscolhido] = useState('');
   const idTratamento = localStorage.getItem('idTratamento');
-  const idsFiltro = localStorage.getItem('idsFiltro');
+  const idFiltro = localStorage.getItem('idFiltro');
   const history = useNavigate();
 
 
@@ -16,7 +16,7 @@ export default function Horarios(props: any) {
     api.post("/horarios-disponivel", {
       data: props.data,
       idFuncionario: 1,
-      idFiltro: idsFiltro,
+      idFiltro: idFiltro,
       idTratamento: idTratamento
     }).then((response) => setHorarios(response.data));
     setHorarioEscolhido('');

@@ -1,7 +1,6 @@
 import HorariosMarcado from "../../components/horariosMarcados";
 import Funcionarios from "../../components/funcionarios";
 import Menu from "../Menu/index";
-
 import { Conteudo, Container, AgendarHorario, CompartilheLink, HorariosMarcados } from "./styles";
 
 export default function Home() {

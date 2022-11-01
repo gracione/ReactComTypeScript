@@ -10,7 +10,8 @@ export default function Filtros(props: any) {
   const adicionarFiltros = (row: any, event: any) => {
     let copy: any = [...matrisFiltros];
     copy[row] = event.target.value;
-    localStorage.setItem('idsFiltro', copy);
+    props.setIdFiltro(copy);
+    localStorage.setItem('idFiltro', copy);
     setMatrisFiltros(copy);
   };
 

@@ -4,7 +4,7 @@ import api from '../../services/api';
 import Menu from '../Menu';
 import './styles.css';
 
-export default function Home() {
+export default function Test() {
   
   const [token] = useState(localStorage.getItem('token'));
 

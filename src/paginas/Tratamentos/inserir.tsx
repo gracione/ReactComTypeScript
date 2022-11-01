@@ -11,7 +11,7 @@ export default function InserirTratamento() {
   const [horas, setHoras] = useState('');
   const [minutos, setMinutos] = useState('');
   const [idProfissao, setIdProfissao] = useState("");
-  const profissoes = BuscarDadosApi('profissao', 'listar');
+  let profissoes = BuscarDadosApi('profissao', 'listar');
 
   const [matrix, setMatrix] = useState(
     Array.from({ length: 1 },
