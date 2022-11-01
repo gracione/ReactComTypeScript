@@ -5,30 +5,27 @@ import { CardFuncionario, CardAdicionarFuncionario, Container } from "./styles";
 
 export default function Funcionarios() {
   const [idFuncionario, setIdFuncionario] = useState('');
-  let funcionario = BuscarDadosApi('funcionario', 'listar');  
-  let funcionariosDisponivel: any = [];
   localStorage.setItem('idFuncionario', idFuncionario);
 
+  let funcionario = BuscarDadosApi('funcionario', 'listar');
+  let funcionariosDisponivel: any = [];
+
   funcionario.forEach((element: any) => {
+    console.log(element);
     funcionariosDisponivel.push(
       <CardFuncionario>
-        <input
-          id={element.id}
-          value={element.id}
-          name='tes'
-          type="radio"
-          onChange={e => setIdFuncionario(e.target.value)}
-        />
+        <a href={"informacoes/" + element.id+"/"+element.id_profissao}>
 
-        <label htmlFor={element.id}>
-          {element.nome}
-        </label>
-        <label htmlFor={element.id}>
-          {element.funcao}
-        </label>
-        <label htmlFor={element.id}>
-          {element.id}
-        </label>
+          <label htmlFor={element.id}>
+            {element.nome}
+          </label>
+          <label htmlFor={element.id}>
+            {element.funcao}
+          </label>
+          <label htmlFor={element.id}>
+            {element.id}
+          </label>
+        </a>
       </CardFuncionario>
     )
   });
@@ -36,14 +33,13 @@ export default function Funcionarios() {
   return (
     <Container>
 
-      <form action="/informacoes">
+      <form>
         {funcionariosDisponivel}
-        <CardAdicionarFuncionario href="/funcionarios/inserir" >
+        <CardAdicionarFuncionario >
           <h5>Cadastrar</h5>
           <h6>Funcionário</h6>
           <h2>+</h2>
         </CardAdicionarFuncionario>
-
       </form>
     </Container>
   );

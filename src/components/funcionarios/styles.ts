@@ -36,7 +36,7 @@ export const CardFuncionario = styled.button`
         align-items: center;
 `;
 
-export const CardAdicionarFuncionario = styled.a`
+export const CardAdicionarFuncionario = styled.div`
     @media (min-width: 767px) {
         width: 80px;
         height: 100px;

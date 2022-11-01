@@ -4,13 +4,15 @@ import api from "../../services/api";
 import Menu from "../Menu";
 import Filtros from "./filtro";
 import BuscarDadosApi from "../../util/util";
+import { useParams } from "react-router-dom";
 
 export default function Informacoes() {
   const [tempoGasto, setTempoGasto] = useState(0);
   const [idTratamento, setIdTratamento] = useState('');
   const tratamentos: any = [];
-  const [idFiltro,setIdFiltro]=useState('');
-  let tratamentoPorProfissao = BuscarDadosApi('tratamentos', 'listar-profissao', { id_profissao: 1 });
+  const [idFiltro,setIdFiltro]=useState('0');
+  const { idFuncionario,idProfissao } = useParams();
+  let tratamentoPorProfissao = BuscarDadosApi('tratamentos', 'listar-profissao', { idProfissao });
   tratamentoPorProfissao.forEach((element: any) => {
     tratamentos.push(
       <option
@@ -36,7 +38,7 @@ export default function Informacoes() {
       <Menu></Menu>
       <Header>
         <Conteudo>
-          <form action="/escolher-horario">
+          <form action={"/escolher-horario/"+idFuncionario+"/"+idProfissao+"/"+idTratamento+"/"+idFiltro+"/"}>
             <div>Tempo gasto aproximado {tempoGasto}</div>
             <div>
               <label htmlFor="">Tratamento</label>

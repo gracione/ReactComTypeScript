@@ -1,23 +1,21 @@
 import { HorarioSelecionado, DataSelecionada, HorarioDisponivel, HorariosDisponivel } from "./styles";
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import api from '../../services/api';
-import { Container, Button, Center, Conteudo } from "../../styles/global";
+import { Container, Button, Center } from "../../styles/global";
 
 export default function Horarios(props: any) {
   const [horario, setHorarios] = useState([]);
   const [horarioEscolhido, setHorarioEscolhido] = useState('');
-  const idTratamento = localStorage.getItem('idTratamento');
-  const idFiltro = localStorage.getItem('idFiltro');
+  const { idFuncionario, idProfissao, idTratamento, idFiltro } = useParams();
   const history = useNavigate();
-
 
   useEffect(() => {
     api.post("/horarios-disponivel", {
       data: props.data,
-      idFuncionario: 1,
-      idFiltro: idFiltro,
-      idTratamento: idTratamento
+      idFuncionario,
+      idFiltro,
+      idTratamento
     }).then((response) => setHorarios(response.data));
     setHorarioEscolhido('');
   }, [props.data]);

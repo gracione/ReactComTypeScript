@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 import BuscarDadosApi from "../../util/util";
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
+import { useParams } from "react-router-dom";
 
 function organizarSemana(diaSemana: any, props: any, folga: any, feriados: any) {
   let semana: any = [];
@@ -60,13 +61,15 @@ function organizarSemana(diaSemana: any, props: any, folga: any, feriados: any) 
 }
 
 export default function Calendario(props: any) {
-
+  const { idFuncionario } = useParams();
+  ////////////////////////////////
+  console.log(idFuncionario);
+  ////////////////////////////////
   let folgaFuncionario = BuscarDadosApi('folga', 'listarById', { idFuncionario: 1 });
   let feriados = BuscarDadosApi('feriados', 'listarFeriadoPorMes', {
     mes: props.mes,
     ano: props.ano
   });
-  console.log(feriados);
 
   let calendario: any = [];
   let folga = false;

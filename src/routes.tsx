@@ -29,8 +29,8 @@ export default function Rota() {
                     <Route path="/" element={<Logon />} />
                     <Route path="/registrar" element={<Registrar />} />
                     <Route path="/home" element={<Home />} />
-                    <Route path="/informacoes" element={<Informacoes />} />
-                    <Route path="/escolher-horario" element={<EtapaCalendario />} />
+                    <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />
+                    <Route path="/escolher-horario/:idFuncionario/:idProfissao/:idTratamento/:idFiltro" element={<EtapaCalendario />} />
 
                     <Route path="/funcionarios" element={<Funcionarios />} />
                     <Route path="/funcionario/alterar" element={<AlterarFuncionario />} />
