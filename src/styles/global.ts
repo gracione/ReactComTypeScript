@@ -94,9 +94,15 @@ export const GlobalStyle = createGlobalStyle`
 	.p-1{
 		padding: 10px;
 	}
+	fieldset{
+		border-radius: 4px;
+		margin:5px ;
+		border: solid 1px var(--borda) ;
+		background-color: #fff5ee ;
+	}
 	.inputTable{
 		height: 30px ;
-		border: solid 1px;
+		border: solid 1px var(--borda) ;
 		background-color: white ;
 		margin: 0 ;
 		border-radius: 0% ;
@@ -161,16 +167,16 @@ export const Center = styled.div`
 	justify-content: center ;
 `;
 export const AdicionarItem = styled.div`
-	width: 40px ;
+	width: 100% ;
 	height: 40px ;
 	align-items: center ;
 	display: flex ;
 	justify-content: center;
 	font-size: 30px;
-	border: solid ;
-	border-radius: 10px ;
-	background-color:var(--blue-light) ;
-	color: var(--shape) ;
+	border: solid 1px;
+	border-radius: 2px ;
+	background-color:var(--shape) ;
+	color: var(--borda) ;
 `;
 export const Button = styled.div`
 	width: 90% ;

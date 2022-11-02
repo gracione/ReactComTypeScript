@@ -44,7 +44,7 @@ export default function InserirTratamento() {
   const adicionarColuna = (tamanho: any) => {
     let filtro: any = [...matrix];
     filtro.push([]);
-    filtro[filtro.length-1].push([]);
+    filtro[filtro.length - 1].push([]);
 
     setMatrix(filtro);
 
@@ -65,36 +65,27 @@ export default function InserirTratamento() {
       })}>
         <div>
           <h2 >Adicionar Tratamento</h2>
+          <input
+            placeholder="Tratamento"
+            value={tratamento}
+            onChange={e => setTratamento(e.target.value)}
+            required
+          />
+          <input
+            placeholder="Tempo Gasto"
+            type="time"
+            onChange={e => setTempoGasto(e.target.value)}
+            required
+          />
+          <select
+            onChange={e => setIdProfissao(e.target.value)}
+            required
+          >
+            <option value={0}>Escolha a Profissão</option>
+            {optionProfissoes}
+          </select>
 
-          <div>
-            <input
-              placeholder="Tratamento"
-              value={tratamento}
-              onChange={e => setTratamento(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <input
-              placeholder="Tempo Gasto"
-              type="time"
-              onChange={e => setTempoGasto(e.target.value)}
-              required
-            />
-          </div>
-          <div>
-            <select
-              onChange={e => setIdProfissao(e.target.value)}
-              required
-            >
-              <option value={0}>Escolha a Profissão</option>
-              {optionProfissoes}
-            </select>
-          </div>
-
-
-
-          <div>
+          <fieldset>
             {matrix.map((row: any, tipoFiltro: any) => (
               <div className="p-1" key={tipoFiltro} >
                 <input
@@ -110,19 +101,17 @@ export default function InserirTratamento() {
                     <input className="inputTable" placeholder="Porcentagem" type="number"
                       onChange={e => porcentagemDoFiltro(tipoFiltro, filtro, e)}
                     />
-                    
+
                   </div>
                 ))}
                 <div>
-
                   <div className="inputTable" onClick={() => adicionarLinha(tipoFiltro)}>+</div>
                 </div>
               </div>
             ))}
             <AdicionarItem onClick={() => adicionarColuna(matrix.length)}>+</AdicionarItem>
-          </div>
+          </fieldset>
         </div>
-
         <button type="submit">Salvar</button>
       </form>
 
