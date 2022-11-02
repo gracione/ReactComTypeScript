@@ -1,13 +1,12 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 import InputMask from "react-input-mask";
-
 import api from '../../../services/api';
 import './styles.css';
 
 
-export default function Register() {
+export default function Registrar() {
   const [nome, setNome] = useState('');
   const [numero, setNumero] = useState('');
   const [id_sexo, setId_Sexo] = useState('');
@@ -20,7 +19,6 @@ export default function Register() {
   const [erroId_sexo, setErroId_sexo] = useState(null)
   const [erroEmail, setErroEmail] = useState(null)
   const [erroPassword, setErroPassword] = useState(null)
-  const history = useNavigate();
 
   async function efetuarRegister(e) {
     e.preventDefault();
@@ -39,7 +37,7 @@ export default function Register() {
           if (res.data.token) {
             const response = await api.post('/registrarCliente', { email, password });
             localStorage.setItem('token', response.data.access_token);
-            history('/home');
+            window.location.href = "/home";
           } else {
             if (res.data.nome) {
               setErroNome(
@@ -143,7 +141,7 @@ export default function Register() {
           />
 
           <button className="button" type="submit">Cadastrar</button>
-          <Link className="back-link" to="/">
+          <Link className="back-link" to="/login">
             <FiArrowLeft size={16} color="#3498db" />
             Já possuo cadastro
           </Link>

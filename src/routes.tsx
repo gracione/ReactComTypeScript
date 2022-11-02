@@ -22,19 +22,29 @@ import Menu from './paginas/Menu';
 
 export default function Rota() {
     const token = localStorage.getItem("token");
+    let currentUrl = window.location.href.toLowerCase();
+    
     console.log(token);
-    if (token === "" || token === null) {
-        console.log(document.URL);
+    
+    if (token === null) {
+        if (!currentUrl.includes("/registrar") && !currentUrl.includes("/login")) {
+            window.location.href = "/login";
+        }
         return (
             <BrowserRouter>
                 <Container>
                     <Routes>
-                        <Route path="/" element={<Login />} />
-                        <Route path="/registrar/" element={<Registrar />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/registrar" element={<Registrar />} />
                     </Routes>
                 </Container>
             </BrowserRouter >
         );
+    } else {
+        if (currentUrl.includes("/registrar") || currentUrl.includes("/login")) {
+            window.location.href = "/home";
+        }
+
     }
 
     return (
@@ -42,9 +52,6 @@ export default function Rota() {
             <Container>
                 <Menu />
                 <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/registrar" element={<Registrar />} />
-
                     <Route path="/home" element={<Home />} />
                     <Route path="/informacoes/:idFuncionario/:idProfissao/:nomeCliente" element={<Informacoes />} />
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />

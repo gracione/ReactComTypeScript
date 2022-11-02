@@ -4,9 +4,10 @@ import { Container } from "./style";
 
 export default function Menu() {
   const history = useNavigate();
-  function handleLogout() {
+  function logout() {
     localStorage.clear();
-    history("/");
+    window.location.href = "/login";
+
   }
 
   return (
@@ -21,7 +22,7 @@ export default function Menu() {
         <Link to="/tratamentos"><p>Tratamentos</p></Link>
         <Link to="/profissao"><p>Profissões</p></Link>
         <Link to="/configuracoes"><p>Configurações</p></Link>
-        <p onClick={handleLogout} >
+        <p onClick={logout} >
           SAIR
         </p>
       </div>
