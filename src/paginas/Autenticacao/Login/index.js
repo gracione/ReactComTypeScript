@@ -4,7 +4,7 @@ import { FiLogIn } from 'react-icons/fi';
 import api from '../../../services/api';
 import './styles.css';
 
-export default function Logon() {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const history = useNavigate();

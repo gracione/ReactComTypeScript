@@ -1,6 +1,5 @@
-import Menu from "../Menu";
 import { useState } from 'react';
-import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
+import { Adicionar, Conteudo } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
 import api from '../../services/api';
 import GerarUrl from "../../util/adicionar";

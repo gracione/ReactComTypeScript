@@ -24,12 +24,13 @@ export default function Rota() {
     const token = localStorage.getItem("token");
     console.log(token);
     if (token === "" || token === null) {
+        console.log(document.URL);
         return (
             <BrowserRouter>
                 <Container>
                     <Routes>
                         <Route path="/" element={<Login />} />
-                        <Route path="/registrar" element={<Registrar />} />
+                        <Route path="/registrar/" element={<Registrar />} />
                     </Routes>
                 </Container>
             </BrowserRouter >
