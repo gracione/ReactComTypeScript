@@ -23,9 +23,7 @@ import Menu from './paginas/Menu';
 export default function Rota() {
     const token = localStorage.getItem("token");
     let currentUrl = window.location.href.toLowerCase();
-    
-    console.log(token);
-    
+
     if (token === null) {
         if (!currentUrl.includes("/registrar") && !currentUrl.includes("/login")) {
             window.location.href = "/login";
@@ -44,7 +42,6 @@ export default function Rota() {
         if (currentUrl.includes("/registrar") || currentUrl.includes("/login")) {
             window.location.href = "/home";
         }
-
     }
 
     return (

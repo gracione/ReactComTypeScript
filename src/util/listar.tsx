@@ -1,12 +1,16 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import api from '../../src/services/api';
-import BuscarDadosApi from "../../src/util/util";
-import Menu from '../paginas/Menu';
-import { Adicionar, Container, Conteudo, Header } from '../styles/global';
+import { Adicionar, Conteudo, Header } from '../styles/global';
+import { useState, useEffect } from "react";
 
 export default function Listar(props: any) {
   const funcao = props.funcao;
-  let listagem = BuscarDadosApi(funcao, 'listar');
+  const [listagem, setListagem] = useState([]);
+  useEffect(() => {
+    api.post("/" + funcao + "/listar", {
+    }).then((response) => setListagem(response.data));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [funcao]);
 
   let listar: any = [];
 
@@ -36,6 +40,7 @@ export default function Listar(props: any) {
   return (
     <Header>
       <Conteudo>
+        <h2>{funcao}</h2>
         {listar}
       </Conteudo>
       <Adicionar href={funcao + "/adicionar"}>+</Adicionar>
