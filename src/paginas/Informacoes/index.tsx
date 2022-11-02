@@ -32,30 +32,25 @@ export default function Informacoes() {
   }, [idTratamento, idFiltro]);
 
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          <form action={"/escolher-horario/" + idFuncionario + "/" + idProfissao + "/" + idTratamento + "/" + idFiltro + "/"}>
-            <div>
-              <div>Tempo gasto aproximado {tempoGasto}</div>
-              <label htmlFor="">Tratamento</label>
-              <select
-                onChange={e => setIdTratamento(e.target.value)}
-                required
-              >
-                <option value="">------ Selecione ------</option>
-                {tratamentos}
-              </select>
-            </div>
-            <Filtros
-              data={idTratamento}
-              setIdFiltro={setIdFiltro}
-            />
-            <button>Prosseguir</button>
-          </form>
-        </Conteudo>
-      </Header>
-    </Container>
+    <Conteudo>
+      <form action={"/escolher-horario/" + idFuncionario + "/" + idProfissao + "/" + idTratamento + "/" + idFiltro + "/"}>
+        <div>
+          <div>Tempo gasto aproximado {tempoGasto}</div>
+          <label htmlFor="">Tratamento</label>
+          <select
+            onChange={e => setIdTratamento(e.target.value)}
+            required
+          >
+            <option value="">------ Selecione ------</option>
+            {tratamentos}
+          </select>
+        </div>
+        <Filtros
+          data={idTratamento}
+          setIdFiltro={setIdFiltro}
+        />
+        <button>Prosseguir</button>
+      </form>
+    </Conteudo>
   );
 }

@@ -1,5 +1,4 @@
-import Menu from "../Menu";
-import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
+import { Adicionar, Conteudo, Header } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
 import ExcluirDadosApi from "../../util/excluir";
 
@@ -16,31 +15,28 @@ export default function Expediente() {
         <td>{element.inicio1}</td>
         <td>{element.fim2}</td>
         <td>EDITAR</td>
-        <td onClick={() => ExcluirDadosApi('expediente','excluir',element.id)} >EXCLUIR</td>
+        <td onClick={() => ExcluirDadosApi('expediente', 'excluir', element.id)} >EXCLUIR</td>
       </tr>
     );
   });
 
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          LISTAR
+    <Header>
+      <Conteudo>
+        LISTAR
 
-          <table border={1} width="100%">
-            <tr>
-              <td>nome</td>
-              <td>Inicio Expediente</td>
-              <td>Inicio Almoço </td>
-              <td>Fim Almoço</td>
-              <td>Fim Expediente</td>
-            </tr>
-            {horarioTrabalho}
-          </table>
-        </Conteudo>
-        <Adicionar href="expediente/adicionar">+</Adicionar>
-      </Header>
-    </Container>
+        <table border={1} width="100%">
+          <tr>
+            <td>nome</td>
+            <td>Inicio Expediente</td>
+            <td>Inicio Almoço </td>
+            <td>Fim Almoço</td>
+            <td>Fim Expediente</td>
+          </tr>
+          {horarioTrabalho}
+        </table>
+      </Conteudo>
+      <Adicionar href="expediente/adicionar">+</Adicionar>
+    </Header>
   );
 }

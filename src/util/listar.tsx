@@ -34,14 +34,11 @@ export default function Listar(props: any) {
   });
 
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          {listar}
-        </Conteudo>
-        <Adicionar href={funcao+"/adicionar"}>+</Adicionar>
-      </Header>
-    </Container>
+    <Header>
+      <Conteudo>
+        {listar}
+      </Conteudo>
+      <Adicionar href={funcao + "/adicionar"}>+</Adicionar>
+    </Header>
   );
 }

@@ -20,8 +20,6 @@ export default function AlterarProfissao() {
   }, []);
   console.log(listagem);
   return (
-    <Container>
-      <Menu></Menu>
       <div className="display-flex" >
         <Conteudo>
           <form action="/profissoes" >
@@ -36,6 +34,5 @@ export default function AlterarProfissao() {
           </form>
         </Conteudo>
       </div>
-    </Container>
   );
 }

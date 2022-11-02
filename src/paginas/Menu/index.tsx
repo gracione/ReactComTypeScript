@@ -25,7 +25,7 @@ export default function Menu() {
         <a href="/folgas">Folgas</a>
         <a href="/expediente">Expediente</a>
         <a href="/tratamentos">Tratamentos</a>
-        <a href="/profissoes">Profissões</a>
+        <a href="/profissao">Profissões</a>
         <a href="/configuracoes">Configurações</a>
         <a onClick={handleLogout} href="/">
           <div >SAIR</div>

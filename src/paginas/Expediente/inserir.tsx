@@ -36,28 +36,25 @@ export default function InserirExpediente() {
   }
 
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          <h1>Adicionar Expediente</h1>
-          <form onSubmit={inserir}>
-            <select
-              onChange={e => setIdFuncionario(e.target.value)}
-              required
-            >
-              <option >Escolha a Profissão</option>
-              {optionFuncionarios}
-            </select>
-            <input type="time" placeholder="Inicio Expediente" onChange={e => setInicioExpediente(e.target.value)} />
-            <input type="time" placeholder="Inicio Almoco" onChange={e => setInicioAlmoco(e.target.value)} />
-            <input type="time" placeholder="Fim Almoco" onChange={e => setFimAlmoco(e.target.value)} />
-            <input type="time" placeholder="Fim Expediente" onChange={e => setFimExpediente(e.target.value)} />
-            <button type="submit">Salvar</button>
-          </form>
-        </Conteudo>
-        <Adicionar href="adicionar">+</Adicionar>
-      </Header>
-    </Container>
+    <div>
+      <Conteudo>
+        <h1>Adicionar Expediente</h1>
+        <form onSubmit={inserir}>
+          <select
+            onChange={e => setIdFuncionario(e.target.value)}
+            required
+          >
+            <option >Escolha a Profissão</option>
+            {optionFuncionarios}
+          </select>
+          <input type="time" placeholder="Inicio Expediente" onChange={e => setInicioExpediente(e.target.value)} />
+          <input type="time" placeholder="Inicio Almoco" onChange={e => setInicioAlmoco(e.target.value)} />
+          <input type="time" placeholder="Fim Almoco" onChange={e => setFimAlmoco(e.target.value)} />
+          <input type="time" placeholder="Fim Expediente" onChange={e => setFimExpediente(e.target.value)} />
+          <button type="submit">Salvar</button>
+        </form>
+      </Conteudo>
+      <Adicionar href="adicionar">+</Adicionar>
+    </div>
   );
 }

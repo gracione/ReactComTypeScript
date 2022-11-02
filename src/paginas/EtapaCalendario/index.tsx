@@ -74,30 +74,27 @@ function EtapaCalendario() {
   }
 
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          <PainelCalendario>
-            <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
-            <b>{nomeMes(mes) + " " + ano}</b>
-            <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
-          </PainelCalendario>
-          <Center>
-            <Calendario
-              dias={criarArrayCalendario(ano, mes)}
-              setDia={setDia}
-              dia={dia}
-              ano={ano}
-              mes={mes+1}
-            />
-          </Center>
-        </Conteudo>
-        <Conteudo>
-          <Horarios data={data} ></Horarios>
-        </Conteudo>
-      </Header>
-    </Container >
+    <div>
+      <Conteudo>
+        <PainelCalendario>
+          <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>
+          <b>{nomeMes(mes) + " " + ano}</b>
+          <div className='mudar-mes' onClick={() => setmes(mes + 1)}> {">"} </div>
+        </PainelCalendario>
+        <Center>
+          <Calendario
+            dias={criarArrayCalendario(ano, mes)}
+            setDia={setDia}
+            dia={dia}
+            ano={ano}
+            mes={mes + 1}
+          />
+        </Center>
+      </Conteudo>
+      <Conteudo>
+        <Horarios data={data} ></Horarios>
+      </Conteudo>
+    </div>
   );
 }
 export default EtapaCalendario;

@@ -76,68 +76,48 @@ export default function InserirFuncionario() {
       .then((response) => setListagem(response.data));
   }, []);
 
-console.log(listagem[0]['email']+"<<<");
-//  listagem.forEach(element => {
-//    dadosAlterar.push(
-//      <input
-//        type='text'
-//        placeholder={element['nome']}
-//        onChange={e => setNome(e.target.value)}
-//      />
-//    )
-//  });
-//
-//  function alterar() {
-//    api.post('/profissao/alterar', { nome: nome, id: idDadosAlterar })
-//  }
-
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          <form onSubmit={inserir}>
-            <h2 >Alterar Funcionario</h2>
-            <div>
-              <input
-                placeholder={listagem[0]['nome']}
-                value={nome}
-                onChange={e => setNome(e.target.value)}
-                required
-              />
-              <InputMask
-                mask="(99) 9 9999-9999"
-                placeholder={listagem[0]['numero']}
-                value={numero}
-                onChange={e => setNumero(e.target.value)}
-                required
-              />
-            </div>
-            <input
-              placeholder={listagem[0]['email']}
-              value={email}
-              type="email"
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-            <div>
-              <select
-                onChange={e => setId_Sexo(listagem[0]['id_sexo'])}
-                required
-              >
-                <option value={0}>Escolha o sexo</option>
-                <option value={2}>Feminino</option>
-                <option value={1}>Masculino</option>
-              </select>
-            </div>
-            {selectProfissoes}
-            <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
-              Adicionar mais uma profissão
-            </AdicionarPrifissao>
-            <button type="submit">Salvar</button>
-          </form>
-        </Conteudo>
-      </Header>
-    </Container>
+    <Conteudo>
+      <form onSubmit={inserir}>
+        <h2 >Alterar Funcionario</h2>
+        <div>
+          <input
+            placeholder={listagem[0]['nome']}
+            value={nome}
+            onChange={e => setNome(e.target.value)}
+            required
+          />
+          <InputMask
+            mask="(99) 9 9999-9999"
+            placeholder={listagem[0]['numero']}
+            value={numero}
+            onChange={e => setNumero(e.target.value)}
+            required
+          />
+        </div>
+        <input
+          placeholder={listagem[0]['email']}
+          value={email}
+          type="email"
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+        <div>
+          <select
+            onChange={e => setId_Sexo(listagem[0]['id_sexo'])}
+            required
+          >
+            <option value={0}>Escolha o sexo</option>
+            <option value={2}>Feminino</option>
+            <option value={1}>Masculino</option>
+          </select>
+        </div>
+        {selectProfissoes}
+        <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
+          Adicionar mais uma profissão
+        </AdicionarPrifissao>
+        <button type="submit">Salvar</button>
+      </form>
+    </Conteudo>
   );
 }

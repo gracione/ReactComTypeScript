@@ -1,10 +1,13 @@
-import Routes from './routes';
+import Rotas from './routes';
+import RotasAutenticacao from './rotasAutenticacao';
+
 import { GlobalStyle } from "./styles/global";
 
 function App() {
   return (
     <>
-    <Routes />
+    <Rotas />
+    <RotasAutenticacao />
     <GlobalStyle />
     </>
   );

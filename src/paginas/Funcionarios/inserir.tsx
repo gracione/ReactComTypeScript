@@ -28,7 +28,7 @@ export default function InserirFuncionario() {
   };
   const history = useNavigate();
   const [quantidadeProfissoes, setQuantidadeProfissoes] = useState(1);
-  
+
 
   function inserir() {
     const url = GerarUrl("funcionario", "inserir");
@@ -64,62 +64,57 @@ export default function InserirFuncionario() {
     );
   }
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          <form onSubmit={inserir}>
-            <h2 >Adicionar Funcionario</h2>
-            <div>
-              <input
-                placeholder="Seu Nome"
-                value={nome}
-                onChange={e => setNome(e.target.value)}
-                required
-              />
-              <InputMask
-                mask="(99) 9 9999-9999"
-                placeholder="Seu Numero"
-                value={numero}
-                onChange={e => setNumero(e.target.value)}
-                required
-              />
-            </div>
-            <input
-              placeholder="Seu E-mail"
-              value={email}
-              type="email"
-              onChange={e => setEmail(e.target.value)}
-              required
-            />
-            <div>
-              <select
-                onChange={e => setId_Sexo(e.target.value)}
-                required
-              >
-                <option value={0}>Escolha o sexo</option>
-                <option value={1}>Masculino</option>
-                <option value={2}>Feminino</option>
-              </select>
-            </div>
-            <div>
-              <input
-                name='password'
-                placeholder="Sua Senha"
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            {selecaoProfissao}
-            <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
-              Adicionar mais uma profissão
-            </AdicionarPrifissao>
-            <button type="submit">Salvar</button>
-          </form>
-        </Conteudo>
-      </Header>
-    </Container>
+    <Conteudo>
+      <form onSubmit={inserir}>
+        <h2 >Adicionar Funcionario</h2>
+        <div>
+          <input
+            placeholder="Seu Nome"
+            value={nome}
+            onChange={e => setNome(e.target.value)}
+            required
+          />
+          <InputMask
+            mask="(99) 9 9999-9999"
+            placeholder="Seu Numero"
+            value={numero}
+            onChange={e => setNumero(e.target.value)}
+            required
+          />
+        </div>
+        <input
+          placeholder="Seu E-mail"
+          value={email}
+          type="email"
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+        <div>
+          <select
+            onChange={e => setId_Sexo(e.target.value)}
+            required
+          >
+            <option value={0}>Escolha o sexo</option>
+            <option value={1}>Masculino</option>
+            <option value={2}>Feminino</option>
+          </select>
+        </div>
+        <div>
+          <input
+            name='password'
+            placeholder="Sua Senha"
+            type="password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        {selecaoProfissao}
+        <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
+          Adicionar mais uma profissão
+        </AdicionarPrifissao>
+        <button type="submit">Salvar</button>
+      </form>
+    </Conteudo>
   );
 }

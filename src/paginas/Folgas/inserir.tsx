@@ -30,37 +30,34 @@ export default function InserirFolga() {
   }
 
   return (
-    <Container>
-      <Menu></Menu>
-      <Header>
-        <Conteudo>
-          <h1>Adicionar folga ao funcionario</h1>
-          <form onSubmit={inserir}>
-            <select
-              onChange={e => setIdFuncionario(e.target.value)}
-              required
-            >
-              <option >Escolha o Funcionario</option>
-              {optionFuncionarios}
-            </select>
-            <select
-              onChange={e => setDiaSemana(e.target.value)}
-              required
-            >
-              <option >Dia da Semana</option>
-              <option value={1}>Domingo</option>
-              <option value={2}>Segunda Feira</option>
-              <option value={3}>Terça Feira</option>
-              <option value={4}>Quarta Feira</option>
-              <option value={5}>Quinta Feira</option>
-              <option value={6}>Sexta Feira</option>
-              <option value={7}>Sabado</option>
-            </select>
-            <button type="submit">Salvar</button>
-          </form>
-        </Conteudo>
-        <Adicionar href="adicionar">+</Adicionar>
-      </Header>
-    </Container>
+    <div>
+      <Conteudo>
+        <h1>Adicionar folga ao funcionario</h1>
+        <form onSubmit={inserir}>
+          <select
+            onChange={e => setIdFuncionario(e.target.value)}
+            required
+          >
+            <option >Escolha o Funcionario</option>
+            {optionFuncionarios}
+          </select>
+          <select
+            onChange={e => setDiaSemana(e.target.value)}
+            required
+          >
+            <option >Dia da Semana</option>
+            <option value={1}>Domingo</option>
+            <option value={2}>Segunda Feira</option>
+            <option value={3}>Terça Feira</option>
+            <option value={4}>Quarta Feira</option>
+            <option value={5}>Quinta Feira</option>
+            <option value={6}>Sexta Feira</option>
+            <option value={7}>Sabado</option>
+          </select>
+          <button type="submit">Salvar</button>
+        </form>
+      </Conteudo>
+      <Adicionar href="adicionar">+</Adicionar>
+    </div>
   );
 }

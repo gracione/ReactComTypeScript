@@ -1,7 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Logon from './paginas/Autenticacao/Login/index';
 import Home from './paginas/Home/index';
-import Registrar from './paginas/Autenticacao/Registrar/index';
 import Informacoes from './paginas/Informacoes/index';
 import Configuracoes from "./paginas/Configuracoes";
 import AlterarFuncionario from "./paginas/Funcionarios/alterar";
@@ -17,13 +15,15 @@ import InserirFeriado from "./paginas/Feriados/inserir";
 import InserirFolga from "./paginas/Folgas/inserir";
 import AlterarFeriado from './paginas/Feriados/alterar';
 import Listar from './util/listar';
+import { Container } from './styles/global';
+import Menu from './paginas/Menu';
 
 export default function Rota() {
     return (
         <BrowserRouter>
+            <Container>
+                <Menu />
                 <Routes>
-                    <Route path="/" element={<Logon />} />
-                    <Route path="/registrar" element={<Registrar />} />
                     <Route path="/home" element={<Home />} />
                     <Route path="/informacoes/:idFuncionario/:idProfissao/:nomeCliente" element={<Informacoes />} />
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />
@@ -50,10 +50,11 @@ export default function Rota() {
 
                     <Route path="/configuracoes" element={<Configuracoes />} />
 
-                    <Route path="/profissoes" element={<Listar funcao="profissoes" />} />
-                    <Route path="/profissoes/adicionar" element={<AdicionarProfissao />} />
-                    <Route path="/profissoes/alterar/:idProfissao" element={<AlterarProfissao />} />
+                    <Route path="/profissao" element={<Listar funcao="profissao" />} />
+                    <Route path="/profissao/adicionar" element={<AdicionarProfissao />} />
+                    <Route path="/profissao/alterar/:idProfissao" element={<AlterarProfissao />} />
                 </Routes>
+            </Container>
         </BrowserRouter >
     );
 }
