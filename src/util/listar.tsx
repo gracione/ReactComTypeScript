@@ -1,9 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import api from '../../src/services/api';
+import BuscarDadosApi from "../../src/util/util";
+import Menu from '../paginas/Menu';
+import { Adicionar, Container, Conteudo, Header } from '../styles/global';
 
-export default function listarEditarExcluir(listagem: any[], funcao: string): any[] {
+export default function Listar(props: any) {
+  const funcao = props.funcao;
+  let listagem = BuscarDadosApi(funcao, 'listar');
+
   let listar: any = [];
-
 
   function excluir(id: any) {
     api.post("/" + funcao + "/excluir", {
@@ -28,5 +33,15 @@ export default function listarEditarExcluir(listagem: any[], funcao: string): an
     )
   });
 
-  return listar;
+  return (
+    <Container>
+      <Menu></Menu>
+      <Header>
+        <Conteudo>
+          {listar}
+        </Conteudo>
+        <Adicionar href={funcao+"/adicionar"}>+</Adicionar>
+      </Header>
+    </Container>
+  );
 }

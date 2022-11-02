@@ -70,7 +70,7 @@ export default function InserirFuncionario() {
   console.log(idDadosAlterar);
   useEffect(() => {
     api
-      .post("/funcionario/dados-alterar", {
+      .post("/funcionario/listar-id", {
         id: idDadosAlterar
       })
       .then((response) => setListagem(response.data));

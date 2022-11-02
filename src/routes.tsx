@@ -2,12 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Logon from './paginas/Autenticacao/Login/index';
 import Home from './paginas/Home/index';
 import Registrar from './paginas/Autenticacao/Registrar/index';
-import Funcionarios from './paginas/Funcionarios';
 import Informacoes from './paginas/Informacoes/index';
-import Tratamentos from "./paginas/Tratamentos";
-import Folgas from "./paginas/Folgas";
-import Feriados from "./paginas/Feriados";
-import Profissoes from "./paginas/Profissoes";
 import Configuracoes from "./paginas/Configuracoes";
 import AlterarFuncionario from "./paginas/Funcionarios/alterar";
 import AdicionarProfissao from "./paginas/Profissoes/adicionar";
@@ -21,6 +16,7 @@ import InserirExpediente from "./paginas/Expediente/inserir";
 import InserirFeriado from "./paginas/Feriados/inserir";
 import InserirFolga from "./paginas/Folgas/inserir";
 import AlterarFeriado from './paginas/Feriados/alterar';
+import Listar from './util/listar';
 
 export default function Rota() {
     return (
@@ -33,29 +29,30 @@ export default function Rota() {
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />
                     <Route path="/escolher-horario/:idFuncionario/:idProfissao/:idTratamento/:idFiltro" element={<EtapaCalendario />} />
 
-                    <Route path="/funcionarios" element={<Funcionarios />} />
-                    <Route path="/funcionario/alterar" element={<AlterarFuncionario />} />
+                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" />} />
+                    <Route path="/funcionario/alterar/:idFuncionario" element={<AlterarFuncionario />} />
                     <Route path="/funcionarios/inserir" element={<InserirFuncionario />} />
 
-                    <Route path="/feriados" element={<Feriados />} />
-                    <Route path="/feriado/adicionar" element={< InserirFeriado />} />
+                    <Route path="/feriados" element={<Listar funcao="feriados" />} />
+                    <Route path="/feriados/adicionar" element={< InserirFeriado />} />
                     <Route path="/feriados/alterar/:idFeriado" element={< AlterarFeriado />} />
 
-                    <Route path="/folgas" element={<Folgas />} />
+                    <Route path="/folgas" element={<Listar funcao="folgas" />} />
                     <Route path="/folga/adicionar" element={< InserirFolga />} />
 
                     <Route path="/expediente" element={<Expediente />} />
                     <Route path="/expediente/adicionar" element={< InserirExpediente />} />
+                    <Route path="/expediente/alterar/:idExpediente" element={< InserirExpediente />} />
 
-                    <Route path="/tratamentos" element={<Tratamentos />} />
+                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" />} />
                     <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
-                    <Route path="/tratamentos/alterar" element={<AlterarTratamento />} />
+                    <Route path="/tratamentos/alterar/:idTratamento" element={<AlterarTratamento />} />
 
                     <Route path="/configuracoes" element={<Configuracoes />} />
 
-                    <Route path="/profissoes" element={<Profissoes />} />
+                    <Route path="/profissoes" element={<Listar funcao="profissoes" />} />
                     <Route path="/profissoes/adicionar" element={<AdicionarProfissao />} />
-                    <Route path="/profissoes/alterar" element={<AlterarProfissao />} />
+                    <Route path="/profissoes/alterar/:idProfissao" element={<AlterarProfissao />} />
                 </Routes>
         </BrowserRouter >
     );

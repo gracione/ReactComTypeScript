@@ -18,7 +18,7 @@ function Card({ idHorario, cliente, funcionario, tratamento, telefone, horario, 
     let linkTelefone = "https://api.whatsapp.com/send/?phone=+55" + telefone + "&text=oi";
     const history = useNavigate();
     function desmarcarHorario(idHorario: any) {
-        api.post("/horario/desmarcar", {
+        api.post("/horario/excluir", {
             id: idHorario
         })
         history('/home?desmarcado');

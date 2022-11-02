@@ -12,7 +12,7 @@ export default function Informacoes() {
   const tratamentos: any = [];
   const [idFiltro, setIdFiltro] = useState('0');
   const { idFuncionario, idProfissao } = useParams();
-  let tratamentoPorProfissao = BuscarDadosApi('tratamentos', 'listar-profissao', { idProfissao });
+  let tratamentoPorProfissao = BuscarDadosApi('tratamentos', 'listar-id', { id: idProfissao });
   tratamentoPorProfissao.forEach((element: any) => {
     tratamentos.push(
       <option
