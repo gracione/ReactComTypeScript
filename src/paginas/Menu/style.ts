@@ -28,7 +28,7 @@ export const Container = styled.div`
             padding: 10px ;
             align-items: center;
         }
-        a{
+        p{
             color: white ;
             text-decoration: none ;
             font-size: 15px ;
