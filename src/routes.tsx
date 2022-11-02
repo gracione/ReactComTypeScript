@@ -1,5 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Home from './paginas/Home/index';
+import Login from './paginas/Autenticacao/Login/index';
+import Registrar from './paginas/Autenticacao/Registrar/index';
 import Informacoes from './paginas/Informacoes/index';
 import Configuracoes from "./paginas/Configuracoes";
 import AlterarFuncionario from "./paginas/Funcionarios/alterar";
@@ -19,11 +21,29 @@ import { Container } from './styles/global';
 import Menu from './paginas/Menu';
 
 export default function Rota() {
+    const token = localStorage.getItem("token");
+    console.log(token);
+    if (token === "" || token === null) {
+        return (
+            <BrowserRouter>
+                <Container>
+                    <Routes>
+                        <Route path="/" element={<Login />} />
+                        <Route path="/registrar" element={<Registrar />} />
+                    </Routes>
+                </Container>
+            </BrowserRouter >
+        );
+    }
+
     return (
         <BrowserRouter>
             <Container>
                 <Menu />
                 <Routes>
+                    <Route path="/" element={<Login />} />
+                    <Route path="/registrar" element={<Registrar />} />
+
                     <Route path="/home" element={<Home />} />
                     <Route path="/informacoes/:idFuncionario/:idProfissao/:nomeCliente" element={<Informacoes />} />
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />

@@ -3,13 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Container } from "./style";
 
 export default function Menu() {
-  const token = localStorage.getItem("token");
   const history = useNavigate();
-
-  if (token === "" || token === null) {
-    history("/");
-  }
-
   function handleLogout() {
     localStorage.clear();
     history("/");
@@ -28,7 +22,9 @@ export default function Menu() {
         <p onClick={() => history("/profissao")}>Profissões</p>
         <p onClick={() => history("/configuracoes")}>Configurações</p>
         <p onClick={handleLogout} >
-          <div >SAIR</div>
+          <a href="/">
+            SAIR
+          </a>
         </p>
       </div>
     </Container>
