@@ -1,9 +1,6 @@
 import { useState } from 'react';
-import { Adicionar, Conteudo } from "../../styles/global";
+import { Conteudo } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
-import api from '../../services/api';
-import GerarUrl from "../../util/adicionar";
-import { useNavigate } from 'react-router-dom';
 import Inserir from "../../util/inserir";
 
 export default function InserirExpediente() {

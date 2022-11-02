@@ -1,27 +1,17 @@
-import Menu from "../Menu";
-import { AdicionarItem, Container, Conteudo, Header } from "../../styles/global";
+import { AdicionarItem, Conteudo } from "../../styles/global";
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import api from '../../services/api';
-import GerarUrl from "../../util/adicionar";
 import BuscarDadosApi from "../../util/util";
+import Inserir from "../../util/inserir";
 
 export default function InserirTratamento() {
   const [tratamento, setTratamento] = useState('');
-  const [horas, setHoras] = useState('');
-  const [minutos, setMinutos] = useState('');
+  const [tempoGasto, setTempoGasto] = useState('');
   const [idProfissao, setIdProfissao] = useState("");
-  let profissoes = BuscarDadosApi('profissao', 'listar');
-
-  const [matrix, setMatrix] = useState(
-    Array.from({ length: 1 },
-      () => Array.from({ length: 1 }, () => []))
-  );
-  const [tipoFiltro, setTipoFiltro] = useState(
-    Array.from({ length: 1 }, () => [0]),
-  );
-
+  const profissoes = BuscarDadosApi('profissao', 'listar');
+  const [matrix, setMatrix] = useState( Array.from({ length: 1 }, () => Array.from({ length: 1 }, () => [])));
+  const [tipoFiltro, setTipoFiltro] = useState( Array.from({ length: 1 }, () => [0]),);
   let optionProfissoes: any = [];
+
   profissoes.forEach(element => {
     optionProfissoes.push(
       <option value={element.id}>{element.nome}</option>
@@ -30,7 +20,6 @@ export default function InserirTratamento() {
 
   const nomeDoTipoFiltro = (row: any, column: number, event: any) => {
     let nomeFiltro = [...tipoFiltro];
-
     nomeFiltro[row] = event.target.value;
     setTipoFiltro(nomeFiltro);
   };
@@ -60,27 +49,17 @@ export default function InserirTratamento() {
 
     nomeFiltro.push([tamanho]);
     setTipoFiltro(nomeFiltro);
-    console.log(nomeFiltro);
-  }
-  const data = {
-    nome_tratamento: tratamento,
-    tempo_gasto: (parseInt(horas) * 60) + parseInt(minutos),
-    tipo_de_filtro: matrix,
-    nomesTipoFiltro: tipoFiltro,
-    id_profissao: idProfissao
-  };
-  const history = useNavigate();
-
-  function inserir() {
-    const url = GerarUrl("tratamentos", "inserir");
-
-    api.post(url, data)
-    history('/home');
   }
 
   return (
     <Conteudo>
-      <form onSubmit={inserir}>
+      <form action={"/tratamentos"} onSubmit={() => Inserir("tratamentos", { 
+              tratamento,
+              tempoGasto,
+              idProfissao,          
+              tipoDeFiltro: matrix,
+              tipoFiltro:tipoFiltro
+        })}>
         <h2 >Adicionar Tratamento</h2>
         <div>
           <input
@@ -92,17 +71,9 @@ export default function InserirTratamento() {
         </div>
         <div>
           <input
-            placeholder="Hora"
-            value={horas}
-            type="number"
-            onChange={e => setHoras(e.target.value)}
-            required
-          />
-          <input
-            placeholder="Minutos"
-            value={minutos}
-            type="number"
-            onChange={e => setMinutos(e.target.value)}
+            placeholder="Tempo Gasto"
+            type="time"
+            onChange={e => setTempoGasto(e.target.value)}
             required
           />
         </div>
