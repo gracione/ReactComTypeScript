@@ -6,27 +6,27 @@ import { useState, useEffect } from "react";
 import api from "../../../src/services/api";
 
 export default function AlterarFeriado() {
-  const [data, setData] = useState('');
-  const [nome, setFeriado] = useState('');
   const [listagem, setListagem]:any = useState([]);
   const { idFeriado } = useParams();
-
+  
+  const [data, setData] = useState('');
+  const [nome, setFeriado] = useState('');
   useEffect(() => {
     api
       .post("/feriados/listar-id", {
         idFeriado
       })
       .then((response) => setListagem(response.data[0]));
-  }, []);
 
+  }, []);
   return (
     <Container>
       <Menu />
       <Header>
         <Conteudo>
-          <form action={"/feriados"} onSubmit={() => Alterar("feriados", { data, nome })}>
+          <form action="/feriados" >
             <div>
-              <h2>Adicionar Feriado</h2>
+              <h2>Alterar Feriado</h2>
               <input
                 type="text"
                 defaultValue={listagem.nome}
@@ -41,7 +41,7 @@ export default function AlterarFeriado() {
                 required
               />
             </div>
-            <button >Salvar</button>
+            <button onClick={() => Alterar("feriados", { id:idFeriado,data, nome })} >Alterar</button>
           </form>
         </Conteudo>
       </Header>

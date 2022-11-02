@@ -11,7 +11,7 @@ export default function InserirFeriado() {
       <Menu />
       <Header>
         <Conteudo>
-          <form action={"/feriados"} onSubmit={() => Inserir("feriados",{data,nome})}>
+          <form action={"/feriados?"} onSubmit={() => Inserir("feriados",{data,nome})}>
             <div>
               <h2>Adicionar Feriado</h2>
               <input type="text" placeholder="Nome do feriado" onChange={e => setFeriado(e.target.value)} required />

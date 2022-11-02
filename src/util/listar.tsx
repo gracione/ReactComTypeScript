@@ -11,18 +11,19 @@ export default function listarEditarExcluir(listagem: any[], funcao: string): an
     })
   }
 
-  let link:any = [];
+  let link: any = [];
   listagem.forEach((element: any) => {
-    link['editar'] = "/"+funcao+"/alterar/"+element.id;
-    link['listagem'] = "/"+funcao;
+    link['editar'] = "/" + funcao + "/alterar/" + element.id;
+    link['listagem'] = "/" + funcao;
     listar.push(
       <div className='editar-excluir' >
-        <label>
-
-          {element.nome}
-        </label>
+        <label> {element.nome} </label>
         <a href={link['editar']} className='editar'></a>
-        <a href={link['listagem']} onClick={() => excluir(element.id)} className='excluir'>x</a>
+        <div onClick={() => excluir(element.id)} className='excluir'>
+          x
+        </div>
+        <a href={link['listagem']} >
+        </a>
       </div>
     )
   });
