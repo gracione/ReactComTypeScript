@@ -1,20 +1,12 @@
-import Menu from "../Menu";
 import { useState } from 'react';
-import { Adicionar, Container, Conteudo, Header } from "../../styles/global";
+import { Conteudo } from "../../styles/global";
 import BuscarDadosApi from "../../util/util";
-import api from '../../services/api';
-import GerarUrl from "../../util/adicionar";
-import { useNavigate } from 'react-router-dom';
+import Inserir from "../../util/inserir";
 
 export default function InserirFolga() {
   const [diaSemana, setDiaSemana] = useState('');
   const [idFuncionario, setIdFuncionario] = useState('');
-  let funcionario = BuscarDadosApi('funcionario', 'listar');
-  const dados = {
-    diaSemana,
-    idFuncionario
-  };
-  const history = useNavigate();
+  let funcionario = BuscarDadosApi('funcionarios', 'listar');
 
   const optionFuncionarios: any = [];
   funcionario.forEach(element => {
@@ -22,18 +14,12 @@ export default function InserirFolga() {
       <option value={element.id}>{element.nome}</option>
     );
   });
-  function inserir() {
-    const url = GerarUrl("folga", "inserir");
-
-    api.post(url, dados)
-    history('/folgas');
-  }
 
   return (
-    <div>
-      <Conteudo>
-        <h1>Adicionar folga ao funcionario</h1>
-        <form onSubmit={inserir}>
+    <Conteudo>
+      <form action={"/folgas"} onSubmit={() => Inserir("folgas", { diaSemana,idFuncionario })}>
+        <div>
+          <h1>Adicionar folga ao funcionario</h1>
           <select
             onChange={e => setIdFuncionario(e.target.value)}
             required
@@ -54,10 +40,10 @@ export default function InserirFolga() {
             <option value={6}>Sexta Feira</option>
             <option value={7}>Sabado</option>
           </select>
-          <button type="submit">Salvar</button>
-        </form>
-      </Conteudo>
-      <Adicionar href="adicionar">+</Adicionar>
-    </div>
+        </div>
+
+        <button type="submit">Salvar</button>
+      </form>
+    </Conteudo>
   );
 }

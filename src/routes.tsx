@@ -23,8 +23,8 @@ import Menu from './paginas/Menu';
 export default function Rota() {
     const token = localStorage.getItem("token");
     let currentUrl = window.location.href.toLowerCase();
-
-    if (token === null) {
+    console.log(token);
+    if (token === null || token == 'undefined')  {
         if (!currentUrl.includes("/registrar") && !currentUrl.includes("/login")) {
             window.location.href = "/login";
         }
@@ -55,15 +55,15 @@ export default function Rota() {
                     <Route path="/escolher-horario/:idFuncionario/:idProfissao/:idTratamento/:idFiltro" element={<EtapaCalendario />} />
 
                     <Route path="/funcionarios" element={<Listar funcao="funcionarios" />} />
-                    <Route path="/funcionario/alterar/:idFuncionario" element={<AlterarFuncionario />} />
-                    <Route path="/funcionarios/inserir" element={<InserirFuncionario />} />
+                    <Route path="/funcionarios/alterar/:idFuncionario" element={<AlterarFuncionario />} />
+                    <Route path="/funcionarios/adicionar" element={<InserirFuncionario />} />
 
                     <Route path="/feriados" element={<Listar funcao="feriados" />} />
                     <Route path="/feriados/adicionar" element={< InserirFeriado />} />
                     <Route path="/feriados/alterar/:idFeriado" element={< AlterarFeriado />} />
 
                     <Route path="/folgas" element={<Listar funcao="folgas" />} />
-                    <Route path="/folga/adicionar" element={< InserirFolga />} />
+                    <Route path="/folgas/adicionar" element={< InserirFolga />} />
 
                     <Route path="/expediente" element={<Expediente />} />
                     <Route path="/expediente/adicionar" element={< InserirExpediente />} />

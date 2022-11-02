@@ -1,11 +1,7 @@
-import { Container, Conteudo, Header } from "../../styles/global";
+import { Conteudo } from "../../styles/global";
 import { useState } from 'react';
 import InputMask from "react-input-mask";
-import { useNavigate } from 'react-router-dom';
-
-import api from '../../services/api';
-import Menu from "../Menu";
-import GerarUrl from "../../util/adicionar";
+import Inserir from "../../util/inserir";
 import BuscarDadosApi from "../../util/util";
 import { AdicionarPrifissao } from "./styles";
 
@@ -18,24 +14,7 @@ export default function InserirFuncionario() {
   const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
   const profissoesCadastradasAux: any = profissoesCadastradas;
   let profissoes = BuscarDadosApi('profissao', 'listar');
-  const data = {
-    nome,
-    numero,
-    id_sexo,
-    email,
-    password,
-    profissoesCadastradas
-  };
-  const history = useNavigate();
   const [quantidadeProfissoes, setQuantidadeProfissoes] = useState(1);
-
-
-  function inserir() {
-    const url = GerarUrl("funcionario", "inserir");
-
-    api.post(url, data)
-    history('/funcionarios');
-  }
 
   function adicionarProfissao(valor: any, indice: any) {
     profissoesCadastradasAux[indice] = valor;
@@ -65,7 +44,7 @@ export default function InserirFuncionario() {
   }
   return (
     <Conteudo>
-      <form onSubmit={inserir}>
+      <form action={"/funcionarios"} onSubmit={() => Inserir("funcionarios",{nome,numero,id_sexo,email,password,profissoesCadastradas})}>
         <h2 >Adicionar Funcionario</h2>
         <div>
           <input

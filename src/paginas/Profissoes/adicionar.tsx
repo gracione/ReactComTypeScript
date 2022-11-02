@@ -1,30 +1,13 @@
-import Menu from "../Menu";
-import { Container, Conteudo } from "../../styles/global";
+import { Conteudo } from "../../styles/global";
 import { useState } from "react";
-import GerarUrl from "../../util/adicionar";
-import api from "../../services/api";
-import { useNavigate } from 'react-router-dom';
+import Inserir from "../../util/inserir";
 
 export default function Adicionar() {
   const [nome, setNome] = useState('');
-  const history = useNavigate();
-
-  function inserir() {
-    const dados = {
-      nome: nome
-    }
-    const token = localStorage.getItem('token');
-    console.log(token);
-    const url = GerarUrl("profissao", "inserir");
-
-    api.post(url, { dados: dados })
-    history('/profissoes');
-  }
-
   return (
     <div className="display-flex" >
       <Conteudo>
-        <form onSubmit={inserir}>
+        <form action={"/profissao"} onSubmit={() => Inserir("profissao",{nome})}>
           <input
             name='nome'
             placeholder="..."

@@ -27,6 +27,7 @@ export default function Listar(props: any) {
     listar.push(
       <div className='editar-excluir' >
         <label> {element.nome} </label>
+        <label> {element.nome2} </label>
         <a href={link['editar']} className='editar'></a>
         <div onClick={() => excluir(element.id)} className='excluir'>
           x

@@ -4,6 +4,7 @@ import BuscarDadosApi from "../../util/util";
 import api from '../../services/api';
 import GerarUrl from "../../util/adicionar";
 import { useNavigate } from 'react-router-dom';
+import Inserir from "../../util/inserir";
 
 export default function InserirExpediente() {
   const [inicioExpediente, setInicioExpediente] = useState('');
@@ -11,34 +12,19 @@ export default function InserirExpediente() {
   const [fimAlmoco, setFimAlmoco] = useState('');
   const [fimExpediente, setFimExpediente] = useState('');
   const [idFuncionario, setIdFuncionario] = useState('');
-  let funcionario = BuscarDadosApi('funcionario', 'listar');
-  const data = {
-    inicioExpediente,
-    inicioAlmoco,
-    fimAlmoco,
-    fimExpediente,
-    idFuncionario
-  };
-  const history = useNavigate();
-
+  const funcionario = BuscarDadosApi('funcionarios', 'listar');
   const optionFuncionarios: any = [];
   funcionario.forEach(element => {
     optionFuncionarios.push(
       <option value={element.id}>{element.nome}</option>
     );
   });
-  function inserir() {
-    const url = GerarUrl("expediente", "inserir");
-
-    api.post(url, data)
-    history('/expediente');
-  }
 
   return (
-    <div>
-      <Conteudo>
-        <h1>Adicionar Expediente</h1>
-        <form onSubmit={inserir}>
+    <Conteudo>
+      <form action={"/expediente"} onSubmit={() => Inserir("expediente", { inicioExpediente, inicioAlmoco, fimAlmoco, fimExpediente, idFuncionario })}>
+        <div>
+          <h1>Adicionar Expediente</h1>
           <select
             onChange={e => setIdFuncionario(e.target.value)}
             required
@@ -50,10 +36,9 @@ export default function InserirExpediente() {
           <input type="time" placeholder="Inicio Almoco" onChange={e => setInicioAlmoco(e.target.value)} />
           <input type="time" placeholder="Fim Almoco" onChange={e => setFimAlmoco(e.target.value)} />
           <input type="time" placeholder="Fim Expediente" onChange={e => setFimExpediente(e.target.value)} />
-          <button type="submit">Salvar</button>
-        </form>
-      </Conteudo>
-      <Adicionar href="adicionar">+</Adicionar>
-    </div>
+        </div>
+        <button type="submit">Salvar</button>
+      </form>
+    </Conteudo>
   );
 }
