@@ -8,8 +8,8 @@ export default function InserirTratamento() {
   const [tempoGasto, setTempoGasto] = useState('');
   const [idProfissao, setIdProfissao] = useState("");
   const profissoes = BuscarDadosApi('profissao', 'listar');
-  const [matrix, setMatrix] = useState( Array.from({ length: 1 }, () => Array.from({ length: 1 }, () => [])));
-  const [tipoFiltro, setTipoFiltro] = useState( Array.from({ length: 1 }, () => [0]),);
+  const [matrix, setMatrix] = useState(Array.from({ length: 1 }, () => Array.from({ length: 1 }, () => [])));
+  const [tipoFiltro, setTipoFiltro] = useState(Array.from({ length: 1 }, () => [0]),);
   let optionProfissoes: any = [];
 
   profissoes.forEach(element => {
@@ -18,7 +18,7 @@ export default function InserirTratamento() {
     );
   });
 
-  const nomeDoTipoFiltro = (row: any, column: number, event: any) => {
+  const nomeDoTipoFiltro = (row: any, event: any) => {
     let nomeFiltro = [...tipoFiltro];
     nomeFiltro[row] = event.target.value;
     setTipoFiltro(nomeFiltro);
@@ -36,88 +36,92 @@ export default function InserirTratamento() {
     setMatrix(copy);
   };
 
-  const adicionarLinha = (row: any) => {
-    let copy: any = [...matrix];
-    copy[row].push([]);
-    setMatrix(copy);
+  const adicionarLinha = (tamanho: any) => {
+    let linha: any = [...matrix];
+    linha[tamanho].push([]);
+    setMatrix(linha);
   }
   const adicionarColuna = (tamanho: any) => {
-    let copy: any = [...matrix];
-    copy.push([]);
-    setMatrix(copy);
-    let nomeFiltro = [...tipoFiltro];
+    let filtro: any = [...matrix];
+    filtro.push([]);
+    filtro[filtro.length-1].push([]);
 
+    setMatrix(filtro);
+
+    let nomeFiltro = [...tipoFiltro];
     nomeFiltro.push([tamanho]);
     setTipoFiltro(nomeFiltro);
+    console.log(filtro.length);
   }
 
   return (
     <Conteudo>
-      <form action={"/tratamentos"} onSubmit={() => Inserir("tratamentos", { 
-              tratamento,
-              tempoGasto,
-              idProfissao,          
-              tipoDeFiltro: matrix,
-              tipoFiltro:tipoFiltro
-        })}>
-        <h2 >Adicionar Tratamento</h2>
+      <form action={"/tratamentos"} onSubmit={() => Inserir("tratamentos", {
+        tratamento,
+        tempoGasto,
+        idProfissao,
+        tipoDeFiltro: matrix,
+        tipoFiltro: tipoFiltro
+      })}>
         <div>
-          <input
-            placeholder="Tratamento"
-            value={tratamento}
-            onChange={e => setTratamento(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <input
-            placeholder="Tempo Gasto"
-            type="time"
-            onChange={e => setTempoGasto(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <select
-            onChange={e => setIdProfissao(e.target.value)}
-            required
-          >
-            <option value={0}>Escolha a Profissão</option>
-            {optionProfissoes}
-          </select>
-        </div>
+          <h2 >Adicionar Tratamento</h2>
 
-        <div>
-          {matrix.map((row: any, tipoFiltro: any) => (
-            <div key={tipoFiltro} className="border">
-              <input
-                placeholder="Nome do filtro"
-                onChange={e => nomeDoTipoFiltro(tipoFiltro, 0, e)}
-              />
-              {row.map((column: any, filtro: number) => (
-                <div className="display-flex" key={filtro}>
-                  <input
-                    placeholder="Filtro"
-                    name="filtro"
-                    type="text"
-                    onChange={e => nomeDoFiltro(tipoFiltro, filtro, e)}
-                  />
-                  <input
-                    placeholder="Porcentagem"
-                    name="porcentagem"
-                    type="number"
-                    onChange={e => porcentagemDoFiltro(tipoFiltro, filtro, e)}
-                  />
+          <div>
+            <input
+              placeholder="Tratamento"
+              value={tratamento}
+              onChange={e => setTratamento(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <input
+              placeholder="Tempo Gasto"
+              type="time"
+              onChange={e => setTempoGasto(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <select
+              onChange={e => setIdProfissao(e.target.value)}
+              required
+            >
+              <option value={0}>Escolha a Profissão</option>
+              {optionProfissoes}
+            </select>
+          </div>
+
+
+
+          <div>
+            {matrix.map((row: any, tipoFiltro: any) => (
+              <div className="p-1" key={tipoFiltro} >
+                <input
+                  className="inputTable"
+                  placeholder="Nome do filtro"
+                  onChange={e => nomeDoTipoFiltro(tipoFiltro, e)}
+                />
+                {row.map((column: any, filtro: number) => (
+                  <div className="display-flex" key={filtro}>
+                    <input className="inputTable" placeholder="Filtro" type="text"
+                      onChange={e => nomeDoFiltro(tipoFiltro, filtro, e)}
+                    />
+                    <input className="inputTable" placeholder="Porcentagem" type="number"
+                      onChange={e => porcentagemDoFiltro(tipoFiltro, filtro, e)}
+                    />
+                    
+                  </div>
+                ))}
+                <div>
+
+                  <div className="inputTable" onClick={() => adicionarLinha(tipoFiltro)}>+</div>
                 </div>
-              ))}
-              <div>
-
-                <div onClick={() => adicionarLinha(tipoFiltro)}>add</div>
               </div>
-            </div>
-          ))}
+            ))}
+            <AdicionarItem onClick={() => adicionarColuna(matrix.length)}>+</AdicionarItem>
+          </div>
         </div>
-        <AdicionarItem onClick={() => adicionarColuna(matrix.length)}>+</AdicionarItem>
 
         <button type="submit">Salvar</button>
       </form>

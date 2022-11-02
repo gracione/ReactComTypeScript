@@ -86,10 +86,23 @@ export const GlobalStyle = createGlobalStyle`
 		text-decoration: none ;
 	}
 	form{
-		height: 100% ;
+		height: 100%;
 		display: flex ;
 		flex-direction: column ;
 		justify-content: space-between ;	
+	}
+	.p-1{
+		padding: 10px;
+	}
+	.inputTable{
+		height: 30px ;
+		border: solid 1px;
+		background-color: white ;
+		margin: 0 ;
+		border-radius: 0% ;
+		display: flex;
+		justify-content: center ;
+		align-items: center ;
 	}
 
 `;
@@ -110,20 +123,14 @@ export const Container = styled.div`
 `;
 
 export const Conteudo = styled.div`
-
-    @media (max-width: 767px) {
-
-    }
-
-    @media (min-width: 767px) {
-		width: 600px ;
-		height: 400px ;
-		border: solid var(--borda) 2px;
-        border-radius: 10px ;
-        background-color: var(--backgroud-secundaria);
-		padding: 20px ;
-    }
+	width: 600px ;
+	min-height: 500px ;
+	border: solid var(--borda) 2px;
+    border-radius: 10px ;
+    background-color: var(--backgroud-secundaria);
+	padding: 20px ;
 `;
+
 export const Header = styled.div`
 	display: flex ;
 	padding-top:30px ;
@@ -162,7 +169,6 @@ export const AdicionarItem = styled.div`
 	font-size: 30px;
 	border: solid ;
 	border-radius: 10px ;
-	position: absolute ;
 	background-color:var(--blue-light) ;
 	color: var(--shape) ;
 `;

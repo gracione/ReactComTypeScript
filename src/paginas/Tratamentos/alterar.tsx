@@ -1,4 +1,4 @@
-import { Container, Conteudo } from "../../styles/global";
+import { Container } from "../../styles/global";
 import ExcluirDadosApi from "../../util/excluir";
 import { useNavigate } from 'react-router-dom';
 
