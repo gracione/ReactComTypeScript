@@ -7,7 +7,6 @@ import Configuracoes from "./paginas/Configuracoes";
 import AlterarFuncionario from "./paginas/Funcionarios/alterar";
 import AdicionarProfissao from "./paginas/Profissoes/adicionar";
 import AlterarProfissao from "./paginas/Profissoes/alterar";
-import Expediente from "./paginas/Expediente";
 import EtapaCalendario from "./paginas/EtapaCalendario";
 import InserirFuncionario from "./paginas/Funcionarios/inserir";
 import InserirTratamento from "./paginas/Tratamentos/inserir";
@@ -21,12 +20,10 @@ import { Container } from './styles/global';
 import Menu from './paginas/Menu';
 
 export default function Rota() {
-    const nome= "nome";
-    const profissao= "profissão";    
     const token = localStorage.getItem("token");
     let currentUrl = window.location.href.toLowerCase();
     console.log(token);
-    if (token === null || token == 'undefined')  {
+    if (token === null || token == 'undefined') {
         if (!currentUrl.includes("/registrar") && !currentUrl.includes("/login")) {
             window.location.href = "/login";
         }
@@ -56,30 +53,31 @@ export default function Rota() {
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />
                     <Route path="/escolher-horario/:idFuncionario/:idProfissao/:idTratamento/:idFiltro" element={<EtapaCalendario />} />
 
-                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" colunas={[nome, profissao]} />} />
+                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" colunas={["nome", "profissao"]} />} />
                     <Route path="/funcionarios/alterar/:idFuncionario" element={<AlterarFuncionario />} />
                     <Route path="/funcionarios/adicionar" element={<InserirFuncionario />} />
 
-                    <Route path="/feriados" element={<Listar funcao="feriados" colunas={[nome, profissao]} />} />
+                    <Route path="/feriados" element={<Listar funcao="feriados" colunas={["nome", "data"]} />} />
                     <Route path="/feriados/adicionar" element={< InserirFeriado />} />
                     <Route path="/feriados/alterar/:idFeriado" element={< AlterarFeriado />} />
 
-                    <Route path="/folgas" element={<Listar funcao="folgas" colunas={[nome, profissao]} />} />
+                    <Route path="/folgas" element={<Listar funcao="folgas" colunas={["funcionario", "folga"]} />} />
                     <Route path="/folgas/adicionar" element={< InserirFolga />} />
 
-                    <Route path="/expediente" element={<Expediente />} />
+                    <Route path="/expediente" element={<Listar funcao="expediente" colunas={["funcionario", "inicio1", "fim1", "inicio2", "fim2"]} />} />
                     <Route path="/expediente/adicionar" element={< InserirExpediente />} />
                     <Route path="/expediente/alterar/:idExpediente" element={< InserirExpediente />} />
 
-                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" colunas={[nome, profissao]} />} />
+                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" colunas={["nome", "profissao"]} />} />
                     <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
                     <Route path="/tratamentos/alterar/:idTratamento" element={<AlterarTratamento />} />
 
-                    <Route path="/configuracoes" element={<Configuracoes />} />
 
-                    <Route path="/profissao" element={<Listar funcao="profissao" colunas={[nome, profissao]} />} />
+                    <Route path="/profissao" element={<Listar funcao="profissao" colunas={["nome", "profissao"]} />} />
                     <Route path="/profissao/adicionar" element={<AdicionarProfissao />} />
                     <Route path="/profissao/alterar/:idProfissao" element={<AlterarProfissao />} />
+
+                    <Route path="/configuracoes" element={<Configuracoes />} />
                 </Routes>
             </Container>
         </BrowserRouter >
