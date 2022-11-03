@@ -21,6 +21,8 @@ import { Container } from './styles/global';
 import Menu from './paginas/Menu';
 
 export default function Rota() {
+    const nome= "nome";
+    const profissao= "profissão";    
     const token = localStorage.getItem("token");
     let currentUrl = window.location.href.toLowerCase();
     console.log(token);
@@ -54,28 +56,28 @@ export default function Rota() {
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />
                     <Route path="/escolher-horario/:idFuncionario/:idProfissao/:idTratamento/:idFiltro" element={<EtapaCalendario />} />
 
-                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" />} />
+                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" colunas={[nome, profissao]} />} />
                     <Route path="/funcionarios/alterar/:idFuncionario" element={<AlterarFuncionario />} />
                     <Route path="/funcionarios/adicionar" element={<InserirFuncionario />} />
 
-                    <Route path="/feriados" element={<Listar funcao="feriados" />} />
+                    <Route path="/feriados" element={<Listar funcao="feriados" colunas={[nome, profissao]} />} />
                     <Route path="/feriados/adicionar" element={< InserirFeriado />} />
                     <Route path="/feriados/alterar/:idFeriado" element={< AlterarFeriado />} />
 
-                    <Route path="/folgas" element={<Listar funcao="folgas" />} />
+                    <Route path="/folgas" element={<Listar funcao="folgas" colunas={[nome, profissao]} />} />
                     <Route path="/folgas/adicionar" element={< InserirFolga />} />
 
                     <Route path="/expediente" element={<Expediente />} />
                     <Route path="/expediente/adicionar" element={< InserirExpediente />} />
                     <Route path="/expediente/alterar/:idExpediente" element={< InserirExpediente />} />
 
-                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" />} />
+                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" colunas={[nome, profissao]} />} />
                     <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
                     <Route path="/tratamentos/alterar/:idTratamento" element={<AlterarTratamento />} />
 
                     <Route path="/configuracoes" element={<Configuracoes />} />
 
-                    <Route path="/profissao" element={<Listar funcao="profissao" />} />
+                    <Route path="/profissao" element={<Listar funcao="profissao" colunas={[nome, profissao]} />} />
                     <Route path="/profissao/adicionar" element={<AdicionarProfissao />} />
                     <Route path="/profissao/alterar/:idProfissao" element={<AlterarProfissao />} />
                 </Routes>

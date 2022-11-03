@@ -4,7 +4,8 @@ import { Adicionar, Conteudo, Header } from '../styles/global';
 import { useState, useEffect } from "react";
 
 export default function Listar(props: any) {
-  const funcao = props.funcao;
+  const funcao: any = props.funcao;
+  const colunas: any = props.colunas;
   const [listagem, setListagem] = useState([]);
   useEffect(() => {
     api.post("/" + funcao + "/listar", {
@@ -18,31 +19,40 @@ export default function Listar(props: any) {
     api.post("/" + funcao + "/excluir", {
       id: id
     })
+    window.location.href = "/" + funcao;
   }
 
   let link: any = [];
   listagem.forEach((element: any) => {
     link['editar'] = "/" + funcao + "/alterar/" + element.id;
     link['listagem'] = "/" + funcao;
+
     listar.push(
-      <div className='editar-excluir' >
-        <label> {element.nome} </label>
-        <label> {element.nome2} </label>
-        <a href={link['editar']} className='editar'></a>
-        <div onClick={() => excluir(element.id)} className='excluir'>
-          x
-        </div>
-        <a href={link['listagem']} >
-        </a>
-      </div>
+      <tr>
+        {colunas.map((nomeColuna: any) => (
+          <td>{element[nomeColuna]}</td>
+        ))}
+        <td><a href={link['editar']} className='editar' /></td>
+        <td onClick={() => excluir(element.id)} className='excluir'>x</td>
+      </tr>
+
     )
   });
 
   return (
     <Header>
       <Conteudo>
-        <h2>{funcao}</h2>
-        {listar}
+        {funcao}
+        <table>
+          <tr>
+            {colunas.map((nome: any) => (
+              <th>{nome}</th>
+            ))}
+            <th colSpan={2} ></th>
+          </tr>
+
+          {listar}
+        </table>
       </Conteudo>
       <Adicionar href={funcao + "/adicionar"}>+</Adicionar>
     </Header>

@@ -54,32 +54,37 @@ export const GlobalStyle = createGlobalStyle`
 		flex-direction: initial ;
 	}
 	.editar-excluir{
+		margin: 0 ;
+		height: 30px;
 		width: 100% ;
 		display: flex ;
-		margin-bottom: 1% ;
-		border-bottom: solid 1px ;
+		border: solid 1px ;
 		.editar{
 			background: url("/icons/lapis.png");
 			background-size: 80% 80%;
 			background-repeat: no-repeat ;
 			background-position: center ;
 			background-color: var(--blue-light); ;
-			width: 5%;
-			height: 20px ;
+			width: 10%;
+			height: 100%;
 
 			display: flex ;
 			justify-content: center ;
 		}
 		.excluir{
 			background-color: var(--red-light);
-			width: 5% ;
-			height: 20px ;
+			width: 10% ;
+			height: 100% ;
 
 			display: flex ;
 			justify-content: center ;
 		}
 		label{
+			border: solid 1px ;
+			height: 100%;
 			width: 90%;
+			display: flex;
+			align-items: center ;
 		}
 	}
 	a{
@@ -110,7 +115,22 @@ export const GlobalStyle = createGlobalStyle`
 		justify-content: center ;
 		align-items: center ;
 	}
+	table {
+		background-color: white ;
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
 
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
 `;
 
 export const Container = styled.div`

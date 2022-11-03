@@ -18,16 +18,16 @@ export default function InserirTratamento() {
     );
   });
 
-  const nomeDoTipoFiltro = (row: any, event: any) => {
+  const nomeDoTipoFiltro = (linha: any, event: any) => {
     let nomeFiltro = [...tipoFiltro];
-    nomeFiltro[row] = event.target.value;
+    nomeFiltro[linha] = event.target.value;
     setTipoFiltro(nomeFiltro);
   };
 
-  const nomeDoFiltro = (row: any, column: number, event: any) => {
-    let copy: any = [...matrix];
-    copy[row][column][0] = event.target.value;
-    setMatrix(copy);
+  const nomeDoFiltro = (linha: any, coluna: number, event: any) => {
+    let aux: any = [...matrix];
+    aux[linha][coluna][0] = event.target.value;
+    setMatrix(aux);
   };
 
   const porcentagemDoFiltro = (row: any, column: number, event: any) => {
@@ -86,6 +86,7 @@ export default function InserirTratamento() {
           </select>
 
           <fieldset>
+            <h4>Filtro</h4>
             {matrix.map((row: any, tipoFiltro: any) => (
               <div className="p-1" key={tipoFiltro} >
                 <input
