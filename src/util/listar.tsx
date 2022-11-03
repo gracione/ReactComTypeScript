@@ -2,6 +2,8 @@
 import api from '../../src/services/api';
 import { Adicionar, Conteudo, Header } from '../styles/global';
 import { useState, useEffect } from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { BsFillPencilFill } from "react-icons/bs";
 
 export default function Listar(props: any) {
   const funcao: any = props.funcao;
@@ -32,8 +34,10 @@ export default function Listar(props: any) {
         {colunas.map((nomeColuna: any) => (
           <td>{element[nomeColuna]}</td>
         ))}
-        <td><a href={link['editar']} className='editar' /></td>
-        <td onClick={() => excluir(element.id)} className='excluir'>x</td>
+        <td><a href={link['editar']} className='editar' /><BsFillPencilFill></BsFillPencilFill></td>
+        <td onClick={() => excluir(element.id)} className='excluir'>
+        <FaTrashAlt></FaTrashAlt>
+        </td>
       </tr>
 
     )
@@ -46,7 +50,7 @@ export default function Listar(props: any) {
         <table>
           <tr>
             {colunas.map((nome: any) => (
-              <th>{nome}</th>
+              <th>{nome.replaceAll('_',' ')}</th>
             ))}
             <th colSpan={2} ></th>
           </tr>

@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { Button, Center, Container, Conteudo, Header } from "../../styles/global";
+import { useState, useEffect } from "react";
+import { Conteudo } from "../../styles/global";
 import api from "../../services/api";
-import Menu from "../Menu";
 import Filtros from "./filtro";
 import BuscarDadosApi from "../../util/util";
 import { useParams } from "react-router-dom";
 
 export default function Informacoes() {
   const [tempoGasto, setTempoGasto] = useState(0);
-  const [idTratamento, setIdTratamento] = useState('');
+  const [idTratamento, setIdTratamento] = useState('0');
   const tratamentos: any = [];
   const [idFiltro, setIdFiltro] = useState('0');
   const { idFuncionario, idProfissao } = useParams();
@@ -54,3 +53,4 @@ export default function Informacoes() {
     </Conteudo>
   );
 }
+  

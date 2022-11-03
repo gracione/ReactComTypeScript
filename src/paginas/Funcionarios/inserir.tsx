@@ -6,6 +6,11 @@ import BuscarDadosApi from "../../util/util";
 import { AdicionarPrifissao } from "./styles";
 
 export default function InserirFuncionario() {
+  const [inicioExpediente, setInicioExpediente] = useState('');
+  const [inicioAlmoco, setInicioAlmoco] = useState('');
+  const [fimAlmoco, setFimAlmoco] = useState('');
+  const [fimExpediente, setFimExpediente] = useState('');
+
   const [nome, setNome] = useState('');
   const [numero, setNumero] = useState('');
   const [id_sexo, setId_Sexo] = useState('');
@@ -13,21 +18,17 @@ export default function InserirFuncionario() {
   const [password, setPassword] = useState('');
   const [profissoesCadastradas, setProfissoesCadastradas] = useState([]);
   const profissoesCadastradasAux: any = profissoesCadastradas;
-  let profissoes = BuscarDadosApi('profissao', 'listar');
+
+  const profissoes = BuscarDadosApi('profissao', 'listar');
   const [quantidadeProfissoes, setQuantidadeProfissoes] = useState(1);
 
   function adicionarProfissao(valor: any, indice: any) {
     profissoesCadastradasAux[indice] = valor;
+    console.log(valor);
     setProfissoesCadastradas(profissoesCadastradasAux);
   }
 
   const selecaoProfissao: any = [];
-  const opcoesProfissao: any = [];
-  profissoes.forEach(element => {
-    opcoesProfissao.push(
-      <option value={element.id}>{element.nome}</option>
-    );
-  });
 
   for (let index = 0; index < quantidadeProfissoes; index++) {
     selecaoProfissao.push(
@@ -36,15 +37,20 @@ export default function InserirFuncionario() {
           onChange={e => adicionarProfissao(e.target.value, index)}
           required
         >
-          <option value={0}>Escolha a Profissão</option>
-          {opcoesProfissao}
+          <option>Escolha a Profissão</option>
+          {
+            profissoes.map((element) => (
+              <option value={element.id}>{element.profissão}</option>
+            ))
+          }
         </select>
       </div>
     );
   }
   return (
     <Conteudo>
-      <form action={"/funcionarios"} onSubmit={() => Inserir("funcionarios",{nome,numero,id_sexo,email,password,profissoesCadastradas})}>
+      {profissoesCadastradas}
+      <form action={"/funcionarios"} onSubmit={() => Inserir("funcionarios", { nome, numero, id_sexo, email, password, profissoesCadastradas, inicioExpediente, inicioAlmoco, fimAlmoco, fimExpediente })}>
         <h2 >Adicionar Funcionario</h2>
         <div>
           <input
@@ -92,6 +98,13 @@ export default function InserirFuncionario() {
         <AdicionarPrifissao onClick={() => setQuantidadeProfissoes(quantidadeProfissoes + 1)}>
           Adicionar mais uma profissão
         </AdicionarPrifissao>
+        <fieldset className="p-1 display-flex">
+          <input type="time" placeholder="Inicio Expediente" onChange={e => setInicioExpediente(e.target.value)} />
+          <input type="time" placeholder="Inicio Almoco" onChange={e => setInicioAlmoco(e.target.value)} />
+          <input type="time" placeholder="Fim Almoco" onChange={e => setFimAlmoco(e.target.value)} />
+          <input type="time" placeholder="Fim Expediente" onChange={e => setFimExpediente(e.target.value)} />
+        </fieldset>
+
         <button type="submit">Salvar</button>
       </form>
     </Conteudo>

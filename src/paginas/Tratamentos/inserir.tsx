@@ -10,13 +10,6 @@ export default function InserirTratamento() {
   const profissoes = BuscarDadosApi('profissao', 'listar');
   const [matrix, setMatrix] = useState(Array.from({ length: 1 }, () => Array.from({ length: 1 }, () => [])));
   const [tipoFiltro, setTipoFiltro] = useState(Array.from({ length: 1 }, () => [0]),);
-  let optionProfissoes: any = [];
-
-  profissoes.forEach(element => {
-    optionProfissoes.push(
-      <option value={element.id}>{element.nome}</option>
-    );
-  });
 
   const nomeDoTipoFiltro = (linha: any, event: any) => {
     let nomeFiltro = [...tipoFiltro];
@@ -28,8 +21,8 @@ export default function InserirTratamento() {
     let aux: any = [...matrix];
     aux[linha][coluna][0] = event.target.value;
     setMatrix(aux);
+    
   };
-
   const porcentagemDoFiltro = (row: any, column: number, event: any) => {
     let copy: any = [...matrix];
     copy[row][column][1] = event.target.value;
@@ -82,7 +75,9 @@ export default function InserirTratamento() {
             required
           >
             <option value={0}>Escolha a Profissão</option>
-            {optionProfissoes}
+            {profissoes.map((element) => (
+              <option value={element.id}>{element.profissão}</option>
+            ))}
           </select>
 
           <fieldset>

@@ -131,6 +131,12 @@ export const GlobalStyle = createGlobalStyle`
 	tr:nth-child(even) {
 		background-color: #dddddd;
 	}
+	.red{
+		background-color: red ;
+	}
+	.blue{
+		background-color: blue ;
+	}
 `;
 
 export const Container = styled.div`

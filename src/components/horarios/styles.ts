@@ -6,7 +6,6 @@ export const HorarioDisponivel = styled.div`
     height: 30px;
     border-radius: 4px;
     margin-top: 5px;
-    background-color: red;
     
     display: flex;
     justify-content: center;

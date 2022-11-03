@@ -62,10 +62,7 @@ function organizarSemana(diaSemana: any, props: any, folga: any, feriados: any) 
 
 export default function Calendario(props: any) {
   const { idFuncionario } = useParams();
-  ////////////////////////////////
-  console.log(idFuncionario);
-  ////////////////////////////////
-  let folgaFuncionario = BuscarDadosApi('folga', 'listarById', { idFuncionario: 1 });
+  let folgaFuncionario = BuscarDadosApi('folgas', 'listar-id', { idFuncionario });
   let feriados = BuscarDadosApi('feriados', 'listarFeriadoPorMes', {
     mes: props.mes,
     ano: props.ano

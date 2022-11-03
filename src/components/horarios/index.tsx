@@ -20,29 +20,24 @@ export default function Horarios(props: any) {
     setHorarioEscolhido('');
   }, [props.data]);
 
-  let horariosDisponivel: any = [];
-
-  horario.forEach((element: any) => {
-    if (horarioEscolhido == element.inicio) {
-      horariosDisponivel.push(
-        <HorarioDisponivel
-          onClick={() => setHorarioEscolhido(element.inicio)}
-        >
-          {element.inicio}
-        </HorarioDisponivel>
-      )
+  function test(horarioEscolhido: any, element: any) {
+    if (horarioEscolhido === element.inicio) {
+      <HorarioDisponivel
+        className={horarioEscolhido === element.inicio ? "red" : "blue"}
+        onClick={() => setHorarioEscolhido(element.inicio)}
+      >
+        {element.inicio}
+      </HorarioDisponivel>
 
     } else {
-      horariosDisponivel.push(
-        <HorarioSelecionado
-          onClick={() => setHorarioEscolhido(element.inicio)}
-        >
-          {element.inicio}
-        </HorarioSelecionado>
-      )
-
+      <HorarioSelecionado
+        onClick={() => setHorarioEscolhido(element.inicio)}
+      >
+        {element.inicio}
+      </HorarioSelecionado>
     }
-  });
+
+  }
 
   function agendarHorario(data: any, horario: any) {
     api
@@ -64,7 +59,16 @@ export default function Horarios(props: any) {
           </DataSelecionada>
         </Center>
         <HorariosDisponivel>
-          {horariosDisponivel}
+          {
+            horario.map((element) => (
+              <HorarioDisponivel
+                className={horarioEscolhido === element['inicio'] ? "red" : "blue"}
+                onClick={() => setHorarioEscolhido(element['inicio'])}
+              >
+                {element['inicio']}
+              </HorarioDisponivel>
+            ))
+          }
         </HorariosDisponivel>
 
       </div>

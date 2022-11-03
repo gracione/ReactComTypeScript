@@ -74,7 +74,7 @@ function EtapaCalendario() {
   }
 
   return (
-    <div>
+    <div className="display-flex" >
       <Conteudo>
         <PainelCalendario>
           <div className='mudar-mes' onClick={() => setmes(mes - 1)}> {"<"} </div>

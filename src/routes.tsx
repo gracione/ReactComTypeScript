@@ -53,7 +53,7 @@ export default function Rota() {
                     <Route path="/informacoes/:idFuncionario/:idProfissao" element={<Informacoes />} />
                     <Route path="/escolher-horario/:idFuncionario/:idProfissao/:idTratamento/:idFiltro" element={<EtapaCalendario />} />
 
-                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" colunas={["nome", "profissao"]} />} />
+                    <Route path="/funcionarios" element={<Listar funcao="funcionarios" colunas={["nome", "profissão"]} />} />
                     <Route path="/funcionarios/alterar/:idFuncionario" element={<AlterarFuncionario />} />
                     <Route path="/funcionarios/adicionar" element={<InserirFuncionario />} />
 
@@ -64,16 +64,16 @@ export default function Rota() {
                     <Route path="/folgas" element={<Listar funcao="folgas" colunas={["funcionario", "folga"]} />} />
                     <Route path="/folgas/adicionar" element={< InserirFolga />} />
 
-                    <Route path="/expediente" element={<Listar funcao="expediente" colunas={["funcionario", "inicio1", "fim1", "inicio2", "fim2"]} />} />
+                    <Route path="/expediente" element={<Listar funcao="expediente" colunas={["funcionario", "inicio_de_expediente", "inicio_horario_de_almoco", "fim_horario_de_almoco", "fim_de_expediente"]} />} />
                     <Route path="/expediente/adicionar" element={< InserirExpediente />} />
                     <Route path="/expediente/alterar/:idExpediente" element={< InserirExpediente />} />
 
-                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" colunas={["nome", "profissao"]} />} />
+                    <Route path="/tratamentos" element={<Listar funcao="tratamentos" colunas={["tratamento", "profissão", "tempo_gasto"]} />} />
                     <Route path="/tratamentos/adicionar" element={<InserirTratamento />} />
                     <Route path="/tratamentos/alterar/:idTratamento" element={<AlterarTratamento />} />
 
 
-                    <Route path="/profissao" element={<Listar funcao="profissao" colunas={["nome", "profissao"]} />} />
+                    <Route path="/profissao" element={<Listar funcao="profissao" colunas={["profissão"]} />} />
                     <Route path="/profissao/adicionar" element={<AdicionarProfissao />} />
                     <Route path="/profissao/alterar/:idProfissao" element={<AlterarProfissao />} />
 

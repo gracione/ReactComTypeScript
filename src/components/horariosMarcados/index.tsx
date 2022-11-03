@@ -36,8 +36,11 @@ export default function HorariosMarcado() {
     <Container>
       <Center>
         <div>
-          {card}
+          {horariosMarcados.map((car)=>(
+            <></>
+          ))}
         </div>
+        {card}
       </Center>
     </Container>
   );
